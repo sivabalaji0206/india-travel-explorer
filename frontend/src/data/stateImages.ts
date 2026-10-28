@@ -80,3 +80,4 @@ export const DEFAULT_STATE_IMAGE =
 export const getStateImage = (stateName: string): string => {
   return STATE_IMAGES[stateName] || DEFAULT_STATE_IMAGE;
 };
+

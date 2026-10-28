@@ -186,3 +186,4 @@ def enrich_database() -> None:
 
 if __name__ == "__main__":
     enrich_database()
+
