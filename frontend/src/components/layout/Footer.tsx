@@ -23,10 +23,10 @@ export const Footer: React.FC = () => {
         >
           <Box>
             <Typography variant="body2" sx={{ fontWeight: 700, color: theme.palette.text.primary }}>
-              India Travel Explorer with AI Trip Planner (RAG)
+              India Travel Explorer • AI Trip Planner
             </Typography>
             <Typography variant="caption" sx={{ color: theme.palette.text.secondary }}>
-              Enterprise Full-Stack Architecture: FastAPI, PostgreSQL, SQLAlchemy 2.0, Alembic, React, TypeScript, Material UI & Gemini API.
+              Discover verified attractions across 34 states and union territories with customized day-wise itineraries and local cuisine.
             </Typography>
           </Box>
           <Stack direction="row" spacing={3}>

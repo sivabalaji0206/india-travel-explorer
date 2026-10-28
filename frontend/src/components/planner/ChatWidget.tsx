@@ -45,7 +45,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
   const [messages, setMessages] = useState<ChatTurn[]>([
     {
       role: 'assistant',
-      content: `I've created your grounded itinerary for ${currentPlan.state_name}. You can ask me to swap attractions, adjust the daily pace, suggest specific foods, or re-balance your budget!`,
+      content: `I've created your personalized itinerary for ${currentPlan.state_name}. You can ask me to swap attractions, adjust the daily pace, suggest specific foods, or re-balance your budget!`,
     },
   ]);
   const [input, setInput] = useState<string>('');
@@ -228,7 +228,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
             >
               <CircularProgress size={16} color="primary" />
               <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
-                Grounding changes against tourism database...
+                Personalizing your itinerary with local travel insights...
               </Typography>
             </Paper>
           </Stack>

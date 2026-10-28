@@ -221,7 +221,7 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
               <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
                 {isGenerated && plan
                   ? `${plan.state_name} • ${plan.total_days} Days • ₹${plan.total_budget.toLocaleString()} Target`
-                  : 'RAG Grounded with PostgreSQL Tourism Dataset'}
+                  : 'Curated with 575+ Verified Attractions across India'}
               </Typography>
             </Box>
           </Stack>
@@ -245,8 +245,8 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
         {!isGenerated && (
           <Stack spacing={3}>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Configure your preferences. Our RAG engine queries verified destinations, entry ticket
-              costs, daily expense tiers, and authentic dishes to synthesize a fully grounded itinerary.
+              Configure your preferences. Our intelligent planner personalizes your trip using verified destinations,
+              official ticket fees, daily comfort tiers, and authentic local cuisine.
             </Typography>
 
             <Grid container spacing={3}>
@@ -446,7 +446,7 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
             <Grid container spacing={3}>
               <Grid item xs={12} lg={7}>
                 <Typography variant="h6" sx={{ fontWeight: 800, mb: 2 }}>
-                  Day-by-Day Grounded Schedule
+                  Day-by-Day Customized Schedule
                 </Typography>
                 <ItineraryView days={plan.days} overallAdvice={plan.overall_advice} />
               </Grid>
@@ -486,7 +486,7 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
               boxShadow: '0 6px 18px rgba(224, 93, 56, 0.35)',
             }}
           >
-            {loading ? 'Synthesizing Itinerary...' : 'Generate Grounded Itinerary'}
+            {loading ? 'Personalizing Itinerary...' : 'Generate Custom Itinerary'}
           </Button>
         ) : (
           <Button

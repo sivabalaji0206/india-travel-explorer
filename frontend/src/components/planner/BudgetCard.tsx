@@ -164,7 +164,7 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
         alignItems={{ xs: 'flex-start', sm: 'center' }}
       >
         <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-          * Estimates grounded in verified cost tiers and attraction entrance fees.
+          * Estimates based on verified local cost tiers and attraction entrance fees.
         </Typography>
         <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
           Estimated Total:{' '}

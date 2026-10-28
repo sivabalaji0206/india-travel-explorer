@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 India Travel Explorer
               </Typography>
               <Typography variant="caption" sx={{ color: theme.palette.primary.main, fontWeight: 700 }}>
-                AI Trip Planner (RAG)
+                Smart Travel Companion
               </Typography>
             </Box>
           </Stack>

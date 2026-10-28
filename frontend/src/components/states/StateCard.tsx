@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -7,18 +7,22 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  IconButton,
   Stack,
   Typography,
   useTheme,
 } from '@mui/material';
 import {
   AutoAwesome as PlannerIcon,
+  ChevronLeft as PrevIcon,
+  ChevronRight as NextIcon,
+  Collections as PhotoIcon,
   Explore as ExploreIcon,
   LocationOn as LocationIcon,
   WbSunnyOutlined as SeasonIcon,
 } from '@mui/icons-material';
 import type { State } from '../../api/types';
-import { getStateImage } from '../../data/stateImages';
+import { getStateGallery } from '../../data/stateImages';
 
 interface StateCardProps {
   state: State;
@@ -28,10 +32,35 @@ interface StateCardProps {
 
 export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTrip }) => {
   const theme = useTheme();
-  const imageUrl = getStateImage(state.name);
+  const gallery = getStateGallery(state.name);
+  const [photoIndex, setPhotoIndex] = useState<number>(0);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+
+  // Auto-slide to next photo every 4.5 seconds if hovered or idle
+  useEffect(() => {
+    if (!isHovered) return;
+    const timer = setInterval(() => {
+      setPhotoIndex((prev) => (prev + 1) % gallery.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isHovered, gallery.length]);
+
+  const handleNextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPhotoIndex((prev) => (prev + 1) % gallery.length);
+  };
+
+  const handlePrevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPhotoIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
+  };
+
+  const currentPhoto = gallery[photoIndex] || gallery[0];
 
   return (
     <Card
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       sx={{
         height: '100%',
         display: 'flex',
@@ -39,49 +68,58 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
         justifyContent: 'space-between',
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: 3,
-        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+        borderRadius: 3.5,
+        border: `1px solid ${theme.palette.divider}`,
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         '&:hover': {
           transform: 'translateY(-6px)',
           boxShadow:
             theme.palette.mode === 'dark'
-              ? '0 12px 28px rgba(0,0,0,0.6)'
-              : '0 12px 28px rgba(224, 93, 56, 0.18)',
-          '& .state-media': {
-            transform: 'scale(1.06)',
+              ? '0 16px 36px rgba(0,0,0,0.65)'
+              : '0 16px 36px rgba(224, 93, 56, 0.16)',
+          borderColor: theme.palette.primary.main,
+          '& .carousel-controls': {
+            opacity: 1,
           },
         },
       }}
     >
-      {/* State Image Banner with Glass Badges */}
-      <Box sx={{ position: 'relative', overflow: 'hidden', height: 180 }}>
+      {/* Interactive Photo Carousel Header (Height 210px for rich visibility) */}
+      <Box sx={{ position: 'relative', height: 210, overflow: 'hidden', bgcolor: '#000' }}>
         <CardMedia
           component="img"
-          className="state-media"
-          height="180"
-          image={imageUrl}
-          alt={state.name}
+          key={currentPhoto.url}
+          height="210"
+          image={currentPhoto.url}
+          alt={currentPhoto.caption || state.name}
           sx={{
-            transition: 'transform 0.4s ease',
             objectFit: 'cover',
+            animation: 'fadeIn 0.5s ease',
+            '@keyframes fadeIn': {
+              '0%': { opacity: 0.6 },
+              '100%': { opacity: 1 },
+            },
           }}
         />
 
-        {/* Gradient Scrim for contrast */}
+        {/* Subtle Bottom Gradient Scrim for crisp readability */}
         <Box
           sx={{
             position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%)',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 90,
+            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)',
           }}
         />
 
-        {/* Badges on Image */}
+        {/* Top Badges (Region + Photo Count) */}
         <Stack
           direction="row"
           justifyContent="space-between"
-          alignItems="flex-start"
-          sx={{ position: 'absolute', top: 12, left: 12, right: 12 }}
+          alignItems="center"
+          sx={{ position: 'absolute', top: 12, left: 12, right: 12, zIndex: 2 }}
         >
           {state.region && (
             <Chip
@@ -89,42 +127,145 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
               label={state.region}
               sx={{
                 fontWeight: 700,
-                fontSize: '0.7rem',
+                fontSize: '0.68rem',
                 backdropFilter: 'blur(8px)',
-                backgroundColor: 'rgba(0, 0, 0, 0.55)',
+                backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 color: '#fff',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
               }}
             />
           )}
 
+          {/* Photo Counter Pill: e.g. 1 / 6 photos */}
           <Chip
             size="small"
-            icon={<LocationIcon sx={{ fontSize: '13px !important', color: '#fff !important' }} />}
-            label={`${state.place_count} Places`}
+            icon={<PhotoIcon sx={{ fontSize: '12px !important', color: '#fff !important' }} />}
+            label={`${photoIndex + 1} / ${gallery.length}`}
             sx={{
               fontWeight: 800,
-              fontSize: '0.72rem',
+              fontSize: '0.68rem',
               backdropFilter: 'blur(8px)',
-              backgroundColor: theme.palette.primary.main,
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
               color: '#fff',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
             }}
           />
         </Stack>
 
-        {/* State Name overlay at bottom of image */}
-        <Box sx={{ position: 'absolute', bottom: 12, left: 16, right: 16 }}>
-          <Typography
-            variant="h6"
+        {/* Previous & Next Arrow Controls (visible on hover) */}
+        <Box
+          className="carousel-controls"
+          sx={{
+            opacity: 0,
+            transition: 'opacity 0.25s ease',
+            position: 'absolute',
+            top: '50%',
+            left: 8,
+            right: 8,
+            transform: 'translateY(-50%)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            pointerEvents: 'none',
+            zIndex: 3,
+          }}
+        >
+          <IconButton
+            size="small"
+            onClick={handlePrevPhoto}
             sx={{
-              fontWeight: 800,
+              pointerEvents: 'auto',
+              backgroundColor: 'rgba(0,0,0,0.65)',
               color: '#fff',
-              textShadow: '0 2px 6px rgba(0,0,0,0.8)',
-              lineHeight: 1.2,
+              backdropFilter: 'blur(4px)',
+              p: 0.5,
+              '&:hover': { backgroundColor: 'rgba(0,0,0,0.85)' },
             }}
           >
-            {state.name}
-          </Typography>
+            <PrevIcon fontSize="small" />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleNextPhoto}
+            sx={{
+              pointerEvents: 'auto',
+              backgroundColor: 'rgba(0,0,0,0.65)',
+              color: '#fff',
+              backdropFilter: 'blur(4px)',
+              p: 0.5,
+              '&:hover': { backgroundColor: 'rgba(0,0,0,0.85)' },
+            }}
+          >
+            <NextIcon fontSize="small" />
+          </IconButton>
+        </Box>
+
+        {/* Bottom overlay: State Name & Photo Caption */}
+        <Box sx={{ position: 'absolute', bottom: 10, left: 14, right: 14, zIndex: 2 }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 900,
+                  color: '#fff',
+                  lineHeight: 1.15,
+                  textShadow: '0 2px 4px rgba(0,0,0,0.9)',
+                }}
+              >
+                {state.name}
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: 'rgba(255,255,255,0.85)',
+                  fontSize: '0.72rem',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                }}
+              >
+                {currentPhoto.caption}
+              </Typography>
+            </Box>
+
+            <Chip
+              size="small"
+              icon={<LocationIcon sx={{ fontSize: '13px !important', color: '#fff !important' }} />}
+              label={`${state.place_count}`}
+              sx={{
+                fontWeight: 800,
+                fontSize: '0.7rem',
+                backgroundColor: theme.palette.primary.main,
+                color: '#fff',
+                height: 22,
+                boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
+              }}
+            />
+          </Stack>
+
+          {/* Dots Indicator */}
+          <Stack direction="row" spacing={0.6} justifyContent="center" sx={{ mt: 1 }}>
+            {gallery.map((_, idx) => (
+              <Box
+                key={idx}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPhotoIndex(idx);
+                }}
+                sx={{
+                  width: idx === photoIndex ? 16 : 5,
+                  height: 4,
+                  borderRadius: 2,
+                  backgroundColor: idx === photoIndex ? '#fff' : 'rgba(255,255,255,0.45)',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                  '&:hover': { backgroundColor: '#fff' },
+                }}
+              />
+            ))}
+          </Stack>
         </Box>
       </Box>
 
@@ -143,7 +284,7 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
             mb: 1.5,
           }}
         >
-          {state.description || `Discover iconic historical and scenic travel destinations in ${state.name}.`}
+          {state.description || `Discover iconic heritage, nature, and cultural wonders in ${state.name}.`}
         </Typography>
 
         {state.best_time_to_visit && (
@@ -164,9 +305,9 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
           fullWidth
           startIcon={<ExploreIcon fontSize="small" />}
           onClick={() => onExplore(state.id)}
-          sx={{ borderRadius: 2 }}
+          sx={{ borderRadius: 2, fontWeight: 700 }}
         >
-          Browse ({state.place_count})
+          Explore Places ({state.place_count})
         </Button>
         <Button
           size="small"
@@ -175,7 +316,7 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
           fullWidth
           startIcon={<PlannerIcon fontSize="small" />}
           onClick={() => onPlanTrip(state.id)}
-          sx={{ borderRadius: 2 }}
+          sx={{ borderRadius: 2, fontWeight: 800 }}
         >
           Plan Trip
         </Button>
