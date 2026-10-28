@@ -1,0 +1,65 @@
+{
+  "_comment": "Ordered rules: the first rule whose keyword matches (whole word, case-insensitive) wins.",
+  "rules": [
+    {
+      "category": "wildlife",
+      "keywords": [
+        "national park", "sanctuary", "tiger reserve", "wildlife", "safari", "zoo", "zoological",
+        "bird", "birds", "elephant camp", "aquarium", "nature park", "marine sanctuary"
+      ]
+    },
+    {
+      "category": "temple",
+      "keywords": [
+        "temple", "mandir", "ghat", "ghats", "aarti", "ashram", "mutt", "gurdwara", "gurudwara",
+        "church", "churches", "basilica", "monastery", "monasteries", "gompa", "stupa", "mosque",
+        "dargah", "shrine", "satra", "satras", "mahabodhi", "dham", "iskcon", "kamakhya",
+        "saptashrungi", "bodhi"
+      ]
+    },
+    {
+      "category": "heritage",
+      "keywords": [
+        "fort", "palace", "haveli", "havelis", "museum", "memorial", "monument", "monuments",
+        "ruins", "jantar mantar", "unesco", "stepwell", "observatory", "jail", "tomb", "taj mahal",
+        "caves", "cave", "rock-cut", "bas-relief", "rathas", "wada", "library", "maqbara",
+        "heritage", "old town", "old city", "toy train", "railway", "pillars", "bazaars",
+        "minar", "gate", "darwaza", "imambara", "charminar", "golghar", "qila", "mahal", "gateway"
+      ]
+    },
+    {
+      "category": "adventure",
+      "keywords": [
+        "trek", "rafting", "snorkelling", "snorkeling", "diving", "dive sites", "kayaking",
+        "skiing", "ski", "gondola", "camping", "camp", "jeep", "cycling", "paragliding",
+        "water sports", "boating", "boat", "cruise", "cruises"
+      ]
+    },
+    {
+      "category": "beach",
+      "keywords": ["beach", "beaches", "cove", "coves", "lagoon", "island", "islands", "coast",
+        "coastline", "shore", "seafront", "bay", "sandbars"]
+    },
+    {
+      "category": "hill_station",
+      "keywords": ["hill", "hills", "hill station", "ridge", "peak", "peaks", "top station"]
+    },
+    {
+      "category": "city",
+      "keywords": [
+        "market", "markets", "bazaar", "mall", "mall road", "city", "lanes", "promenade", "cafe",
+        "cafes", "township", "mall of india", "cyber hub", "golf club", "water park", "park and zoo"
+      ]
+    },
+    {
+      "category": "nature",
+      "keywords": [
+        "lake", "lakes", "falls", "waterfall", "waterfalls", "valley", "river", "dam", "plateau",
+        "meadow", "meadows", "forest", "plantation", "plantations", "estate", "estates", "garden",
+        "gardens", "park", "viewpoint", "viewpoints", "view point", "point", "pass", "glacier",
+        "springs", "desert", "dunes", "rann", "sagar", "kund", "canal", "canals", "backwaters",
+        "orchards", "rice fields", "tea", "coffee", "spice"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "_comment": "Fallback category for a destination from its trip types (first listed category with a matching trip type wins). Trip types are lower case with underscores.",
+  "rules": [
+    {"category": "wildlife", "trip_types": ["wildlife", "tiger_safari", "birding", "wetland", "herping_macro_photography", "herping_macro"]},
+    {"category": "beach", "trip_types": ["beach", "coastal", "island", "offbeat_beach", "diving", "snorkelling", "water_sports", "coastal_drive", "desert_coastal", "swimming"]},
+    {"category": "hill_station", "trip_types": ["hill_station", "hill_town", "offbeat_hill", "mountain", "mountain_views", "high_mountain", "high_mountain_village", "snow_destination", "snow_views", "skiing", "tea_gardens", "tea_estates", "coffee_estates", "plantations"]},
+    {"category": "temple", "trip_types": ["spiritual", "religious", "pilgrimage", "pilgrimage_hub", "ashram", "ganga_ghats", "buddhist_circuit", "monasteries", "yoga"]},
+    {"category": "heritage", "trip_types": ["heritage", "history", "unesco", "heritage_rail", "rock_sculpture", "caves", "culture_combo"]},
+    {"category": "adventure", "trip_types": ["adventure", "trekking", "trekking_base", "short_trek", "short_treks", "camping", "high_altitude", "high_altitude_valley", "light_adventure", "road_trip", "backpacker", "backpacking"]},
+    {"category": "nature", "trip_types": ["nature", "waterfalls", "waterfall", "rainforest", "desert", "desert_landscape", "valley_scenery", "cliff_scenery", "river", "riverside", "backwaters", "monsoon", "monsoon_drive", "rain_destination", "living_root_bridges", "eco_tourism", "rural"]},
+    {"category": "city", "trip_types": ["city_break", "gateway_city", "gateway_destination", "shopping", "nightlife", "cafe_town", "culture", "cultural", "music_culture", "food", "handicrafts"]}
+  ]
+}
+

@@ -1,0 +1,20 @@
+{
+  "budget_level": {
+    "reference_tier": "low",
+    "low_max_daily_cost": 3000,
+    "medium_max_daily_cost": 4500
+  },
+  "cost_tier_sources": {
+    "low": "budget_category",
+    "medium": "mid_range_category",
+    "high": "luxury_category"
+  },
+  "reference_tier_for_avg_daily_cost": "medium",
+  "meals_per_day": 3,
+  "price_rounding_step": 10,
+  "cost_rounding_step": 50,
+  "default_category": "city",
+  "default_season": "all_year",
+  "max_trip_types": 8
+}
+

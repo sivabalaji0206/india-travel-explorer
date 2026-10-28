@@ -1,0 +1,9 @@
+{
+  "non_veg_keywords": [
+    "fish", "prawn", "prawns", "pork", "chicken", "mutton", "meat", "seafood", "lamb", "beef",
+    "biryani", "wazwan", "kebab", "kababi", "laal maas", "karimeen", "meen", "pandi", "kombdi",
+    "jadoh", "crab", "egg", "eggs", "non-veg", "non-vegetarian", "smoked", "gassi"
+  ],
+  "mixed_menu_phrases": ["veg and non-veg", "veg or non-veg"],
+  "excluded_keywords": ["feni", "beer", "wine", "alcohol", "liquor", "toddy"]
+}

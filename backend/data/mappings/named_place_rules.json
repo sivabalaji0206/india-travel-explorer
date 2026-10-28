@@ -1,0 +1,20 @@
+{
+  "_comment": "A name is treated as a real, named place when every significant word is capitalised and it does not start with a generic descriptive word. Unnamed phrases are excluded by default (listed in the review report).",
+  "connector_words": ["of", "the", "and", "in", "at", "de", "ka", "ki", "ke", "a", "on", "to", "near", "for", "or", "with", "&", "-", "–", "by", "from", "du", "la", "el", "al"],
+  "generic_first_words": [
+    "less", "less-crowded", "less-visited", "less-used", "less-known", "less-frequented",
+    "lesser", "lesser-known", "quiet", "quieter", "small", "smaller", "early", "early-morning",
+    "local", "nearby", "night", "simple", "homestays", "remote", "short", "off", "off-piste",
+    "interior", "uninhabited", "villages", "viewpoints", "morning", "predawn", "untouched",
+    "tiny", "wildflower-filled", "long", "endless", "vast", "wide", "large", "core", "buffer",
+    "forest", "farmer-led", "non-touristy", "offbeat", "stone", "sunrise", "sunset", "boat",
+    "boating", "river", "high-altitude", "high", "colour-changing", "turquoise-blue", "curtain-like",
+    "rich", "good", "well-laid", "wetland", "winter", "river-island", "sal",
+    "organised", "temples", "ashrams", "traditional", "rice", "coffee", "tea", "spice", "houseboat",
+    "estate", "valley", "mountain", "island-style", "museums", "ruins", "deep-snow",
+    "groomed", "chair-lifts", "snow", "meadows", "pristine", "unique", "natural", "wooden", "riverside",
+    "low-key", "last", "gateway", "additional", "integration", "proximity", "easy", "easy-to-reach", "views"
+  ],
+  "min_name_length": 3,
+  "max_name_length": 80
+}

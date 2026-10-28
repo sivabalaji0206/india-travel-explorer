@@ -1,0 +1,32 @@
+{
+  "_comment": "Free text season descriptions are mapped by keyword and by month names. Month to season uses the Indian climate calendar.",
+  "keywords": {
+    "post-monsoon": "autumn",
+    "post monsoon": "autumn",
+    "postmonsoon": "autumn",
+    "late autumn": "autumn",
+    "early autumn": "autumn",
+    "autumn": "autumn",
+    "winter": "winter",
+    "snow": "winter",
+    "summer": "summer",
+    "monsoon": "monsoon",
+    "spring": "spring"
+  },
+  "months": {
+    "january": "winter",
+    "february": "spring",
+    "march": "spring",
+    "april": "summer",
+    "may": "summer",
+    "june": "summer",
+    "july": "monsoon",
+    "august": "monsoon",
+    "september": "monsoon",
+    "october": "autumn",
+    "november": "autumn",
+    "december": "winter"
+  },
+  "all_year_threshold": 5
+}
+

@@ -1,0 +1,1038 @@
+kind,state,name,field,value,destination,rule
+destination,Goa,Goa,budget_level,low,Goa,low tier max daily cost 2800
+place,Goa,Baga Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Calangute Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Old Goa Churches,category,temple,Goa,name keyword 'churches'
+place,Goa,Fort Aguada,category,heritage,Goa,name keyword 'fort'
+place,Goa,Dudhsagar Falls,category,nature,Goa,name keyword 'falls'
+place,Goa,Spice Plantations,category,nature,Goa,name keyword 'spice'
+place,Goa,Palolem Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Agonda Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Arambol Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Morjim Beach,category,beach,Goa,name keyword 'beach'
+place,Goa,Netravali Lake,category,nature,Goa,name keyword 'lake'
+place,Goa,Tambdi Surla Temple,category,temple,Goa,name keyword 'temple'
+food,Goa,Goan fish curry rice,food_type,non_veg,Goa,keyword 'fish'
+food,Goa,Prawn balchao,food_type,non_veg,Goa,keyword 'prawn'
+food,Goa,Pork vindaloo,food_type,non_veg,Goa,keyword 'pork'
+food,Goa,Bebinca,food_type,veg,Goa,no non-veg keyword found
+destination,Ladakh,Ladakh (Leh),budget_level,medium,Ladakh (Leh),low tier max daily cost 3400
+place,Ladakh,Leh Palace,category,heritage,Ladakh (Leh),name keyword 'palace'
+place,Ladakh,Shanti Stupa,category,temple,Ladakh (Leh),name keyword 'stupa'
+place,Ladakh,Pangong Tso,category,adventure,Ladakh (Leh),destination trip type 'adventure'
+place,Ladakh,Nubra Valley,category,nature,Ladakh (Leh),name keyword 'valley'
+place,Ladakh,Khardung La,category,adventure,Ladakh (Leh),destination trip type 'adventure'
+place,Ladakh,Tso Moriri,category,adventure,Ladakh (Leh),destination trip type 'adventure'
+place,Ladakh,Hemis Monastery,category,temple,Ladakh (Leh),name keyword 'monastery'
+place,Ladakh,Turtuk,category,adventure,Ladakh (Leh),destination trip type 'adventure'
+place,Ladakh,Alchi Monastery,category,temple,Ladakh (Leh),name keyword 'monastery'
+place,Ladakh,Hemis National Park,category,wildlife,Ladakh (Leh),name keyword 'national park'
+food,Ladakh,Momos,food_type,veg,Ladakh (Leh),no non-veg keyword found
+food,Ladakh,Thukpa,food_type,veg,Ladakh (Leh),no non-veg keyword found
+food,Ladakh,Butter tea,food_type,veg,Ladakh (Leh),no non-veg keyword found
+food,Ladakh,Skyu,food_type,veg,Ladakh (Leh),no non-veg keyword found
+food,Ladakh,Apricot products,food_type,veg,Ladakh (Leh),no non-veg keyword found
+destination,Rajasthan,Jaipur,budget_level,low,Jaipur,low tier max daily cost 2600
+place,Rajasthan,Amer Fort,category,heritage,Jaipur,name keyword 'fort'
+place,Rajasthan,City Palace,category,heritage,Jaipur,name keyword 'palace'
+place,Rajasthan,Hawa Mahal,category,heritage,Jaipur,name keyword 'mahal'
+place,Rajasthan,Jantar Mantar,category,heritage,Jaipur,name keyword 'jantar mantar'
+place,Rajasthan,Nahargarh Fort,category,heritage,Jaipur,name keyword 'fort'
+place,Rajasthan,Jaigarh Fort,category,heritage,Jaipur,name keyword 'fort'
+place,Rajasthan,Panna Meena ka Kund,category,nature,Jaipur,name keyword 'kund'
+food,Rajasthan,Dal Baati Churma,food_type,veg,Jaipur,no non-veg keyword found
+food,Rajasthan,Ghewar,food_type,veg,Jaipur,no non-veg keyword found
+food,Rajasthan,Kachori,food_type,veg,Jaipur,no non-veg keyword found
+food,Rajasthan,Laal Maas,food_type,non_veg,Jaipur,keyword 'laal maas'
+destination,Uttar Pradesh,Varanasi (Kashi),budget_level,low,Varanasi (Kashi),low tier max daily cost 2400
+place,Uttar Pradesh,Dashashwamedh Ghat,category,temple,Varanasi (Kashi),name keyword 'ghat'
+place,Uttar Pradesh,Kashi Vishwanath Temple,category,temple,Varanasi (Kashi),name keyword 'temple'
+place,Uttar Pradesh,Assi Ghat,category,temple,Varanasi (Kashi),name keyword 'ghat'
+place,Uttar Pradesh,Sarnath,category,temple,Varanasi (Kashi),destination trip type 'religious'
+place,Uttar Pradesh,Manikarnika Ghat,category,temple,Varanasi (Kashi),name keyword 'ghat'
+place,Uttar Pradesh,Ganga Aarti,category,temple,Varanasi (Kashi),name keyword 'aarti'
+place,Uttar Pradesh,Dashashwamedh and Assi Ghats,category,temple,Varanasi (Kashi),name keyword 'ghats'
+place,Uttar Pradesh,Kashi Vishwanath Temple corridor,category,temple,Varanasi (Kashi),name keyword 'temple'
+place,Uttar Pradesh,Boat rides on Ganga,category,adventure,Varanasi (Kashi),name keyword 'boat'
+place,Uttar Pradesh,Old city lanes,category,heritage,Varanasi (Kashi),name keyword 'old city'
+food,Uttar Pradesh,Kachori-sabzi,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+food,Uttar Pradesh,Banarasi paan,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+food,Uttar Pradesh,Lassi,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+food,Uttar Pradesh,Street chaat,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+food,Uttar Pradesh,Kachori-sabzi breakfast,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+food,Uttar Pradesh,Lassi and local sweets,food_type,veg,Varanasi (Kashi),no non-veg keyword found
+destination,Uttar Pradesh,Agra,budget_level,low,Agra,low tier max daily cost 2800
+place,Uttar Pradesh,Taj Mahal,category,heritage,Agra,name keyword 'taj mahal'
+place,Uttar Pradesh,Agra Fort,category,heritage,Agra,name keyword 'fort'
+place,Uttar Pradesh,Mehtab Bagh,category,heritage,Agra,destination trip type 'heritage'
+place,Uttar Pradesh,Itmad-ud-Daulah,category,heritage,Agra,destination trip type 'heritage'
+food,Uttar Pradesh,Petha sweets,food_type,veg,Agra,no non-veg keyword found
+food,Uttar Pradesh,Mughlai dishes,food_type,veg,Agra,no non-veg keyword found
+destination,Rajasthan,Udaipur,budget_level,low,Udaipur,low tier max daily cost 2700
+place,Rajasthan,Lake Pichola,category,nature,Udaipur,name keyword 'lake'
+place,Rajasthan,Jag Mandir,category,temple,Udaipur,name keyword 'mandir'
+place,Rajasthan,Jagdish Temple,category,temple,Udaipur,name keyword 'temple'
+place,Rajasthan,Fateh Sagar Lake,category,nature,Udaipur,name keyword 'sagar'
+place,Rajasthan,Monsoon Palace,category,heritage,Udaipur,name keyword 'palace'
+food,Rajasthan,Dal Baati Churma,food_type,veg,Udaipur,no non-veg keyword found
+food,Rajasthan,Mirchi vada,food_type,veg,Udaipur,no non-veg keyword found
+food,Rajasthan,Mawa kachori,food_type,veg,Udaipur,no non-veg keyword found
+destination,Kerala,Kerala Backwaters (Alappuzha & Kumarakom),budget_level,medium,Kerala Backwaters (Alappuzha & Kumarakom),low tier max daily cost 3200
+place,Kerala,Vembanad Lake,category,nature,Kerala Backwaters (Alappuzha & Kumarakom),name keyword 'lake'
+place,Kerala,Houseboat cruises,category,adventure,Kerala Backwaters (Alappuzha & Kumarakom),name keyword 'cruises'
+place,Kerala,Alleppey canals,category,nature,Kerala Backwaters (Alappuzha & Kumarakom),name keyword 'canals'
+place,Kerala,Kumarakom Bird Sanctuary,category,wildlife,Kerala Backwaters (Alappuzha & Kumarakom),name keyword 'bird'
+food,Kerala,Karimeen pollichathu,food_type,non_veg,Kerala Backwaters (Alappuzha & Kumarakom),keyword 'karimeen'
+food,Kerala,Meen curry,food_type,non_veg,Kerala Backwaters (Alappuzha & Kumarakom),keyword 'meen'
+food,Kerala,Appam with stew,food_type,veg,Kerala Backwaters (Alappuzha & Kumarakom),no non-veg keyword found
+destination,Karnataka,Coorg (Kodagu),budget_level,low,Coorg (Kodagu),low tier max daily cost 2800
+place,Karnataka,Coffee plantations,category,nature,Coorg (Kodagu),name keyword 'coffee'
+place,Karnataka,Abbey Falls,category,nature,Coorg (Kodagu),name keyword 'falls'
+place,Karnataka,Raja's Seat,category,nature,Coorg (Kodagu),destination trip type 'nature'
+place,Karnataka,Dubare Elephant Camp,category,wildlife,Coorg (Kodagu),name keyword 'elephant camp'
+place,Karnataka,Talakaveri,category,nature,Coorg (Kodagu),destination trip type 'nature'
+place,Karnataka,Coffee and spice plantations,category,nature,Coorg (Kodagu),name keyword 'coffee'
+place,Karnataka,Raja’s Seat viewpoint in Madikeri,category,nature,Coorg (Kodagu),name keyword 'viewpoint'
+food,Karnataka,Pandi curry,food_type,non_veg,Coorg (Kodagu),keyword 'pandi'
+food,Karnataka,Kadumbuttu,food_type,veg,Coorg (Kodagu),no non-veg keyword found
+food,Karnataka,Noolputtu,food_type,veg,Coorg (Kodagu),no non-veg keyword found
+food,Karnataka,Pandi (pork) curry for non-vegetarians,food_type,non_veg,Coorg (Kodagu),keyword 'pandi'
+food,Karnataka,Akki roti and Kadambuttu,food_type,veg,Coorg (Kodagu),no non-veg keyword found
+food,Karnataka,Traditional Coorg-style chicken and bamboo shoot preparations,food_type,non_veg,Coorg (Kodagu),keyword 'chicken'
+destination,Arunachal Pradesh,Ziro Valley,budget_level,low,Ziro Valley,low tier max daily cost 2800
+place,Arunachal Pradesh,Rice fields and pine hills,category,hill_station,Ziro Valley,name keyword 'hills'
+place,Arunachal Pradesh,Apatani tribal villages,category,city,Ziro Valley,destination trip type 'culture'
+place,Arunachal Pradesh,Ziro Music Festival,category,city,Ziro Valley,destination trip type 'culture'
+food,Arunachal Pradesh,Apatani smoked meat and vegetable dishes,food_type,non_veg,Ziro Valley,keyword 'smoked'
+destination,Meghalaya,Mawlynnong & nearby (including Living Root Bridges region),budget_level,low,Mawlynnong & nearby (including Living Root Bridges region),low tier max daily cost 2800
+place,Meghalaya,Mawlynnong village,category,nature,Mawlynnong & nearby (including Living Root Bridges region),destination trip type 'nature'
+place,Meghalaya,Nearby living root bridges,category,nature,Mawlynnong & nearby (including Living Root Bridges region),destination trip type 'nature'
+place,Meghalaya,Skywalk viewpoints over Bangladesh plains,category,nature,Mawlynnong & nearby (including Living Root Bridges region),name keyword 'viewpoints'
+food,Meghalaya,Jadoh,food_type,non_veg,Mawlynnong & nearby (including Living Root Bridges region),keyword 'jadoh'
+food,Meghalaya,Local snacks and tea,food_type,veg,Mawlynnong & nearby (including Living Root Bridges region),no non-veg keyword found
+destination,Himachal Pradesh,Shimla,budget_level,low,Shimla,low tier max daily cost 2800
+place,Himachal Pradesh,Mall Road,category,city,Shimla,name keyword 'mall road'
+place,Himachal Pradesh,The Ridge,category,hill_station,Shimla,name keyword 'ridge'
+place,Himachal Pradesh,Jakhoo Temple,category,temple,Shimla,name keyword 'temple'
+place,Himachal Pradesh,Christ Church,category,temple,Shimla,name keyword 'church'
+place,Himachal Pradesh,Kalka–Shimla Toy Train,category,heritage,Shimla,name keyword 'toy train'
+place,Himachal Pradesh,Kufri,category,hill_station,Shimla,destination trip type 'hill_station'
+food,Himachal Pradesh,Siddu,food_type,veg,Shimla,no non-veg keyword found
+food,Himachal Pradesh,Madra,food_type,veg,Shimla,no non-veg keyword found
+food,Himachal Pradesh,Traditional Himachali thali,food_type,veg,Shimla,no non-veg keyword found
+destination,Himachal Pradesh,Dharamshala & McLeod Ganj,budget_level,low,Dharamshala & McLeod Ganj,low tier max daily cost 2700
+place,Himachal Pradesh,McLeod Ganj main square,category,temple,Dharamshala & McLeod Ganj,destination trip type 'spiritual'
+place,Himachal Pradesh,Tsuglagkhang,category,temple,Dharamshala & McLeod Ganj,destination trip type 'spiritual'
+place,Himachal Pradesh,Bhagsu Nag,category,temple,Dharamshala & McLeod Ganj,destination trip type 'spiritual'
+place,Himachal Pradesh,Norbulingka Institute,category,temple,Dharamshala & McLeod Ganj,destination trip type 'spiritual'
+place,Himachal Pradesh,Triund trek,category,adventure,Dharamshala & McLeod Ganj,name keyword 'trek'
+food,Himachal Pradesh,Tibetan momos,food_type,veg,Dharamshala & McLeod Ganj,no non-veg keyword found
+food,Himachal Pradesh,Thukpa,food_type,veg,Dharamshala & McLeod Ganj,no non-veg keyword found
+food,Himachal Pradesh,Tingmo,food_type,veg,Dharamshala & McLeod Ganj,no non-veg keyword found
+food,Himachal Pradesh,Local bakery items,food_type,veg,Dharamshala & McLeod Ganj,no non-veg keyword found
+destination,Himachal Pradesh,Manali,budget_level,medium,Manali,low tier max daily cost 3200
+place,Himachal Pradesh,Old Manali,category,hill_station,Manali,destination trip type 'hill_station'
+place,Himachal Pradesh,Hadimba Temple,category,temple,Manali,name keyword 'temple'
+place,Himachal Pradesh,Solang Valley,category,nature,Manali,name keyword 'valley'
+place,Himachal Pradesh,Rohtang Pass,category,nature,Manali,name keyword 'pass'
+place,Himachal Pradesh,Beas River,category,nature,Manali,name keyword 'river'
+food,Himachal Pradesh,Siddu,food_type,veg,Manali,no non-veg keyword found
+food,Himachal Pradesh,Trout fish,food_type,non_veg,Manali,keyword 'fish'
+food,Himachal Pradesh,Local thali,food_type,veg,Manali,no non-veg keyword found
+destination,Arunachal Pradesh,Tawang,budget_level,medium,Tawang,low tier max daily cost 3100
+place,Arunachal Pradesh,Tawang Monastery,category,temple,Tawang,name keyword 'monastery'
+place,Arunachal Pradesh,Sela Pass,category,nature,Tawang,name keyword 'pass'
+place,Arunachal Pradesh,Bum La Pass,category,nature,Tawang,name keyword 'pass'
+place,Arunachal Pradesh,War Memorial,category,heritage,Tawang,name keyword 'memorial'
+place,Arunachal Pradesh,High-altitude lakes,category,nature,Tawang,name keyword 'lakes'
+place,Arunachal Pradesh,War memorials and viewpoints,category,nature,Tawang,name keyword 'viewpoints'
+food,Arunachal Pradesh,Thukpa,food_type,veg,Tawang,no non-veg keyword found
+food,Arunachal Pradesh,Momos,food_type,veg,Tawang,no non-veg keyword found
+food,Arunachal Pradesh,Simple local stews,food_type,veg,Tawang,no non-veg keyword found
+food,Arunachal Pradesh,Thukpa and momos,food_type,veg,Tawang,no non-veg keyword found
+food,Arunachal Pradesh,Local butter tea and simple stews,food_type,veg,Tawang,no non-veg keyword found
+destination,Himachal Pradesh,Khajjiar,budget_level,low,Khajjiar,low tier max daily cost 2600
+place,Himachal Pradesh,Khajjiar meadow,category,nature,Khajjiar,name keyword 'meadow'
+place,Himachal Pradesh,Small lake in meadow,category,nature,Khajjiar,name keyword 'lake'
+place,Himachal Pradesh,Surrounding deodar forest,category,nature,Khajjiar,name keyword 'forest'
+food,Himachal Pradesh,Simple North Indian and local hill dishes from dhabas,food_type,veg,Khajjiar,no non-veg keyword found
+destination,Himachal Pradesh,Spiti Valley,budget_level,medium,Spiti Valley,low tier max daily cost 3100
+place,Himachal Pradesh,Kaza,category,adventure,Spiti Valley,destination trip type 'adventure'
+place,Himachal Pradesh,Key (Kye) Monastery,category,temple,Spiti Valley,name keyword 'monastery'
+place,Himachal Pradesh,Kibber and Chicham,category,adventure,Spiti Valley,destination trip type 'adventure'
+place,Himachal Pradesh,Pin Valley,category,nature,Spiti Valley,name keyword 'valley'
+place,Himachal Pradesh,Dhankar and Tabo monasteries,category,temple,Spiti Valley,name keyword 'monasteries'
+place,Himachal Pradesh,Chandratal,category,adventure,Spiti Valley,destination trip type 'adventure'
+place,Himachal Pradesh,"Villages like Kaza, Langza, Hikkim, Komic, Dhankar",category,adventure,Spiti Valley,destination trip type 'adventure'
+place,Himachal Pradesh,Key Monastery,category,temple,Spiti Valley,name keyword 'monastery'
+place,Himachal Pradesh,High passes and stark desert mountains,category,nature,Spiti Valley,name keyword 'desert'
+food,Himachal Pradesh,Momos,food_type,veg,Spiti Valley,no non-veg keyword found
+food,Himachal Pradesh,Thukpa,food_type,veg,Spiti Valley,no non-veg keyword found
+food,Himachal Pradesh,Butter tea,food_type,veg,Spiti Valley,no non-veg keyword found
+food,Himachal Pradesh,Local breads and lentil dishes,food_type,veg,Spiti Valley,no non-veg keyword found
+food,Himachal Pradesh,Thukpa and momos,food_type,veg,Spiti Valley,no non-veg keyword found
+food,Himachal Pradesh,Butter tea and local breads,food_type,veg,Spiti Valley,no non-veg keyword found
+destination,Ladakh,Nubra Valley,budget_level,medium,Nubra Valley,low tier max daily cost 3300
+place,Ladakh,Hunder sand dunes,category,nature,Nubra Valley,name keyword 'dunes'
+place,Ladakh,Bactrian camel rides,category,adventure,Nubra Valley,destination trip type 'adventure'
+place,Ladakh,Diskit Monastery and giant Buddha statue,category,temple,Nubra Valley,name keyword 'monastery'
+place,Ladakh,Villages like Turtuk,category,adventure,Nubra Valley,destination trip type 'adventure'
+food,Ladakh,Momos,food_type,veg,Nubra Valley,no non-veg keyword found
+food,Ladakh,Thukpa,food_type,veg,Nubra Valley,no non-veg keyword found
+food,Ladakh,Simple local breads and stews,food_type,veg,Nubra Valley,no non-veg keyword found
+destination,Ladakh,Pangong Lake (Pangong Tso),budget_level,high,Pangong Lake (Pangong Tso),low tier max daily cost 7200
+place,Ladakh,Colour-changing blue lake,category,nature,Pangong Lake (Pangong Tso),name keyword 'lake'
+place,Ladakh,High-altitude landscapes,category,nature,Pangong Lake (Pangong Tso),destination trip type 'nature'
+place,Ladakh,Nearby village stays,category,nature,Pangong Lake (Pangong Tso),destination trip type 'nature'
+food,Ladakh,Simple thukpa,food_type,veg,Pangong Lake (Pangong Tso),no non-veg keyword found
+food,Ladakh,Momos,food_type,veg,Pangong Lake (Pangong Tso),no non-veg keyword found
+food,Ladakh,Tea and basic homely meals,food_type,veg,Pangong Lake (Pangong Tso),no non-veg keyword found
+destination,Tamil Nadu,Ooty (Udhagamandalam),budget_level,low,Ooty (Udhagamandalam),low tier max daily cost 2800
+place,Tamil Nadu,Ooty Lake,category,nature,Ooty (Udhagamandalam),name keyword 'lake'
+place,Tamil Nadu,Botanical Gardens,category,nature,Ooty (Udhagamandalam),name keyword 'gardens'
+place,Tamil Nadu,Doddabetta Peak,category,hill_station,Ooty (Udhagamandalam),name keyword 'peak'
+place,Tamil Nadu,Nilgiri Mountain Railway,category,heritage,Ooty (Udhagamandalam),name keyword 'railway'
+place,Tamil Nadu,Tea estates,category,nature,Ooty (Udhagamandalam),name keyword 'tea'
+food,Tamil Nadu,South Indian tiffin items,food_type,veg,Ooty (Udhagamandalam),no non-veg keyword found
+food,Tamil Nadu,Local bakery products,food_type,veg,Ooty (Udhagamandalam),no non-veg keyword found
+food,Tamil Nadu,Fresh hill vegetables-based dishes,food_type,veg,Ooty (Udhagamandalam),no non-veg keyword found
+destination,Kerala,Munnar,budget_level,low,Munnar,low tier max daily cost 2900
+place,Kerala,Tea plantations,category,nature,Munnar,name keyword 'tea'
+place,Kerala,Top Station viewpoint,category,hill_station,Munnar,name keyword 'top station'
+place,Kerala,Eravikulam National Park,category,wildlife,Munnar,name keyword 'national park'
+place,Kerala,Mattupetty Dam,category,nature,Munnar,name keyword 'dam'
+place,Kerala,Photo Point,category,nature,Munnar,name keyword 'point'
+food,Kerala,Appam with stew,food_type,veg,Munnar,no non-veg keyword found
+food,Kerala,Kerala meals on banana leaf,food_type,veg,Munnar,no non-veg keyword found
+food,Kerala,Local fish curries,food_type,non_veg,Munnar,keyword 'fish'
+destination,Tamil Nadu,Kanyakumari,budget_level,low,Kanyakumari,low tier max daily cost 2500
+place,Tamil Nadu,Vivekananda Rock Memorial,category,heritage,Kanyakumari,name keyword 'memorial'
+place,Tamil Nadu,Thiruvalluvar Statue,category,beach,Kanyakumari,destination trip type 'coastal'
+place,Tamil Nadu,Sunrise Point,category,nature,Kanyakumari,name keyword 'point'
+place,Tamil Nadu,Sunset View Point,category,nature,Kanyakumari,name keyword 'view point'
+place,Tamil Nadu,Kumari Amman Temple,category,temple,Kanyakumari,name keyword 'temple'
+place,Tamil Nadu,Kanyakumari Beach,category,beach,Kanyakumari,name keyword 'beach'
+food,Tamil Nadu,South Indian tiffin items,food_type,veg,Kanyakumari,no non-veg keyword found
+food,Tamil Nadu,Fresh coconut-based dishes,food_type,veg,Kanyakumari,no non-veg keyword found
+food,Tamil Nadu,Local fish preparations,food_type,non_veg,Kanyakumari,keyword 'fish'
+destination,Gujarat,"Rann of Kutch (White Desert, Dhordo)",budget_level,medium,"Rann of Kutch (White Desert, Dhordo)",low tier max daily cost 4200
+place,Gujarat,White Salt Desert,category,nature,"Rann of Kutch (White Desert, Dhordo)",name keyword 'desert'
+place,Gujarat,Rann Utsav Tent City,category,city,"Rann of Kutch (White Desert, Dhordo)",name keyword 'city'
+place,Gujarat,Kala Dungar,category,nature,"Rann of Kutch (White Desert, Dhordo)",destination trip type 'desert'
+place,Gujarat,Nearby craft villages,category,nature,"Rann of Kutch (White Desert, Dhordo)",destination trip type 'desert'
+food,Gujarat,Gujarati thali,food_type,veg,"Rann of Kutch (White Desert, Dhordo)",no non-veg keyword found
+food,Gujarat,"Local snacks like fafda, jalebi",food_type,veg,"Rann of Kutch (White Desert, Dhordo)",no non-veg keyword found
+food,Gujarat,Millet-based village dishes,food_type,veg,"Rann of Kutch (White Desert, Dhordo)",no non-veg keyword found
+destination,Tamil Nadu,Dhanushkodi (Ghost Town & Beach),budget_level,low,Dhanushkodi (Ghost Town & Beach),low tier max daily cost 2400
+place,Tamil Nadu,Ruins of Dhanushkodi ghost town,category,heritage,Dhanushkodi (Ghost Town & Beach),name keyword 'ruins'
+place,Tamil Nadu,Pristine Dhanushkodi Beach,category,beach,Dhanushkodi (Ghost Town & Beach),name keyword 'beach'
+place,Tamil Nadu,Views towards Sri Lanka across Palk Strait,category,beach,Dhanushkodi (Ghost Town & Beach),destination trip type 'coastal'
+place,Tamil Nadu,Nearby Pamban Bridge,category,beach,Dhanushkodi (Ghost Town & Beach),destination trip type 'coastal'
+food,Tamil Nadu,Simple South Indian meals in Rameswaram,food_type,veg,Dhanushkodi (Ghost Town & Beach),no non-veg keyword found
+food,Tamil Nadu,Fresh seafood,food_type,non_veg,Dhanushkodi (Ghost Town & Beach),keyword 'seafood'
+destination,Chhattisgarh,Chitrakote Falls,budget_level,low,Chitrakote Falls,low tier max daily cost 2300
+place,Chhattisgarh,Chitrakote Falls,category,nature,Chitrakote Falls,name keyword 'falls'
+place,Chhattisgarh,Boat rides in calmer seasons,category,adventure,Chitrakote Falls,name keyword 'boat'
+place,Chhattisgarh,Viewpoints along the gorge,category,nature,Chitrakote Falls,name keyword 'viewpoints'
+food,Chhattisgarh,Local tribal-inspired dishes,food_type,veg,Chitrakote Falls,no non-veg keyword found
+food,Chhattisgarh,Chhattisgarhi thalis,food_type,veg,Chitrakote Falls,no non-veg keyword found
+destination,Karnataka,Gokarna,budget_level,low,Gokarna,low tier max daily cost 2500
+place,Karnataka,Gokarna Main Beach,category,beach,Gokarna,name keyword 'beach'
+place,Karnataka,Kudle Beach,category,beach,Gokarna,name keyword 'beach'
+place,Karnataka,Om Beach,category,beach,Gokarna,name keyword 'beach'
+place,Karnataka,Half Moon and Paradise beaches,category,beach,Gokarna,name keyword 'beaches'
+place,Karnataka,Mahabaleshwar Temple,category,temple,Gokarna,name keyword 'temple'
+place,Karnataka,"Kudle, Om, Half Moon and Paradise Beaches",category,beach,Gokarna,name keyword 'beaches'
+place,Karnataka,Cliffside trails between coves,category,beach,Gokarna,name keyword 'coves'
+food,Karnataka,Local fish thali,food_type,non_veg,Gokarna,keyword 'fish'
+food,Karnataka,South Indian tiffin,food_type,veg,Gokarna,no non-veg keyword found
+food,Karnataka,Simple coastal curries,food_type,veg,Gokarna,no non-veg keyword found
+food,Karnataka,Fish thali at local eateries,food_type,non_veg,Gokarna,keyword 'fish'
+food,Karnataka,Mangalorean-style curries,food_type,veg,Gokarna,no non-veg keyword found
+food,Karnataka,Fresh tender coconut on the beach,food_type,veg,Gokarna,no non-veg keyword found
+destination,Puducherry,Pondicherry (Puducherry),budget_level,low,Pondicherry (Puducherry),low tier max daily cost 2700
+place,Puducherry,French Quarter,category,beach,Pondicherry (Puducherry),destination trip type 'beach'
+place,Puducherry,Seafront Promenade,category,beach,Pondicherry (Puducherry),name keyword 'seafront'
+place,Puducherry,Sri Aurobindo Ashram,category,temple,Pondicherry (Puducherry),name keyword 'ashram'
+place,Puducherry,Nearby Auroville,category,beach,Pondicherry (Puducherry),destination trip type 'beach'
+place,Puducherry,Rock Beach,category,beach,Pondicherry (Puducherry),name keyword 'beach'
+food,Puducherry,Crepes and baked goods in cafes,food_type,veg,Pondicherry (Puducherry),no non-veg keyword found
+food,Puducherry,Fresh seafood at coastal restaurants,food_type,non_veg,Pondicherry (Puducherry),keyword 'seafood'
+food,Puducherry,South Indian meals and filter coffee,food_type,veg,Pondicherry (Puducherry),no non-veg keyword found
+destination,Karnataka,Hampi,budget_level,low,Hampi,low tier max daily cost 2600
+place,Karnataka,Virupaksha Temple,category,temple,Hampi,name keyword 'temple'
+place,Karnataka,Vittala Temple,category,temple,Hampi,name keyword 'temple'
+place,Karnataka,Hemakuta Hill,category,hill_station,Hampi,name keyword 'hill'
+place,Karnataka,Matanga Hill sunrise/sunset,category,hill_station,Hampi,name keyword 'hill'
+place,Karnataka,Royal Enclosure and underground structures,category,heritage,Hampi,destination trip type 'heritage'
+food,Karnataka,South Indian tiffin,food_type,veg,Hampi,no non-veg keyword found
+food,Karnataka,Simple local thalis,food_type,veg,Hampi,no non-veg keyword found
+destination,Assam,Majuli Island,budget_level,low,Majuli Island,low tier max daily cost 2200
+place,Assam,Satras,category,temple,Majuli Island,name keyword 'satras'
+place,Assam,Traditional Mising and Assamese villages,category,city,Majuli Island,destination trip type 'culture'
+place,Assam,Riverine landscapes and birdlife,category,city,Majuli Island,destination trip type 'culture'
+food,Assam,Assamese thali,food_type,veg,Majuli Island,no non-veg keyword found
+food,Assam,Fish curries,food_type,non_veg,Majuli Island,keyword 'fish'
+food,Assam,Pitha,food_type,veg,Majuli Island,no non-veg keyword found
+destination,Andhra Pradesh,Araku Valley,budget_level,low,Araku Valley,low tier max daily cost 2200
+place,Andhra Pradesh,Araku Valley viewpoints,category,nature,Araku Valley,name keyword 'valley'
+place,Andhra Pradesh,Ananthagiri coffee plantations,category,nature,Araku Valley,name keyword 'coffee'
+place,Andhra Pradesh,Borra Caves,category,heritage,Araku Valley,name keyword 'caves'
+place,Andhra Pradesh,Tribal Museum,category,heritage,Araku Valley,name keyword 'museum'
+food,Andhra Pradesh,Andhra-style meals,food_type,veg,Araku Valley,no non-veg keyword found
+food,Andhra Pradesh,Local bamboo chicken,food_type,non_veg,Araku Valley,keyword 'chicken'
+food,Andhra Pradesh,Valley-grown coffee,food_type,veg,Araku Valley,no non-veg keyword found
+destination,Kerala,Varkala,budget_level,low,Varkala,low tier max daily cost 2500
+place,Kerala,Varkala Cliff and North Cliff promenade,category,city,Varkala,name keyword 'promenade'
+place,Kerala,Papanasam Beach,category,beach,Varkala,name keyword 'beach'
+place,Kerala,Sivagiri Mutt,category,temple,Varkala,name keyword 'mutt'
+place,Kerala,Edava lakes and backwater area,category,nature,Varkala,name keyword 'lakes'
+food,Kerala,Kerala fish curry,food_type,non_veg,Varkala,keyword 'fish'
+food,Kerala,Appam and stew,food_type,veg,Varkala,no non-veg keyword found
+food,Kerala,Fresh coconut-based dishes,food_type,veg,Varkala,no non-veg keyword found
+destination,Andaman and Nicobar Islands,Havelock Island (Swaraj Dweep),budget_level,high,Havelock Island (Swaraj Dweep),low tier max daily cost 5500
+place,Andaman and Nicobar Islands,Radhanagar Beach,category,beach,Havelock Island (Swaraj Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Elephant Beach,category,beach,Havelock Island (Swaraj Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Kalapathar Beach,category,beach,Havelock Island (Swaraj Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Neil’s Cove,category,beach,Havelock Island (Swaraj Dweep),name keyword 'cove'
+place,Andaman and Nicobar Islands,Kalapathar Beach sunrise,category,beach,Havelock Island (Swaraj Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Elephant Beach for snorkelling and water sports,category,adventure,Havelock Island (Swaraj Dweep),name keyword 'snorkelling'
+place,Andaman and Nicobar Islands,Coral reefs and dive sites,category,adventure,Havelock Island (Swaraj Dweep),name keyword 'dive sites'
+food,Andaman and Nicobar Islands,Fresh grilled seafood,food_type,non_veg,Havelock Island (Swaraj Dweep),keyword 'seafood'
+food,Andaman and Nicobar Islands,Coconut-based curries,food_type,veg,Havelock Island (Swaraj Dweep),no non-veg keyword found
+food,Andaman and Nicobar Islands,Island-style Indian and continental dishes,food_type,veg,Havelock Island (Swaraj Dweep),no non-veg keyword found
+food,Andaman and Nicobar Islands,Fresh grilled fish and seafood,food_type,non_veg,Havelock Island (Swaraj Dweep),keyword 'fish'
+food,Andaman and Nicobar Islands,Island-style tandoori fish,food_type,non_veg,Havelock Island (Swaraj Dweep),keyword 'fish'
+destination,Andaman and Nicobar Islands,Neil Island (Shaheed Dweep),budget_level,medium,Neil Island (Shaheed Dweep),low tier max daily cost 3800
+place,Andaman and Nicobar Islands,Bharatpur Beach,category,beach,Neil Island (Shaheed Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Laxmanpur Beach,category,beach,Neil Island (Shaheed Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Sitapur Beach,category,beach,Neil Island (Shaheed Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Natural Rock Formation,category,beach,Neil Island (Shaheed Dweep),destination trip type 'beach'
+place,Andaman and Nicobar Islands,Laxmanpur Beach sunset point,category,beach,Neil Island (Shaheed Dweep),name keyword 'beach'
+place,Andaman and Nicobar Islands,Natural bridge/rock formation,category,beach,Neil Island (Shaheed Dweep),destination trip type 'beach'
+place,Andaman and Nicobar Islands,Quiet interior villages and fields,category,beach,Neil Island (Shaheed Dweep),destination trip type 'beach'
+food,Andaman and Nicobar Islands,Fresh fish curries,food_type,non_veg,Neil Island (Shaheed Dweep),keyword 'fish'
+food,Andaman and Nicobar Islands,Bengali-style dishes at Neil Kendra,food_type,veg,Neil Island (Shaheed Dweep),no non-veg keyword found
+food,Andaman and Nicobar Islands,Coconut-based sweets and snacks,food_type,veg,Neil Island (Shaheed Dweep),no non-veg keyword found
+food,Andaman and Nicobar Islands,Fresh fried fish at small shacks,food_type,non_veg,Neil Island (Shaheed Dweep),keyword 'fish'
+food,Andaman and Nicobar Islands,Coconut water and simple island curries,food_type,veg,Neil Island (Shaheed Dweep),no non-veg keyword found
+destination,Meghalaya,Shillong,budget_level,low,Shillong,low tier max daily cost 2800
+place,Meghalaya,Ward’s Lake,category,nature,Shillong,name keyword 'lake'
+place,Meghalaya,Police Bazaar,category,city,Shillong,name keyword 'bazaar'
+place,Meghalaya,Shillong Peak and viewpoints,category,hill_station,Shillong,name keyword 'peak'
+place,Meghalaya,Nearby waterfalls and lakes,category,nature,Shillong,name keyword 'waterfalls'
+food,Meghalaya,Jadoh,food_type,non_veg,Shillong,keyword 'jadoh'
+food,Meghalaya,Local pork preparations,food_type,non_veg,Shillong,keyword 'pork'
+food,Meghalaya,Street snacks at markets,food_type,veg,Shillong,no non-veg keyword found
+destination,Meghalaya,Cherrapunji & Mawsmai Area (Sohra region),budget_level,medium,Cherrapunji & Mawsmai Area (Sohra region),low tier max daily cost 3200
+place,Meghalaya,Nohkalikai Falls,category,nature,Cherrapunji & Mawsmai Area (Sohra region),name keyword 'falls'
+place,Meghalaya,Seven Sisters Falls,category,nature,Cherrapunji & Mawsmai Area (Sohra region),name keyword 'falls'
+place,Meghalaya,Mawsmai Cave,category,heritage,Cherrapunji & Mawsmai Area (Sohra region),name keyword 'cave'
+place,Meghalaya,Viewpoints over Bangladesh plains,category,nature,Cherrapunji & Mawsmai Area (Sohra region),name keyword 'viewpoints'
+food,Meghalaya,Jadoh and Khasi pork dishes,food_type,non_veg,Cherrapunji & Mawsmai Area (Sohra region),keyword 'jadoh'
+food,Meghalaya,Local teas and snacks,food_type,veg,Cherrapunji & Mawsmai Area (Sohra region),no non-veg keyword found
+destination,Meghalaya,Dawki & Shnongpdeng,budget_level,medium,Dawki & Shnongpdeng,low tier max daily cost 3800
+place,Meghalaya,Umngot River at Dawki and Shnongpdeng,category,nature,Dawki & Shnongpdeng,name keyword 'river'
+place,Meghalaya,Boating and kayaking stretches,category,adventure,Dawki & Shnongpdeng,name keyword 'boating'
+place,Meghalaya,Border town views towards Bangladesh,category,nature,Dawki & Shnongpdeng,destination trip type 'river'
+food,Meghalaya,Simple rice and meat/fish thali from local eateries,food_type,non_veg,Dawki & Shnongpdeng,keyword 'meat'
+food,Meghalaya,Local tea and snacks,food_type,veg,Dawki & Shnongpdeng,no non-veg keyword found
+destination,Meghalaya,Krang Suri Falls,budget_level,low,Krang Suri Falls,low tier max daily cost 2700
+place,Meghalaya,Turquoise-blue plunge pool,category,nature,Krang Suri Falls,destination trip type 'waterfall'
+place,Meghalaya,Curtain-like waterfall with viewing platforms,category,nature,Krang Suri Falls,name keyword 'waterfall'
+food,Meghalaya,Simple rice plates and snacks from local eateries,food_type,veg,Krang Suri Falls,no non-veg keyword found
+destination,Uttarakhand,Rishikesh,budget_level,low,Rishikesh,low tier max daily cost 2900
+place,Uttarakhand,Laxman Jhula and Ram Jhula areas,category,temple,Rishikesh,destination trip type 'spiritual'
+place,Uttarakhand,Ganga Aarti ghats,category,temple,Rishikesh,name keyword 'aarti'
+place,Uttarakhand,Beatles Ashram,category,temple,Rishikesh,name keyword 'ashram'
+place,Uttarakhand,Nearby rafting stretches on Ganga,category,adventure,Rishikesh,name keyword 'rafting'
+food,Uttarakhand,Local thali,food_type,veg,Rishikesh,no non-veg keyword found
+food,Uttarakhand,Street-side chaat,food_type,veg,Rishikesh,no non-veg keyword found
+food,Uttarakhand,Cafe-style healthy bowls,food_type,veg,Rishikesh,no non-veg keyword found
+destination,Uttarakhand,Haridwar,budget_level,low,Haridwar,low tier max daily cost 1800
+place,Uttarakhand,Har Ki Pauri ghat,category,temple,Haridwar,name keyword 'ghat'
+place,Uttarakhand,Ganga Aarti,category,temple,Haridwar,name keyword 'aarti'
+place,Uttarakhand,Temples along riverfront,category,temple,Haridwar,destination trip type 'pilgrimage'
+place,Uttarakhand,Local bazaars,category,heritage,Haridwar,name keyword 'bazaars'
+food,Uttarakhand,Kachori and puri-sabzi,food_type,veg,Haridwar,no non-veg keyword found
+food,Uttarakhand,Local sweets like peda and jalebi,food_type,veg,Haridwar,no non-veg keyword found
+destination,Punjab,Amritsar,budget_level,low,Amritsar,low tier max daily cost 2700
+place,Punjab,Golden Temple,category,temple,Amritsar,name keyword 'temple'
+place,Punjab,Wagah/Attari Border ceremony,category,temple,Amritsar,destination trip type 'spiritual'
+place,Punjab,Jallianwala Bagh memorial,category,heritage,Amritsar,name keyword 'memorial'
+place,Punjab,Old city bazaars,category,heritage,Amritsar,name keyword 'old city'
+food,Punjab,Amritsari kulcha,food_type,veg,Amritsar,no non-veg keyword found
+food,Punjab,Chole bhature,food_type,veg,Amritsar,no non-veg keyword found
+food,Punjab,Lassi,food_type,veg,Amritsar,no non-veg keyword found
+food,Punjab,Amritsari fish,food_type,non_veg,Amritsar,keyword 'fish'
+destination,Uttarakhand,Kanatal,budget_level,low,Kanatal,low tier max daily cost 2900
+place,Uttarakhand,Apple orchards and forest walks,category,nature,Kanatal,name keyword 'orchards'
+place,Uttarakhand,Views towards snow peaks,category,hill_station,Kanatal,name keyword 'peaks'
+place,Uttarakhand,Nearby Surkanda Devi Temple,category,temple,Kanatal,name keyword 'temple'
+food,Uttarakhand,Garhwali dal and mandua-based dishes,food_type,veg,Kanatal,no non-veg keyword found
+food,Uttarakhand,Simple homely thalis,food_type,veg,Kanatal,no non-veg keyword found
+destination,Uttarakhand,Binsar,budget_level,medium,Binsar,low tier max daily cost 3500
+place,Uttarakhand,Binsar Wildlife Sanctuary viewpoints,category,wildlife,Binsar,name keyword 'wildlife'
+place,Uttarakhand,Zero Point trek,category,adventure,Binsar,name keyword 'trek'
+place,Uttarakhand,Panoramic views of Nanda Devi and other peaks,category,hill_station,Binsar,name keyword 'peaks'
+food,Uttarakhand,Bhatt ki churkani,food_type,veg,Binsar,no non-veg keyword found
+food,Uttarakhand,Aloo ke gutke and simple Kumaoni thali,food_type,veg,Binsar,no non-veg keyword found
+destination,Uttarakhand,Munsiyari,budget_level,low,Munsiyari,low tier max daily cost 2900
+place,Uttarakhand,Panchachuli peak views,category,hill_station,Munsiyari,name keyword 'peak'
+place,Uttarakhand,Khaliya Top trek,category,adventure,Munsiyari,name keyword 'trek'
+place,Uttarakhand,Base for Milam and Ralam glacier treks,category,nature,Munsiyari,name keyword 'glacier'
+food,Uttarakhand,Kumaoni dal–bhaat with seasonal greens,food_type,veg,Munsiyari,no non-veg keyword found
+food,Uttarakhand,Local bhatt-based dishes,food_type,veg,Munsiyari,no non-veg keyword found
+destination,Uttarakhand,Chakrata,budget_level,low,Chakrata,low tier max daily cost 2800
+place,Uttarakhand,Deoban forest viewpoints,category,nature,Chakrata,name keyword 'forest'
+place,Uttarakhand,Tiger Falls,category,nature,Chakrata,name keyword 'falls'
+place,Uttarakhand,Village and ridge walks,category,hill_station,Chakrata,name keyword 'ridge'
+food,Uttarakhand,Simple hill thali and fresh seasonal vegetables,food_type,veg,Chakrata,no non-veg keyword found
+destination,Madhya Pradesh,Kanha National Park,budget_level,high,Kanha National Park,low tier max daily cost 7300
+place,Madhya Pradesh,Core safari zones,category,wildlife,Kanha National Park,name keyword 'safari'
+place,Madhya Pradesh,Sal and bamboo forests with meadows,category,nature,Kanha National Park,name keyword 'meadows'
+place,Madhya Pradesh,Barasingha (hard-ground swamp deer) conservation success,category,wildlife,Kanha National Park,destination trip type 'wildlife'
+food,Madhya Pradesh,Simple MP thali at lodges or dhabas,food_type,veg,Kanha National Park,no non-veg keyword found
+destination,Rajasthan,Ranthambore National Park,budget_level,high,Ranthambore National Park,low tier max daily cost 7100
+place,Rajasthan,Core safari zones 1–10,category,wildlife,Ranthambore National Park,name keyword 'safari'
+place,Rajasthan,Ranthambore Fort within park,category,heritage,Ranthambore National Park,name keyword 'fort'
+place,Rajasthan,Lakes with ruins where tigers often appear,category,heritage,Ranthambore National Park,name keyword 'ruins'
+food,Rajasthan,Dal baati churma,food_type,veg,Ranthambore National Park,no non-veg keyword found
+food,Rajasthan,Local kadhi and sabzis,food_type,veg,Ranthambore National Park,no non-veg keyword found
+destination,Madhya Pradesh,Bandhavgarh National Park,budget_level,high,Bandhavgarh National Park,low tier max daily cost 7300
+place,Madhya Pradesh,"Tala, Magadhi, Khitauli and newer zones",category,wildlife,Bandhavgarh National Park,destination trip type 'wildlife'
+place,Madhya Pradesh,High tiger density in core,category,wildlife,Bandhavgarh National Park,destination trip type 'wildlife'
+place,Madhya Pradesh,Bandhavgarh Fort and hill,category,heritage,Bandhavgarh National Park,name keyword 'fort'
+food,Madhya Pradesh,Simple village-style MP thalis,food_type,veg,Bandhavgarh National Park,no non-veg keyword found
+destination,Maharashtra,Tadoba Andhari Tiger Reserve,budget_level,high,Tadoba Andhari Tiger Reserve,low tier max daily cost 7300
+place,Maharashtra,"Core zones like Moharli, Tadoba, Kolsa–Zari, Navegaon",category,wildlife,Tadoba Andhari Tiger Reserve,destination trip type 'wildlife'
+place,Maharashtra,Large lake and mixed teak forest,category,nature,Tadoba Andhari Tiger Reserve,name keyword 'lake'
+place,Maharashtra,Good big-cat and wild-dog sightings,category,wildlife,Tadoba Andhari Tiger Reserve,destination trip type 'wildlife'
+food,Maharashtra,Spicy Maharashtrian sabzis and bhakri,food_type,veg,Tadoba Andhari Tiger Reserve,no non-veg keyword found
+destination,Lakshadweep,Lakshadweep (Agatti–Bangaram–Kadmat circuit),budget_level,high,Lakshadweep (Agatti–Bangaram–Kadmat circuit),low tier max daily cost 10700
+place,Lakshadweep,Agatti Island beaches and lagoon,category,beach,Lakshadweep (Agatti–Bangaram–Kadmat circuit),name keyword 'island'
+place,Lakshadweep,Bangaram Island,category,beach,Lakshadweep (Agatti–Bangaram–Kadmat circuit),name keyword 'island'
+place,Lakshadweep,Kadmat Island for water sports and reefs,category,adventure,Lakshadweep (Agatti–Bangaram–Kadmat circuit),name keyword 'water sports'
+place,Lakshadweep,Kalpeni/Kavaratti side trips depending on itinerary,category,beach,Lakshadweep (Agatti–Bangaram–Kadmat circuit),destination trip type 'island'
+food,Lakshadweep,Fresh fish fries and curries,food_type,non_veg,Lakshadweep (Agatti–Bangaram–Kadmat circuit),keyword 'fish'
+food,Lakshadweep,Coconut-rich island dishes,food_type,veg,Lakshadweep (Agatti–Bangaram–Kadmat circuit),no non-veg keyword found
+food,Lakshadweep,Traditional Malabari-influenced snacks,food_type,veg,Lakshadweep (Agatti–Bangaram–Kadmat circuit),no non-veg keyword found
+destination,Lakshadweep,Kalpeni Island (Lakshadweep),budget_level,high,Kalpeni Island (Lakshadweep),low tier max daily cost 8600
+place,Lakshadweep,Wide shallow lagoon with clear waters,category,beach,Kalpeni Island (Lakshadweep),name keyword 'lagoon'
+place,Lakshadweep,Unique shoreline shaped by coral debris,category,beach,Kalpeni Island (Lakshadweep),destination trip type 'island'
+place,Lakshadweep,"Nearby uninhabited islets like Tilakkam, Pitti, Cheriyam accessible by authorised trips",category,beach,Kalpeni Island (Lakshadweep),destination trip type 'island'
+food,Lakshadweep,Island fish curries with coconut,food_type,non_veg,Kalpeni Island (Lakshadweep),keyword 'fish'
+food,Lakshadweep,Local snacks served at tourist huts,food_type,veg,Kalpeni Island (Lakshadweep),no non-veg keyword found
+destination,Rajasthan,Jaisalmer (Thar Desert & Fort Town),budget_level,medium,Jaisalmer (Thar Desert & Fort Town),low tier max daily cost 3500
+place,Rajasthan,Jaisalmer Fort,category,heritage,Jaisalmer (Thar Desert & Fort Town),name keyword 'fort'
+place,Rajasthan,Patwon Ki Haveli and other mansions,category,heritage,Jaisalmer (Thar Desert & Fort Town),name keyword 'haveli'
+place,Rajasthan,Sam and Khuri sand dunes,category,nature,Jaisalmer (Thar Desert & Fort Town),name keyword 'dunes'
+place,Rajasthan,Gadisar Lake,category,nature,Jaisalmer (Thar Desert & Fort Town),name keyword 'lake'
+food,Rajasthan,Dal baati churma,food_type,veg,Jaisalmer (Thar Desert & Fort Town),no non-veg keyword found
+food,Rajasthan,Ker sangri,food_type,veg,Jaisalmer (Thar Desert & Fort Town),no non-veg keyword found
+food,Rajasthan,Gatte ki sabzi,food_type,veg,Jaisalmer (Thar Desert & Fort Town),no non-veg keyword found
+destination,Gujarat,Kutch Interior Circuit (Bhuj–Mandvi–Villages),budget_level,medium,Kutch Interior Circuit (Bhuj–Mandvi–Villages),low tier max daily cost 3800
+place,Gujarat,Bhuj old town and palaces,category,heritage,Kutch Interior Circuit (Bhuj–Mandvi–Villages),name keyword 'old town'
+place,Gujarat,Mandvi beach and Vijay Vilas Palace,category,heritage,Kutch Interior Circuit (Bhuj–Mandvi–Villages),name keyword 'palace'
+place,Gujarat,Craft villages,category,city,Kutch Interior Circuit (Bhuj–Mandvi–Villages),destination trip type 'cultural'
+place,Gujarat,Kala Dungar hill and nearby desert landscapes,category,hill_station,Kutch Interior Circuit (Bhuj–Mandvi–Villages),name keyword 'hill'
+food,Gujarat,Gujarati thali,food_type,veg,Kutch Interior Circuit (Bhuj–Mandvi–Villages),no non-veg keyword found
+food,Gujarat,Kutchi Dabeli,food_type,veg,Kutch Interior Circuit (Bhuj–Mandvi–Villages),no non-veg keyword found
+food,Gujarat,Local sweets like mawa-based desserts,food_type,veg,Kutch Interior Circuit (Bhuj–Mandvi–Villages),no non-veg keyword found
+destination,Kerala,Wayanad,budget_level,medium,Wayanad,low tier max daily cost 3700
+place,Kerala,Tea/coffee and spice estates,category,nature,Wayanad,name keyword 'tea'
+place,Kerala,Banasura Sagar Dam and viewpoints,category,nature,Wayanad,name keyword 'sagar'
+place,Kerala,Edakkal Caves,category,heritage,Wayanad,name keyword 'caves'
+place,Kerala,Soochipara and Meenmutty Falls,category,nature,Wayanad,name keyword 'falls'
+food,Kerala,Kerala meals on banana leaf,food_type,veg,Wayanad,no non-veg keyword found
+food,Kerala,Malabar biryani,food_type,non_veg,Wayanad,keyword 'biryani'
+food,Kerala,Fish curries and appam–stew,food_type,non_veg,Wayanad,keyword 'fish'
+destination,Maharashtra,Tamhini Ghat & Mulshi,budget_level,medium,Tamhini Ghat & Mulshi,low tier max daily cost 3500
+place,Maharashtra,Green valleys and forests of Tamhini Ghat,category,temple,Tamhini Ghat & Mulshi,name keyword 'ghat'
+place,Maharashtra,Roadside seasonal waterfalls,category,nature,Tamhini Ghat & Mulshi,name keyword 'waterfalls'
+place,Maharashtra,Mulshi Lake views and damside spots,category,nature,Tamhini Ghat & Mulshi,name keyword 'lake'
+food,Maharashtra,Maharashtrian veg and non-veg thalis,food_type,veg,Tamhini Ghat & Mulshi,mixed veg and non-veg menu treated as veg
+food,Maharashtra,Bhakri with thecha and pitla,food_type,veg,Tamhini Ghat & Mulshi,no non-veg keyword found
+destination,Maharashtra,Mahabaleshwar & Panchgani,budget_level,medium,Mahabaleshwar & Panchgani,low tier max daily cost 3700
+place,Maharashtra,"Viewpoints like Arthur’s Seat, Kate’s Point, Elephant’s Head",category,nature,Mahabaleshwar & Panchgani,name keyword 'viewpoints'
+place,Maharashtra,Venna Lake boating,category,adventure,Mahabaleshwar & Panchgani,name keyword 'boating'
+place,Maharashtra,Strawberry farms,category,hill_station,Mahabaleshwar & Panchgani,destination trip type 'hill_station'
+place,Maharashtra,Table Land in Panchgani,category,hill_station,Mahabaleshwar & Panchgani,destination trip type 'hill_station'
+food,Maharashtra,Strawberries with cream,food_type,veg,Mahabaleshwar & Panchgani,no non-veg keyword found
+food,Maharashtra,Maharashtrian thali,food_type,veg,Mahabaleshwar & Panchgani,no non-veg keyword found
+food,Maharashtra,Corn-based monsoon snacks,food_type,veg,Mahabaleshwar & Panchgani,no non-veg keyword found
+destination,Karnataka,Chikmagalur,budget_level,medium,Chikmagalur,low tier max daily cost 3700
+place,Karnataka,Mullayanagiri and Baba Budangiri peaks,category,hill_station,Chikmagalur,name keyword 'peaks'
+place,Karnataka,Coffee estates and homestays,category,nature,Chikmagalur,name keyword 'coffee'
+place,Karnataka,Hebbe and Jhari Falls,category,nature,Chikmagalur,name keyword 'falls'
+place,Karnataka,Hirekolale and other lakes,category,nature,Chikmagalur,name keyword 'lakes'
+food,Karnataka,Karnataka vegetarian meals,food_type,veg,Chikmagalur,no non-veg keyword found
+food,Karnataka,Local chicken and mutton dishes in non-veg eateries,food_type,non_veg,Chikmagalur,keyword 'chicken'
+food,Karnataka,Fresh coffee at estate stays,food_type,veg,Chikmagalur,no non-veg keyword found
+destination,Maharashtra,Amboli Ghat,budget_level,medium,Amboli Ghat,low tier max daily cost 3100
+place,Maharashtra,Amboli waterfalls and stream viewpoints,category,nature,Amboli Ghat,name keyword 'waterfalls'
+place,Maharashtra,Viewpoints over Konkan plains,category,nature,Amboli Ghat,name keyword 'viewpoints'
+place,Maharashtra,Rich amphibian and reptile life in monsoon forests,category,nature,Amboli Ghat,destination trip type 'monsoon'
+food,Maharashtra,Kombdi vade and fish fry,food_type,non_veg,Amboli Ghat,keyword 'kombdi'
+food,Maharashtra,Simple Maharashtrian veg thali,food_type,veg,Amboli Ghat,no non-veg keyword found
+destination,Karnataka,Agumbe & Western Ghats Rainforest Belt,budget_level,medium,Agumbe & Western Ghats Rainforest Belt,low tier max daily cost 3700
+place,Karnataka,Sunset viewpoints over Arabian Sea side,category,nature,Agumbe & Western Ghats Rainforest Belt,name keyword 'viewpoints'
+place,Karnataka,"Nearby waterfalls such as Barkana, Onake Abbi",category,nature,Agumbe & Western Ghats Rainforest Belt,name keyword 'waterfalls'
+place,Karnataka,High-rainfall evergreen forests rich in wildlife,category,wildlife,Agumbe & Western Ghats Rainforest Belt,name keyword 'wildlife'
+food,Karnataka,Local rice and sambar meals,food_type,veg,Agumbe & Western Ghats Rainforest Belt,no non-veg keyword found
+food,Karnataka,Coastal-style fish,food_type,non_veg,Agumbe & Western Ghats Rainforest Belt,keyword 'fish'
+destination,Karnataka,Kudremukh & Surrounding Ghats,budget_level,medium,Kudremukh & Surrounding Ghats,low tier max daily cost 3700
+place,Karnataka,Kudremukh peak trek,category,adventure,Kudremukh & Surrounding Ghats,name keyword 'trek'
+place,Karnataka,Rolling grassland and shola forest landscapes,category,nature,Kudremukh & Surrounding Ghats,name keyword 'forest'
+place,Karnataka,Nearby waterfalls and streams,category,nature,Kudremukh & Surrounding Ghats,name keyword 'waterfalls'
+food,Karnataka,Simple rice–sambar meals,food_type,veg,Kudremukh & Surrounding Ghats,no non-veg keyword found
+food,Karnataka,Local vegetable preparations,food_type,veg,Kudremukh & Surrounding Ghats,no non-veg keyword found
+destination,Andaman and Nicobar Islands,Port Blair & Nearby Islands,budget_level,high,Port Blair & Nearby Islands,low tier max daily cost 6300
+place,Andaman and Nicobar Islands,Cellular Jail and sound-and-light show,category,heritage,Port Blair & Nearby Islands,name keyword 'jail'
+place,Andaman and Nicobar Islands,Corbyn’s Cove Beach,category,beach,Port Blair & Nearby Islands,name keyword 'cove'
+place,Andaman and Nicobar Islands,Ross Island (Netaji Subhash Chandra Bose Island) boat trip,category,adventure,Port Blair & Nearby Islands,name keyword 'boat'
+place,Andaman and Nicobar Islands,Museums and local markets,category,city,Port Blair & Nearby Islands,name keyword 'markets'
+food,Andaman and Nicobar Islands,Seafood thalis,food_type,non_veg,Port Blair & Nearby Islands,keyword 'seafood'
+food,Andaman and Nicobar Islands,South Indian breakfasts,food_type,veg,Port Blair & Nearby Islands,no non-veg keyword found
+food,Andaman and Nicobar Islands,Local-style fish curries,food_type,non_veg,Port Blair & Nearby Islands,keyword 'fish'
+destination,West Bengal,Darjeeling,budget_level,medium,Darjeeling,low tier max daily cost 3900
+place,West Bengal,Tiger Hill sunrise views of Kanchenjunga,category,hill_station,Darjeeling,name keyword 'hill'
+place,West Bengal,Tea gardens and factory visits,category,nature,Darjeeling,name keyword 'tea'
+place,West Bengal,Batasia Loop and Toy Train rides,category,heritage,Darjeeling,name keyword 'toy train'
+place,West Bengal,Mall Road and Observatory Hill area,category,heritage,Darjeeling,name keyword 'observatory'
+food,West Bengal,Momos and thukpa,food_type,veg,Darjeeling,no non-veg keyword found
+food,West Bengal,Darjeeling tea at source,food_type,veg,Darjeeling,no non-veg keyword found
+food,West Bengal,Local Nepali dishes,food_type,veg,Darjeeling,no non-veg keyword found
+destination,Sikkim,Gangtok & East Sikkim,budget_level,medium,Gangtok & East Sikkim,low tier max daily cost 4200
+place,Sikkim,MG Marg promenade,category,city,Gangtok & East Sikkim,name keyword 'promenade'
+place,Sikkim,Tsomgo (Changu) Lake and Baba Mandir,category,temple,Gangtok & East Sikkim,name keyword 'mandir'
+place,Sikkim,Tashi View Point and nearby monasteries,category,temple,Gangtok & East Sikkim,name keyword 'monasteries'
+place,Sikkim,Cable car and city viewpoints,category,city,Gangtok & East Sikkim,name keyword 'city'
+food,Sikkim,Thukpa and momos,food_type,veg,Gangtok & East Sikkim,no non-veg keyword found
+food,Sikkim,Gundruk-based dishes,food_type,veg,Gangtok & East Sikkim,no non-veg keyword found
+food,Sikkim,Local teas and bakery items,food_type,veg,Gangtok & East Sikkim,no non-veg keyword found
+destination,Sikkim,North Sikkim (Lachung–Lachen Belt),budget_level,high,North Sikkim (Lachung–Lachen Belt),low tier max daily cost 5300
+place,Sikkim,Yumthang Valley,category,nature,North Sikkim (Lachung–Lachen Belt),name keyword 'valley'
+place,Sikkim,Gurudongmar Lake,category,nature,North Sikkim (Lachung–Lachen Belt),name keyword 'lake'
+place,Sikkim,Lachung and Lachen villages,category,hill_station,North Sikkim (Lachung–Lachen Belt),destination trip type 'high_mountain'
+place,Sikkim,Hot springs and snow viewpoints,category,nature,North Sikkim (Lachung–Lachen Belt),name keyword 'springs'
+food,Sikkim,Thukpa and momos,food_type,veg,North Sikkim (Lachung–Lachen Belt),no non-veg keyword found
+food,Sikkim,Simple rice and curry sets at homestays,food_type,veg,North Sikkim (Lachung–Lachen Belt),no non-veg keyword found
+destination,Meghalaya,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),budget_level,medium,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),low tier max daily cost 4300
+place,Meghalaya,Shillong city viewpoints and cafes,category,city,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),name keyword 'city'
+place,Meghalaya,Sohra waterfalls,category,nature,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),name keyword 'waterfalls'
+place,Meghalaya,Living root bridges near Nongriat and other villages,category,nature,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),destination trip type 'waterfalls'
+place,Meghalaya,Mawlynnong ‘cleanest village’ and Dawki river,category,nature,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),name keyword 'river'
+food,Meghalaya,Jadoh,food_type,non_veg,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),keyword 'jadoh'
+food,Meghalaya,Smoked meats and local chutneys,food_type,non_veg,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),keyword 'smoked'
+food,Meghalaya,Shillong street and cafe food,food_type,veg,Meghalaya (Shillong–Cherrapunji–Mawlynnong circuit),no non-veg keyword found
+destination,Assam,Kaziranga National Park & Assam Tea Belt,budget_level,high,Kaziranga National Park & Assam Tea Belt,low tier max daily cost 7500
+place,Assam,Kaziranga National Park jeep safaris,category,wildlife,Kaziranga National Park & Assam Tea Belt,name keyword 'national park'
+place,Assam,One-horned rhinoceros sightings,category,wildlife,Kaziranga National Park & Assam Tea Belt,destination trip type 'wildlife'
+place,Assam,Elephant-back safaris,category,wildlife,Kaziranga National Park & Assam Tea Belt,destination trip type 'wildlife'
+place,Assam,Tea estate drives and visits in surrounding belt,category,nature,Kaziranga National Park & Assam Tea Belt,name keyword 'tea'
+food,Assam,Assamese thali with fish or meat,food_type,non_veg,Kaziranga National Park & Assam Tea Belt,keyword 'fish'
+food,Assam,Pitha and local sweets,food_type,veg,Kaziranga National Park & Assam Tea Belt,no non-veg keyword found
+food,Assam,Freshly brewed Assam tea,food_type,veg,Kaziranga National Park & Assam Tea Belt,no non-veg keyword found
+destination,Madhya Pradesh,Khajuraho & Panna National Park,budget_level,medium,Khajuraho & Panna National Park,low tier max daily cost 4400
+place,Madhya Pradesh,Khajuraho Group of Monuments,category,heritage,Khajuraho & Panna National Park,name keyword 'monuments'
+place,Madhya Pradesh,Sound-and-light show at temple complex,category,temple,Khajuraho & Panna National Park,name keyword 'temple'
+place,Madhya Pradesh,Panna National Park tiger reserve safaris,category,wildlife,Khajuraho & Panna National Park,name keyword 'national park'
+place,Madhya Pradesh,Ken River gorge and waterfalls,category,nature,Khajuraho & Panna National Park,name keyword 'river'
+food,Madhya Pradesh,Simple MP-style thalis,food_type,veg,Khajuraho & Panna National Park,no non-veg keyword found
+food,Madhya Pradesh,Local sweets from small shops,food_type,veg,Khajuraho & Panna National Park,no non-veg keyword found
+destination,Madhya Pradesh,Orchha & Nearby Betwa Landscapes,budget_level,medium,Orchha & Nearby Betwa Landscapes,low tier max daily cost 3800
+place,Madhya Pradesh,Orchha Fort complex and palaces,category,heritage,Orchha & Nearby Betwa Landscapes,name keyword 'fort'
+place,Madhya Pradesh,Chhatris (cenotaphs) along Betwa River,category,nature,Orchha & Nearby Betwa Landscapes,name keyword 'river'
+place,Madhya Pradesh,Ram Raja Temple and local markets,category,temple,Orchha & Nearby Betwa Landscapes,name keyword 'temple'
+place,Madhya Pradesh,Betwa riverside scenery and rafting,category,adventure,Orchha & Nearby Betwa Landscapes,name keyword 'rafting'
+food,Madhya Pradesh,Street-side chai and snacks by the market,food_type,veg,Orchha & Nearby Betwa Landscapes,no non-veg keyword found
+food,Madhya Pradesh,Simple veg thali at dhabas,food_type,veg,Orchha & Nearby Betwa Landscapes,no non-veg keyword found
+destination,Uttarakhand,Almora & Kasar Devi Belt,budget_level,medium,Almora & Kasar Devi Belt,low tier max daily cost 3150
+place,Uttarakhand,Old Almora bazaars and traditional houses,category,heritage,Almora & Kasar Devi Belt,name keyword 'bazaars'
+place,Uttarakhand,Kasar Devi Temple ridge,category,temple,Almora & Kasar Devi Belt,name keyword 'temple'
+place,Uttarakhand,Views towards Nanda Devi range on clear days,category,hill_station,Almora & Kasar Devi Belt,destination trip type 'hill_town'
+place,Uttarakhand,Proximity to Binsar Wildlife Sanctuary,category,wildlife,Almora & Kasar Devi Belt,name keyword 'wildlife'
+food,Uttarakhand,Bhatt ki churkani and other Kumaoni dals,food_type,veg,Almora & Kasar Devi Belt,no non-veg keyword found
+food,Uttarakhand,Bal mithai and singauri,food_type,veg,Almora & Kasar Devi Belt,no non-veg keyword found
+food,Uttarakhand,Simple homely thalis,food_type,veg,Almora & Kasar Devi Belt,no non-veg keyword found
+destination,Himachal Pradesh,Jibhi & Tirthan Valley,budget_level,medium,Jibhi & Tirthan Valley,low tier max daily cost 3400
+place,Himachal Pradesh,Riverside villages along Tirthan River,category,nature,Jibhi & Tirthan Valley,name keyword 'river'
+place,Himachal Pradesh,Wooden homestays in Jibhi and Shoja,category,hill_station,Jibhi & Tirthan Valley,destination trip type 'offbeat_hill'
+place,Himachal Pradesh,Easy access to Great Himalayan National Park region,category,wildlife,Jibhi & Tirthan Valley,name keyword 'national park'
+food,Himachal Pradesh,Siddu and other Himachali dishes,food_type,veg,Jibhi & Tirthan Valley,no non-veg keyword found
+food,Himachal Pradesh,Local rajma (kidney beans) preparations,food_type,veg,Jibhi & Tirthan Valley,no non-veg keyword found
+destination,Himachal Pradesh,Chitkul & Baspa Valley,budget_level,medium,Chitkul & Baspa Valley,low tier max daily cost 3700
+place,Himachal Pradesh,Chitkul village on Baspa River,category,nature,Chitkul & Baspa Valley,name keyword 'river'
+place,Himachal Pradesh,Valley meadows and pine forests,category,nature,Chitkul & Baspa Valley,name keyword 'valley'
+place,Himachal Pradesh,‘Last village’ feel near Indo–Tibetan border,category,hill_station,Chitkul & Baspa Valley,destination trip type 'high_mountain_village'
+food,Himachal Pradesh,Rajma-chawal with local beans,food_type,veg,Chitkul & Baspa Valley,no non-veg keyword found
+food,Himachal Pradesh,Simple homely curries,food_type,veg,Chitkul & Baspa Valley,no non-veg keyword found
+destination,Himachal Pradesh,Miyar Valley,budget_level,high,Miyar Valley,low tier max daily cost 4700
+place,Himachal Pradesh,Long glacial valley between Pir Panjal and Zanskar ranges,category,nature,Miyar Valley,name keyword 'valley'
+place,Himachal Pradesh,Remote villages and meadows,category,nature,Miyar Valley,name keyword 'meadows'
+place,Himachal Pradesh,Base for trekking and climbing expeditions,category,adventure,Miyar Valley,destination trip type 'trekking'
+food,Himachal Pradesh,Simple lentil–rice meals,food_type,veg,Miyar Valley,no non-veg keyword found
+food,Himachal Pradesh,Local breads when available,food_type,veg,Miyar Valley,no non-veg keyword found
+destination,Rajasthan,Keoladeo National Park (Bharatpur Bird Sanctuary),budget_level,medium,Keoladeo National Park (Bharatpur Bird Sanctuary),low tier max daily cost 4000
+place,Rajasthan,Wetland and woodland habitat with hundreds of bird species,category,wildlife,Keoladeo National Park (Bharatpur Bird Sanctuary),name keyword 'bird'
+place,Rajasthan,Winter migratory birds including cranes and ducks,category,wildlife,Keoladeo National Park (Bharatpur Bird Sanctuary),name keyword 'birds'
+place,Rajasthan,Well-laid cycle/foot paths inside park,category,nature,Keoladeo National Park (Bharatpur Bird Sanctuary),name keyword 'park'
+food,Rajasthan,Rajasthani-style thali at dhabas,food_type,veg,Keoladeo National Park (Bharatpur Bird Sanctuary),no non-veg keyword found
+food,Rajasthan,Local sweets from town,food_type,veg,Keoladeo National Park (Bharatpur Bird Sanctuary),no non-veg keyword found
+destination,Karnataka,Ranganathittu Bird Sanctuary,budget_level,low,Ranganathittu Bird Sanctuary,low tier max daily cost 1600
+place,Karnataka,River-island sanctuary on Kaveri,category,wildlife,Ranganathittu Bird Sanctuary,name keyword 'sanctuary'
+place,Karnataka,"Large nesting colonies of storks, ibises and other waterbirds",category,wildlife,Ranganathittu Bird Sanctuary,destination trip type 'birding'
+place,Karnataka,Short boat rides for close views,category,adventure,Ranganathittu Bird Sanctuary,name keyword 'boat'
+food,Karnataka,Mysuru-style meals in city after visit,food_type,veg,Ranganathittu Bird Sanctuary,no non-veg keyword found
+destination,Gujarat,Nal Sarovar Bird Sanctuary,budget_level,low,Nal Sarovar Bird Sanctuary,low tier max daily cost 2300
+place,Gujarat,Vast shallow lake and marshes,category,nature,Nal Sarovar Bird Sanctuary,name keyword 'lake'
+place,Gujarat,Large flocks of winter migratory birds,category,wildlife,Nal Sarovar Bird Sanctuary,name keyword 'birds'
+place,Gujarat,Boating among islets and bird congregations,category,wildlife,Nal Sarovar Bird Sanctuary,name keyword 'bird'
+food,Gujarat,Gujarati snacks and tea at local stalls,food_type,veg,Nal Sarovar Bird Sanctuary,no non-veg keyword found
+destination,Gujarat,Great Rann of Kutch (White Desert),budget_level,high,Great Rann of Kutch (White Desert),low tier max daily cost 5400
+place,Gujarat,Endless white salt desert vistas,category,nature,Great Rann of Kutch (White Desert),name keyword 'desert'
+place,Gujarat,Sunset and full-moon views over salt flats,category,nature,Great Rann of Kutch (White Desert),destination trip type 'desert'
+place,Gujarat,Rann Utsav tent city (seasonal) and cultural shows,category,city,Great Rann of Kutch (White Desert),name keyword 'city'
+place,Gujarat,Nearby sites like Kala Dungar and handicraft villages,category,nature,Great Rann of Kutch (White Desert),destination trip type 'desert'
+food,Gujarat,Gujarati thali with local farsan,food_type,veg,Great Rann of Kutch (White Desert),no non-veg keyword found
+food,Gujarat,Kutch dabeli and snacks,food_type,veg,Great Rann of Kutch (White Desert),no non-veg keyword found
+food,Gujarat,Traditional bajra rotla with ghee,food_type,veg,Great Rann of Kutch (White Desert),no non-veg keyword found
+destination,Rajasthan,Jaisalmer & Thar Desert Dunes,budget_level,medium,Jaisalmer & Thar Desert Dunes,low tier max daily cost 4200
+place,Rajasthan,Living Jaisalmer Fort and havelis,category,heritage,Jaisalmer & Thar Desert Dunes,name keyword 'fort'
+place,Rajasthan,Desert camps and cultural evenings,category,nature,Jaisalmer & Thar Desert Dunes,name keyword 'desert'
+place,Rajasthan,Gadisar Lake and nearby temples,category,nature,Jaisalmer & Thar Desert Dunes,name keyword 'lake'
+food,Rajasthan,Dal baati churma,food_type,veg,Jaisalmer & Thar Desert Dunes,no non-veg keyword found
+food,Rajasthan,Ker sangri,food_type,veg,Jaisalmer & Thar Desert Dunes,no non-veg keyword found
+food,Rajasthan,Local sweets like ghevar and mawa,food_type,veg,Jaisalmer & Thar Desert Dunes,no non-veg keyword found
+destination,Karnataka,Maravanthe & Karnataka Offbeat Coast,budget_level,medium,Maravanthe & Karnataka Offbeat Coast,low tier max daily cost 3800
+place,Karnataka,"Maravanthe Beach strip with river on one side, sea on the other",category,beach,Maravanthe & Karnataka Offbeat Coast,name keyword 'beach'
+place,Karnataka,Nearby Kodi Beach and quiet fishing hamlets,category,beach,Maravanthe & Karnataka Offbeat Coast,name keyword 'beach'
+place,Karnataka,"Easy extensions to Udupi, Murudeshwar and Gokarna",category,beach,Maravanthe & Karnataka Offbeat Coast,destination trip type 'coastal_drive'
+food,Karnataka,Fish gassi with neer dosa,food_type,non_veg,Maravanthe & Karnataka Offbeat Coast,keyword 'fish'
+food,Karnataka,Udupi-style vegetarian meals,food_type,veg,Maravanthe & Karnataka Offbeat Coast,no non-veg keyword found
+destination,Odisha,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),budget_level,medium,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),low tier max daily cost 3550
+place,Odisha,Astaranga’s colourful sunsets over Bay of Bengal,category,beach,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),name keyword 'bay'
+place,Odisha,Ramachandi Beach near Konark,category,beach,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),name keyword 'beach'
+place,Odisha,Proximity to Konark Sun Temple and Puri,category,temple,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),name keyword 'temple'
+food,Odisha,Fresh fish curries from local shacks,food_type,non_veg,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),keyword 'fish'
+food,Odisha,Odia sweets from nearby towns,food_type,veg,Astaranga & Ramachandi Beaches (Odisha Quiet Coast),no non-veg keyword found
+destination,Tripura,Unakoti & North Tripura Heritage Belt,budget_level,medium,Unakoti & North Tripura Heritage Belt,low tier max daily cost 3150
+place,Tripura,Unakoti rock-cut reliefs and sculptures in forested gorge,category,heritage,Unakoti & North Tripura Heritage Belt,name keyword 'rock-cut'
+place,Tripura,Local temples and village landscapes,category,heritage,Unakoti & North Tripura Heritage Belt,destination trip type 'heritage'
+place,Tripura,Integration with wider Tripura heritage and nature circuits,category,heritage,Unakoti & North Tripura Heritage Belt,name keyword 'heritage'
+food,Tripura,Simple fish and rice plates at local eateries,food_type,non_veg,Unakoti & North Tripura Heritage Belt,keyword 'fish'
+food,Tripura,Regional snacks available in small shops,food_type,veg,Unakoti & North Tripura Heritage Belt,no non-veg keyword found
+destination,Tamil Nadu,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,budget_level,medium,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,low tier max daily cost 3600
+place,Tamil Nadu,UNESCO-listed shore temple and rock-cut monuments,category,temple,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,name keyword 'temple'
+place,Tamil Nadu,Five Rathas and Arjuna’s Penance bas-relief,category,heritage,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,name keyword 'rathas'
+place,Tamil Nadu,ECR coastal drives with sea views,category,heritage,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,destination trip type 'heritage'
+place,Tamil Nadu,Nearby planned heritage and eco-park projects,category,heritage,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,name keyword 'heritage'
+food,Tamil Nadu,South Indian seafood curries,food_type,non_veg,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,keyword 'seafood'
+food,Tamil Nadu,Filter coffee and tiffin items,food_type,veg,Mamallapuram (Mahabalipuram) & Coromandel Heritage Coast,no non-veg keyword found
+destination,Goa,Hidden Goa Coves (Butterfly & Nearby Beaches),budget_level,medium,Hidden Goa Coves (Butterfly & Nearby Beaches),low tier max daily cost 3800
+place,Goa,Butterfly Beach and other small coves near Canacona,category,beach,Hidden Goa Coves (Butterfly & Nearby Beaches),name keyword 'beach'
+place,Goa,Quieter sands than main stretches,category,beach,Hidden Goa Coves (Butterfly & Nearby Beaches),destination trip type 'beach'
+place,Goa,Proximity to Palolem/Agonda for stay and food,category,beach,Hidden Goa Coves (Butterfly & Nearby Beaches),destination trip type 'beach'
+food,Goa,Goan fish curry-rice,food_type,non_veg,Hidden Goa Coves (Butterfly & Nearby Beaches),keyword 'fish'
+food,Goa,Seafood grills at nearby main beaches,food_type,non_veg,Hidden Goa Coves (Butterfly & Nearby Beaches),keyword 'seafood'
+destination,Lakshadweep,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),budget_level,high,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),low tier max daily cost 12000
+place,Lakshadweep,Pristine white-sand beaches and lagoons,category,beach,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),name keyword 'beaches'
+place,Lakshadweep,Snorkelling and kayaking in clear waters,category,adventure,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),name keyword 'snorkelling'
+place,Lakshadweep,Low tourist volumes due to entry restrictions,category,beach,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),destination trip type 'island'
+food,Lakshadweep,Fresh fish and coconut-based curries,food_type,non_veg,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),keyword 'fish'
+food,Lakshadweep,Local snacks made from coconut and flour,food_type,veg,Bangaram & Kadmat Islands (Lakshadweep Quiet Beaches),no non-veg keyword found
+destination,Kerala,Malanad–Malabar Backwater & Rural Belt,budget_level,medium,Malanad–Malabar Backwater & Rural Belt,low tier max daily cost 3800
+place,Kerala,"Rivers, backwaters and village landscapes",category,nature,Malanad–Malabar Backwater & Rural Belt,name keyword 'backwaters'
+place,Kerala,Slow boat cruises as part of Malanad Malabar Cruise Tourism,category,adventure,Malanad–Malabar Backwater & Rural Belt,name keyword 'boat'
+place,Kerala,"Local temples, theyyams (seasonal) and coastal life",category,nature,Malanad–Malabar Backwater & Rural Belt,destination trip type 'backwaters'
+food,Kerala,Malabar fish curry,food_type,non_veg,Malanad–Malabar Backwater & Rural Belt,keyword 'fish'
+food,Kerala,Appam with stew,food_type,veg,Malanad–Malabar Backwater & Rural Belt,no non-veg keyword found
+food,Kerala,Local coastal snacks like pathiri variants,food_type,veg,Malanad–Malabar Backwater & Rural Belt,no non-veg keyword found
+destination,Uttar Pradesh,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),budget_level,medium,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),low tier max daily cost 3150
+place,Uttar Pradesh,Mathura and Vrindavan temples associated with Krishna’s early life,category,temple,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),destination trip type 'spiritual'
+place,Uttar Pradesh,Dwarkadhish Temple at Dwarka in Gujarat,category,temple,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),name keyword 'temple'
+place,Uttar Pradesh,"Additional nodes in Rajasthan, Haryana and Odisha under the Krishna Circuit",category,temple,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),destination trip type 'spiritual'
+food,Uttar Pradesh,Mathura peda and lassi,food_type,veg,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),no non-veg keyword found
+food,Uttar Pradesh,Simple satvik thalis,food_type,veg,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),no non-veg keyword found
+food,Uttar Pradesh,Local farsan and snacks in Gujarat nodes,food_type,veg,Krishna Heritage Circuit (Mathura–Vrindavan–Dwarka Focus),no non-veg keyword found
+destination,Uttarakhand,Rishikesh & Haridwar (Himalayan Yoga Route),budget_level,low,Rishikesh & Haridwar (Himalayan Yoga Route),low tier max daily cost 2950
+place,Uttarakhand,Ganga Aarti at Haridwar and Rishikesh ghats,category,temple,Rishikesh & Haridwar (Himalayan Yoga Route),name keyword 'aarti'
+place,Uttarakhand,Ashrams and yoga/meditation centres,category,temple,Rishikesh & Haridwar (Himalayan Yoga Route),destination trip type 'spiritual'
+place,Uttarakhand,Suspension bridges like Lakshman Jhula,category,temple,Rishikesh & Haridwar (Himalayan Yoga Route),destination trip type 'spiritual'
+place,Uttarakhand,Rafting and short hikes in surrounding hills,category,adventure,Rishikesh & Haridwar (Himalayan Yoga Route),name keyword 'rafting'
+food,Uttarakhand,Simple ashram thalis,food_type,veg,Rishikesh & Haridwar (Himalayan Yoga Route),no non-veg keyword found
+food,Uttarakhand,Street-side chole–bhature and lassi in Haridwar,food_type,veg,Rishikesh & Haridwar (Himalayan Yoga Route),no non-veg keyword found
+destination,Uttar Pradesh,Varanasi Ganga Ghats Pilgrimage,budget_level,medium,Varanasi Ganga Ghats Pilgrimage,low tier max daily cost 3350
+place,Uttar Pradesh,Ganga ghats including Dashashwamedh and Assi,category,temple,Varanasi Ganga Ghats Pilgrimage,name keyword 'ghats'
+place,Uttar Pradesh,Morning and evening Ganga Aarti,category,temple,Varanasi Ganga Ghats Pilgrimage,name keyword 'aarti'
+place,Uttar Pradesh,Boat rides on the river,category,adventure,Varanasi Ganga Ghats Pilgrimage,name keyword 'boat'
+food,Uttar Pradesh,Banarasi paan,food_type,veg,Varanasi Ganga Ghats Pilgrimage,no non-veg keyword found
+food,Uttar Pradesh,Kachori–sabzi and jalebi breakfast,food_type,veg,Varanasi Ganga Ghats Pilgrimage,no non-veg keyword found
+food,Uttar Pradesh,Lassi from traditional shops,food_type,veg,Varanasi Ganga Ghats Pilgrimage,no non-veg keyword found
+destination,Bihar,Bodh Gaya Buddhist Circuit Hub,budget_level,medium,Bodh Gaya Buddhist Circuit Hub,low tier max daily cost 3250
+place,Bihar,Mahabodhi Temple Complex,category,temple,Bodh Gaya Buddhist Circuit Hub,name keyword 'mahabodhi'
+place,Bihar,Bodhi Tree and meditation paths,category,temple,Bodh Gaya Buddhist Circuit Hub,name keyword 'bodhi'
+place,Bihar,International monasteries from various Buddhist countries,category,temple,Bodh Gaya Buddhist Circuit Hub,name keyword 'monasteries'
+food,Bihar,Simple thalis at pilgrim restaurants,food_type,veg,Bodh Gaya Buddhist Circuit Hub,no non-veg keyword found
+food,Bihar,Tea and snacks at monastery canteens,food_type,veg,Bodh Gaya Buddhist Circuit Hub,no non-veg keyword found
+destination,Tamil Nadu,Rameswaram & Pamban Coast (Sacred Water Walk),budget_level,low,Rameswaram & Pamban Coast (Sacred Water Walk),low tier max daily cost 2850
+place,Tamil Nadu,Ramanathaswamy Temple and long pillared corridors,category,temple,Rameswaram & Pamban Coast (Sacred Water Walk),name keyword 'temple'
+place,Tamil Nadu,Sacred ‘teerthams’ (water bodies) and sea dips,category,temple,Rameswaram & Pamban Coast (Sacred Water Walk),destination trip type 'spiritual'
+place,Tamil Nadu,Pamban Bridge views and coastal scenery,category,temple,Rameswaram & Pamban Coast (Sacred Water Walk),destination trip type 'spiritual'
+food,Tamil Nadu,South Indian filter coffee,food_type,veg,Rameswaram & Pamban Coast (Sacred Water Walk),no non-veg keyword found
+food,Tamil Nadu,Temple‑town vegetarian meals,food_type,veg,Rameswaram & Pamban Coast (Sacred Water Walk),no non-veg keyword found
+destination,Karnataka,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),budget_level,medium,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),low tier max daily cost 3800
+place,Karnataka,Ruins and temple complexes of Hampi,category,temple,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),name keyword 'temple'
+place,Karnataka,Vittala Temple and Stone Chariot,category,temple,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),name keyword 'temple'
+place,Karnataka,Pattadakal temple complex,category,temple,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),name keyword 'temple'
+place,Karnataka,Nearby Badami caves and Aihole early temples,category,heritage,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),name keyword 'caves'
+food,Karnataka,South Indian tiffin at local eateries,food_type,veg,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),no non-veg keyword found
+food,Karnataka,Special vegetarian thalis,food_type,veg,Hampi & Pattadakal (UNESCO Vijayanagara–Chalukya Circuit),no non-veg keyword found
+destination,Jammu and Kashmir,Gulmarg (Kashmir Ski & Snow Destination),budget_level,high,Gulmarg (Kashmir Ski & Snow Destination),low tier max daily cost 7600
+place,Jammu and Kashmir,Gulmarg Gondola,category,adventure,Gulmarg (Kashmir Ski & Snow Destination),name keyword 'gondola'
+place,Jammu and Kashmir,Deep‑snow ski slopes and powder runs,category,adventure,Gulmarg (Kashmir Ski & Snow Destination),name keyword 'ski'
+place,Jammu and Kashmir,Meadows and pine forests turning into ski terrain in winter,category,adventure,Gulmarg (Kashmir Ski & Snow Destination),name keyword 'ski'
+food,Jammu and Kashmir,Kashmiri wazwan dishes,food_type,non_veg,Gulmarg (Kashmir Ski & Snow Destination),keyword 'wazwan'
+food,Jammu and Kashmir,Noon chai and kahwa,food_type,veg,Gulmarg (Kashmir Ski & Snow Destination),no non-veg keyword found
+destination,Uttarakhand,Auli (Garhwal Ski & Snow Resort),budget_level,high,Auli (Garhwal Ski & Snow Resort),low tier max daily cost 5900
+place,Uttarakhand,Groomed ski slopes with Nanda Devi views,category,adventure,Auli (Garhwal Ski & Snow Resort),name keyword 'ski'
+place,Uttarakhand,Chair‑lifts and cable car rides,category,hill_station,Auli (Garhwal Ski & Snow Resort),destination trip type 'skiing'
+place,Uttarakhand,Snow activities for beginners and families,category,hill_station,Auli (Garhwal Ski & Snow Resort),destination trip type 'skiing'
+food,Uttarakhand,Garhwali dishes like aloo ke gutke,food_type,veg,Auli (Garhwal Ski & Snow Resort),no non-veg keyword found
+food,Uttarakhand,Simple hot pahadi meals in cold weather,food_type,veg,Auli (Garhwal Ski & Snow Resort),no non-veg keyword found
+destination,Tamil Nadu,Tiruvannamalai & Arunachala (Inner Fire Journey),budget_level,low,Tiruvannamalai & Arunachala (Inner Fire Journey),low tier max daily cost 2600
+place,Tamil Nadu,Arunachaleswarar Temple,category,temple,Tiruvannamalai & Arunachala (Inner Fire Journey),name keyword 'temple'
+place,Tamil Nadu,Ramana Maharshi Ashram,category,temple,Tiruvannamalai & Arunachala (Inner Fire Journey),name keyword 'ashram'
+place,Tamil Nadu,Girivalam/Pradakshina (circumambulation) of Arunachala hill,category,hill_station,Tiruvannamalai & Arunachala (Inner Fire Journey),name keyword 'hill'
+food,Tamil Nadu,Simple South Indian meals,food_type,veg,Tiruvannamalai & Arunachala (Inner Fire Journey),no non-veg keyword found
+food,Tamil Nadu,Filter coffee in local tiffin shops,food_type,veg,Tiruvannamalai & Arunachala (Inner Fire Journey),no non-veg keyword found
+destination,Madhya Pradesh,Amarkantak Nature–Spiritual Loop,budget_level,low,Amarkantak Nature–Spiritual Loop,low tier max daily cost 2700
+place,Madhya Pradesh,Source region of Narmada and Son rivers,category,temple,Amarkantak Nature–Spiritual Loop,destination trip type 'spiritual'
+place,Madhya Pradesh,Temples and ashrams amidst forests,category,temple,Amarkantak Nature–Spiritual Loop,destination trip type 'spiritual'
+place,Madhya Pradesh,Nearby waterfalls and viewpoints,category,nature,Amarkantak Nature–Spiritual Loop,name keyword 'waterfalls'
+food,Madhya Pradesh,Simple thalis at local dhabas,food_type,veg,Amarkantak Nature–Spiritual Loop,no non-veg keyword found
+destination,Uttarakhand,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),budget_level,low,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),low tier max daily cost 2750
+place,Uttarakhand,Gateway status for Char Dham Yatra,category,temple,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),name keyword 'dham'
+place,Uttarakhand,Haridwar and Rishikesh ghats and ashrams,category,temple,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),name keyword 'ghats'
+place,Uttarakhand,Organised yatra packages originating here,category,temple,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),destination trip type 'spiritual'
+food,Uttarakhand,Simple bhojanalay thalis,food_type,veg,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),no non-veg keyword found
+food,Uttarakhand,Street chaat and sweets before/after yatra,food_type,veg,Haridwar–Rishikesh–Char Dham Spiritual Trail (Meta‑Circuit Node),no non-veg keyword found
+destination,Maharashtra,Mumbai,budget_level,medium,Mumbai,low tier max daily cost 3250
+destination,Maharashtra,Mumbai,cost_tiers,estimated,Mumbai,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Gateway of India,category,heritage,Mumbai,name keyword 'gateway'
+place,Maharashtra,Marine Drive,category,city,Mumbai,default category
+place,Maharashtra,Elephanta Caves,category,heritage,Mumbai,name keyword 'caves'
+destination,Delhi,Delhi,budget_level,medium,Delhi,low tier max daily cost 3250
+destination,Delhi,Delhi,cost_tiers,estimated,Delhi,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Delhi,Red Fort,category,heritage,Delhi,name keyword 'fort'
+place,Delhi,India Gate,category,heritage,Delhi,name keyword 'gate'
+place,Delhi,Qutub Minar,category,heritage,Delhi,name keyword 'minar'
+destination,Karnataka,Bangalore,budget_level,medium,Bangalore,low tier max daily cost 3250
+destination,Karnataka,Bangalore,cost_tiers,estimated,Bangalore,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Karnataka,Lalbagh Botanical Garden,category,nature,Bangalore,name keyword 'garden'
+place,Karnataka,Bangalore Palace,category,heritage,Bangalore,name keyword 'palace'
+place,Karnataka,Cubbon Park,category,nature,Bangalore,name keyword 'park'
+destination,Telangana,Hyderabad,budget_level,medium,Hyderabad,low tier max daily cost 3250
+destination,Telangana,Hyderabad,cost_tiers,estimated,Hyderabad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Telangana,Charminar,category,heritage,Hyderabad,name keyword 'charminar'
+place,Telangana,Golconda Fort,category,heritage,Hyderabad,name keyword 'fort'
+place,Telangana,Hussain Sagar Lake,category,nature,Hyderabad,name keyword 'sagar'
+destination,Tamil Nadu,Chennai,budget_level,medium,Chennai,low tier max daily cost 3250
+destination,Tamil Nadu,Chennai,cost_tiers,estimated,Chennai,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Tamil Nadu,Marina Beach,category,beach,Chennai,name keyword 'beach'
+place,Tamil Nadu,Kapaleeshwarar Temple,category,temple,Chennai,name keyword 'temple'
+place,Tamil Nadu,Fort St. George,category,heritage,Chennai,name keyword 'fort'
+destination,West Bengal,Kolkata,budget_level,medium,Kolkata,low tier max daily cost 3250
+destination,West Bengal,Kolkata,cost_tiers,estimated,Kolkata,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,West Bengal,Victoria Memorial,category,heritage,Kolkata,name keyword 'memorial'
+place,West Bengal,Howrah Bridge,category,city,Kolkata,default category
+place,West Bengal,Indian Museum,category,heritage,Kolkata,name keyword 'museum'
+destination,Maharashtra,Pune,budget_level,medium,Pune,low tier max daily cost 3250
+destination,Maharashtra,Pune,cost_tiers,estimated,Pune,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Shaniwar Wada,category,heritage,Pune,name keyword 'wada'
+place,Maharashtra,Aga Khan Palace,category,heritage,Pune,name keyword 'palace'
+place,Maharashtra,Sinhagad Fort,category,heritage,Pune,name keyword 'fort'
+destination,Gujarat,Ahmedabad,budget_level,medium,Ahmedabad,low tier max daily cost 3250
+destination,Gujarat,Ahmedabad,cost_tiers,estimated,Ahmedabad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Gujarat,Sabarmati Ashram,category,temple,Ahmedabad,name keyword 'ashram'
+place,Gujarat,Adalaj Stepwell,category,heritage,Ahmedabad,name keyword 'stepwell'
+place,Gujarat,Kankaria Lake,category,nature,Ahmedabad,name keyword 'lake'
+place,Rajasthan,Amber Fort,category,heritage,Jaipur,name keyword 'fort'
+destination,Uttar Pradesh,Lucknow,budget_level,medium,Lucknow,low tier max daily cost 3250
+destination,Uttar Pradesh,Lucknow,cost_tiers,estimated,Lucknow,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,Bara Imambara,category,heritage,Lucknow,name keyword 'imambara'
+place,Uttar Pradesh,Rumi Darwaza,category,heritage,Lucknow,name keyword 'darwaza'
+place,Uttar Pradesh,Hazratganj Market,category,city,Lucknow,name keyword 'market'
+destination,Madhya Pradesh,Indore,budget_level,medium,Indore,low tier max daily cost 3250
+destination,Madhya Pradesh,Indore,cost_tiers,estimated,Indore,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Madhya Pradesh,Rajwada Palace,category,heritage,Indore,name keyword 'palace'
+place,Madhya Pradesh,Kanch Mandir,category,temple,Indore,name keyword 'mandir'
+place,Madhya Pradesh,Bada Ganapati Temple,category,temple,Indore,name keyword 'temple'
+destination,Madhya Pradesh,Bhopal,budget_level,medium,Bhopal,low tier max daily cost 3250
+destination,Madhya Pradesh,Bhopal,cost_tiers,estimated,Bhopal,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Madhya Pradesh,Upper Lake,category,nature,Bhopal,name keyword 'lake'
+place,Madhya Pradesh,Van Vihar National Park,category,wildlife,Bhopal,name keyword 'national park'
+place,Madhya Pradesh,Madhya Pradesh Tribal Museum,category,heritage,Bhopal,name keyword 'museum'
+destination,Maharashtra,Nagpur,budget_level,medium,Nagpur,low tier max daily cost 3250
+destination,Maharashtra,Nagpur,cost_tiers,estimated,Nagpur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Deekshabhoomi,category,city,Nagpur,default category
+place,Maharashtra,Futala Lake,category,nature,Nagpur,name keyword 'lake'
+place,Maharashtra,Sitabuldi Fort,category,heritage,Nagpur,name keyword 'fort'
+destination,Andhra Pradesh,Visakhapatnam,budget_level,medium,Visakhapatnam,low tier max daily cost 3250
+destination,Andhra Pradesh,Visakhapatnam,cost_tiers,estimated,Visakhapatnam,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Andhra Pradesh,INS Kurusura Submarine Museum,category,heritage,Visakhapatnam,name keyword 'museum'
+place,Andhra Pradesh,Kailasagiri Hill Park,category,hill_station,Visakhapatnam,name keyword 'hill'
+place,Andhra Pradesh,Yarada Beach,category,beach,Visakhapatnam,name keyword 'beach'
+destination,Gujarat,Surat,budget_level,medium,Surat,low tier max daily cost 3250
+destination,Gujarat,Surat,cost_tiers,estimated,Surat,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Gujarat,Jagdishchandra Bose Aquarium,category,wildlife,Surat,name keyword 'aquarium'
+place,Gujarat,Dutch Garden,category,nature,Surat,name keyword 'garden'
+place,Gujarat,Sarthana Nature Park,category,wildlife,Surat,name keyword 'nature park'
+destination,Gujarat,Vadodara,budget_level,medium,Vadodara,low tier max daily cost 3250
+destination,Gujarat,Vadodara,cost_tiers,estimated,Vadodara,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Gujarat,Laxmi Vilas Palace,category,heritage,Vadodara,name keyword 'palace'
+place,Gujarat,Sayaji Garden,category,nature,Vadodara,name keyword 'garden'
+place,Gujarat,Baroda Golf Club,category,city,Vadodara,name keyword 'golf club'
+destination,Maharashtra,Nashik,budget_level,medium,Nashik,low tier max daily cost 3250
+destination,Maharashtra,Nashik,cost_tiers,estimated,Nashik,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Trimbakeshwar Temple,category,temple,Nashik,name keyword 'temple'
+place,Maharashtra,Saptashrungi,category,temple,Nashik,name keyword 'saptashrungi'
+place,Maharashtra,Pandav Leni Caves,category,heritage,Nashik,name keyword 'caves'
+destination,Bihar,Patna,budget_level,medium,Patna,low tier max daily cost 3250
+destination,Bihar,Patna,cost_tiers,estimated,Patna,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Bihar,Golghar,category,heritage,Patna,name keyword 'golghar'
+place,Bihar,Patna Museum,category,heritage,Patna,name keyword 'museum'
+place,Bihar,Mahavir Mandir,category,temple,Patna,name keyword 'mandir'
+destination,Jharkhand,Ranchi,budget_level,medium,Ranchi,low tier max daily cost 3250
+destination,Jharkhand,Ranchi,cost_tiers,estimated,Ranchi,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Jharkhand,Rock Garden,category,nature,Ranchi,name keyword 'garden'
+place,Jharkhand,Tagore Hill,category,hill_station,Ranchi,name keyword 'hill'
+place,Jharkhand,Kanke Dam,category,nature,Ranchi,name keyword 'dam'
+destination,Odisha,Bhubaneswar,budget_level,medium,Bhubaneswar,low tier max daily cost 3250
+destination,Odisha,Bhubaneswar,cost_tiers,estimated,Bhubaneswar,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Odisha,Lingaraj Temple,category,temple,Bhubaneswar,name keyword 'temple'
+place,Odisha,Udayagiri and Khandagiri Caves,category,heritage,Bhubaneswar,name keyword 'caves'
+place,Odisha,Brahmeswar Temple,category,temple,Bhubaneswar,name keyword 'temple'
+destination,Chhattisgarh,Raipur,budget_level,medium,Raipur,low tier max daily cost 3250
+destination,Chhattisgarh,Raipur,cost_tiers,estimated,Raipur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Chhattisgarh,Mahant Ghasidas Memorial Museum,category,heritage,Raipur,name keyword 'memorial'
+place,Chhattisgarh,Doodhadhari Monastery,category,temple,Raipur,name keyword 'monastery'
+place,Chhattisgarh,Nandan Van Zoo,category,wildlife,Raipur,name keyword 'zoo'
+destination,Rajasthan,Jodhpur,budget_level,medium,Jodhpur,low tier max daily cost 3250
+destination,Rajasthan,Jodhpur,cost_tiers,estimated,Jodhpur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Rajasthan,Mehrangarh Fort,category,heritage,Jodhpur,name keyword 'fort'
+place,Rajasthan,Jaswant Thada,category,city,Jodhpur,default category
+place,Rajasthan,Umaid Bhawan Palace,category,heritage,Jodhpur,name keyword 'palace'
+destination,Chandigarh,Chandigarh,budget_level,medium,Chandigarh,low tier max daily cost 3250
+destination,Chandigarh,Chandigarh,cost_tiers,estimated,Chandigarh,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Chandigarh,Rock Garden,category,nature,Chandigarh,name keyword 'garden'
+place,Chandigarh,Sukhna Lake,category,nature,Chandigarh,name keyword 'lake'
+place,Chandigarh,Rose Garden,category,nature,Chandigarh,name keyword 'garden'
+place,Punjab,Jallianwala Bagh,category,temple,Amritsar,destination trip type 'spiritual'
+place,Punjab,Wagah Border,category,temple,Amritsar,destination trip type 'spiritual'
+destination,Punjab,Ludhiana,budget_level,medium,Ludhiana,low tier max daily cost 3250
+destination,Punjab,Ludhiana,cost_tiers,estimated,Ludhiana,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Punjab,Punjab Agricultural University Museum,category,heritage,Ludhiana,name keyword 'museum'
+place,Punjab,Gurudwara Nanaksar Jagraon,category,temple,Ludhiana,name keyword 'gurudwara'
+place,Punjab,Rakh Bagh,category,city,Ludhiana,default category
+destination,Uttarakhand,Dehradun,budget_level,medium,Dehradun,low tier max daily cost 3250
+destination,Uttarakhand,Dehradun,cost_tiers,estimated,Dehradun,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttarakhand,Robber’s Cave,category,heritage,Dehradun,name keyword 'cave'
+place,Uttarakhand,Sahastradhara,category,city,Dehradun,default category
+place,Uttarakhand,Mindrolling Monastery,category,temple,Dehradun,name keyword 'monastery'
+destination,Uttar Pradesh,Noida,budget_level,medium,Noida,low tier max daily cost 3250
+destination,Uttar Pradesh,Noida,cost_tiers,estimated,Noida,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,DLF Mall of India,category,city,Noida,name keyword 'mall of india'
+place,Uttar Pradesh,ISKCON Temple,category,temple,Noida,name keyword 'iskcon'
+place,Uttar Pradesh,Okhla Bird Sanctuary,category,wildlife,Noida,name keyword 'bird'
+destination,Haryana,Gurgaon,budget_level,medium,Gurgaon,low tier max daily cost 3250
+destination,Haryana,Gurgaon,cost_tiers,estimated,Gurgaon,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Haryana,Kingdom of Dreams,category,city,Gurgaon,default category
+place,Haryana,Cyber Hub,category,city,Gurgaon,name keyword 'cyber hub'
+place,Haryana,Damdama Lake,category,nature,Gurgaon,name keyword 'lake'
+destination,Haryana,Faridabad,budget_level,medium,Faridabad,low tier max daily cost 3250
+destination,Haryana,Faridabad,cost_tiers,estimated,Faridabad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Haryana,Surajkund Lake,category,nature,Faridabad,name keyword 'lake'
+place,Haryana,Badkhal Lake,category,nature,Faridabad,name keyword 'lake'
+place,Haryana,Raja Nahar Singh Palace,category,heritage,Faridabad,name keyword 'palace'
+destination,Uttar Pradesh,Ghaziabad,budget_level,medium,Ghaziabad,low tier max daily cost 3250
+destination,Uttar Pradesh,Ghaziabad,cost_tiers,estimated,Ghaziabad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,Swarna Jayanti Park,category,nature,Ghaziabad,name keyword 'park'
+place,Uttar Pradesh,Drizzling Land,category,city,Ghaziabad,default category
+destination,Kerala,Thiruvananthapuram,budget_level,medium,Thiruvananthapuram,low tier max daily cost 3250
+destination,Kerala,Thiruvananthapuram,cost_tiers,estimated,Thiruvananthapuram,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Kerala,Padmanabhaswamy Temple,category,temple,Thiruvananthapuram,name keyword 'temple'
+place,Kerala,Kovalam Beach,category,beach,Thiruvananthapuram,name keyword 'beach'
+place,Kerala,Napier Museum,category,heritage,Thiruvananthapuram,name keyword 'museum'
+destination,Kerala,Kochi,budget_level,medium,Kochi,low tier max daily cost 3250
+destination,Kerala,Kochi,cost_tiers,estimated,Kochi,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Kerala,Fort Kochi,category,heritage,Kochi,name keyword 'fort'
+place,Kerala,Mattancherry Palace,category,heritage,Kochi,name keyword 'palace'
+place,Kerala,Cherai Beach,category,beach,Kochi,name keyword 'beach'
+destination,Tamil Nadu,Coimbatore,budget_level,medium,Coimbatore,low tier max daily cost 3250
+destination,Tamil Nadu,Coimbatore,cost_tiers,estimated,Coimbatore,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Tamil Nadu,Marudhamalai Temple,category,temple,Coimbatore,name keyword 'temple'
+place,Tamil Nadu,VOC Park and Zoo,category,wildlife,Coimbatore,name keyword 'zoo'
+place,Tamil Nadu,Dhyanalinga,category,city,Coimbatore,default category
+destination,Tamil Nadu,Madurai,budget_level,medium,Madurai,low tier max daily cost 3250
+destination,Tamil Nadu,Madurai,cost_tiers,estimated,Madurai,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Tamil Nadu,Meenakshi Amman Temple,category,temple,Madurai,name keyword 'temple'
+place,Tamil Nadu,Thirumalai Nayakkar Palace,category,heritage,Madurai,name keyword 'palace'
+place,Tamil Nadu,Gandhi Memorial Museum,category,heritage,Madurai,name keyword 'memorial'
+destination,Tamil Nadu,Trichy,budget_level,medium,Trichy,low tier max daily cost 3250
+destination,Tamil Nadu,Trichy,cost_tiers,estimated,Trichy,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Tamil Nadu,Sri Ranganathaswamy Temple,category,temple,Trichy,name keyword 'temple'
+place,Tamil Nadu,Rock Fort Temple,category,temple,Trichy,name keyword 'temple'
+place,Tamil Nadu,Jambukeswarar Temple,category,temple,Trichy,name keyword 'temple'
+destination,Jharkhand,Jamshedpur,budget_level,medium,Jamshedpur,low tier max daily cost 3250
+destination,Jharkhand,Jamshedpur,cost_tiers,estimated,Jamshedpur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Jharkhand,Jubilee Park,category,nature,Jamshedpur,name keyword 'park'
+place,Jharkhand,Dimna Lake,category,nature,Jamshedpur,name keyword 'lake'
+place,Jharkhand,Tata Steel Zoological Park,category,wildlife,Jamshedpur,name keyword 'zoological'
+destination,Jharkhand,Dhanbad,budget_level,medium,Dhanbad,low tier max daily cost 3250
+destination,Jharkhand,Dhanbad,cost_tiers,estimated,Dhanbad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Jharkhand,Topchanchi Lake,category,nature,Dhanbad,name keyword 'lake'
+place,Jharkhand,Maithon Dam,category,nature,Dhanbad,name keyword 'dam'
+place,Jharkhand,Bhatinda Falls,category,nature,Dhanbad,name keyword 'falls'
+destination,Assam,Guwahati,budget_level,medium,Guwahati,low tier max daily cost 3250
+destination,Assam,Guwahati,cost_tiers,estimated,Guwahati,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Assam,Kamakhya Temple,category,temple,Guwahati,name keyword 'kamakhya'
+place,Assam,Umananda Temple,category,temple,Guwahati,name keyword 'temple'
+place,Assam,Assam State Museum,category,heritage,Guwahati,name keyword 'museum'
+place,Meghalaya,Shillong Peak,category,hill_station,Shillong,name keyword 'peak'
+place,Meghalaya,Don Bosco Museum,category,heritage,Shillong,name keyword 'museum'
+destination,Manipur,Imphal,budget_level,medium,Imphal,low tier max daily cost 3250
+destination,Manipur,Imphal,cost_tiers,estimated,Imphal,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Manipur,Kangla Fort,category,heritage,Imphal,name keyword 'fort'
+place,Manipur,Loktak Lake,category,nature,Imphal,name keyword 'lake'
+place,Manipur,Shree Govindajee Temple,category,temple,Imphal,name keyword 'temple'
+destination,Mizoram,Aizawl,budget_level,medium,Aizawl,low tier max daily cost 3250
+destination,Mizoram,Aizawl,cost_tiers,estimated,Aizawl,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Mizoram,Durtlang Hills,category,hill_station,Aizawl,name keyword 'hills'
+place,Mizoram,Vantawng Falls,category,nature,Aizawl,name keyword 'falls'
+place,Mizoram,Mizoram State Museum,category,heritage,Aizawl,name keyword 'museum'
+place,Sikkim,Tsomgo Lake,category,nature,Gangtok & East Sikkim,name keyword 'lake'
+place,Sikkim,Rumtek Monastery,category,temple,Gangtok & East Sikkim,name keyword 'monastery'
+place,Sikkim,Nathula Pass,category,nature,Gangtok & East Sikkim,name keyword 'pass'
+destination,Arunachal Pradesh,Itanagar,budget_level,medium,Itanagar,low tier max daily cost 3250
+destination,Arunachal Pradesh,Itanagar,cost_tiers,estimated,Itanagar,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Arunachal Pradesh,Ganga Lake,category,nature,Itanagar,name keyword 'lake'
+place,Arunachal Pradesh,Itanagar Wildlife Sanctuary,category,wildlife,Itanagar,name keyword 'wildlife'
+place,Arunachal Pradesh,Jawaharlal Nehru Museum,category,heritage,Itanagar,name keyword 'museum'
+destination,Tripura,Agartala,budget_level,medium,Agartala,low tier max daily cost 3250
+destination,Tripura,Agartala,cost_tiers,estimated,Agartala,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Tripura,Ujjayanta Palace,category,heritage,Agartala,name keyword 'palace'
+place,Tripura,Neermahal,category,city,Agartala,default category
+place,Tripura,Tripura State Museum,category,heritage,Agartala,name keyword 'museum'
+destination,Goa,Panaji,budget_level,medium,Panaji,low tier max daily cost 3250
+destination,Goa,Panaji,cost_tiers,estimated,Panaji,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Goa,Basilica of Bom Jesus,category,temple,Panaji,name keyword 'basilica'
+place,Goa,Dona Paula,category,city,Panaji,default category
+place,Puducherry,Auroville,category,beach,Pondicherry (Puducherry),destination trip type 'beach'
+place,Puducherry,Promenade Beach,category,beach,Pondicherry (Puducherry),name keyword 'beach'
+destination,Karnataka,Mysore,budget_level,medium,Mysore,low tier max daily cost 3250
+destination,Karnataka,Mysore,cost_tiers,estimated,Mysore,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Karnataka,Mysore Palace,category,heritage,Mysore,name keyword 'palace'
+place,Karnataka,Chamundeshwari Temple,category,temple,Mysore,name keyword 'temple'
+place,Karnataka,Brindavan Gardens,category,nature,Mysore,name keyword 'gardens'
+destination,Karnataka,Hubli,budget_level,medium,Hubli,low tier max daily cost 3250
+destination,Karnataka,Hubli,cost_tiers,estimated,Hubli,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Karnataka,Unkal Lake,category,nature,Hubli,name keyword 'lake'
+place,Karnataka,Chandramouleshwara Temple,category,temple,Hubli,name keyword 'temple'
+place,Karnataka,Nrupatunga Hill,category,hill_station,Hubli,name keyword 'hill'
+destination,Telangana,Warangal,budget_level,medium,Warangal,low tier max daily cost 3250
+destination,Telangana,Warangal,cost_tiers,estimated,Warangal,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Telangana,Thousand Pillar Temple,category,temple,Warangal,name keyword 'temple'
+place,Telangana,Warangal Fort,category,heritage,Warangal,name keyword 'fort'
+place,Telangana,Bhadrakali Temple,category,temple,Warangal,name keyword 'temple'
+destination,Andhra Pradesh,Tirupati,budget_level,medium,Tirupati,low tier max daily cost 3250
+destination,Andhra Pradesh,Tirupati,cost_tiers,estimated,Tirupati,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Andhra Pradesh,Sri Venkateswara Temple,category,temple,Tirupati,name keyword 'temple'
+place,Andhra Pradesh,Talakona Waterfall,category,nature,Tirupati,name keyword 'waterfall'
+place,Andhra Pradesh,Chandragiri Fort,category,heritage,Tirupati,name keyword 'fort'
+destination,Andhra Pradesh,Vijayawada,budget_level,medium,Vijayawada,low tier max daily cost 3250
+destination,Andhra Pradesh,Vijayawada,cost_tiers,estimated,Vijayawada,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Andhra Pradesh,Kanaka Durga Temple,category,temple,Vijayawada,name keyword 'temple'
+place,Andhra Pradesh,Bhavani Island,category,beach,Vijayawada,name keyword 'island'
+place,Andhra Pradesh,Undavalli Caves,category,heritage,Vijayawada,name keyword 'caves'
+destination,Madhya Pradesh,Gwalior,budget_level,medium,Gwalior,low tier max daily cost 3250
+destination,Madhya Pradesh,Gwalior,cost_tiers,estimated,Gwalior,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Madhya Pradesh,Gwalior Fort,category,heritage,Gwalior,name keyword 'fort'
+place,Madhya Pradesh,Jai Vilas Palace,category,heritage,Gwalior,name keyword 'palace'
+place,Madhya Pradesh,Tansen Tomb,category,heritage,Gwalior,name keyword 'tomb'
+destination,Uttar Pradesh,Bareilly,budget_level,medium,Bareilly,low tier max daily cost 3250
+destination,Uttar Pradesh,Bareilly,cost_tiers,estimated,Bareilly,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,Fun City,category,city,Bareilly,name keyword 'city'
+place,Uttar Pradesh,Trivati Nath Temple,category,temple,Bareilly,name keyword 'temple'
+place,Uttar Pradesh,Alakhnath Temple,category,temple,Bareilly,name keyword 'temple'
+destination,Uttar Pradesh,Moradabad,budget_level,medium,Moradabad,low tier max daily cost 3250
+destination,Uttar Pradesh,Moradabad,cost_tiers,estimated,Moradabad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,Prem Wonderland,category,city,Moradabad,default category
+place,Uttar Pradesh,Sai Temple,category,temple,Moradabad,name keyword 'temple'
+place,Uttar Pradesh,Raza Library,category,heritage,Moradabad,name keyword 'library'
+destination,Uttar Pradesh,Meerut,budget_level,medium,Meerut,low tier max daily cost 3250
+destination,Uttar Pradesh,Meerut,cost_tiers,estimated,Meerut,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Uttar Pradesh,Augarnath Temple,category,temple,Meerut,name keyword 'temple'
+place,Uttar Pradesh,St. John’s Church,category,temple,Meerut,name keyword 'church'
+place,Uttar Pradesh,Suraj Kund,category,nature,Meerut,name keyword 'kund'
+destination,Maharashtra,Kolhapur,budget_level,medium,Kolhapur,low tier max daily cost 3250
+destination,Maharashtra,Kolhapur,cost_tiers,estimated,Kolhapur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Mahalakshmi Temple,category,temple,Kolhapur,name keyword 'temple'
+place,Maharashtra,Panhala Fort,category,heritage,Kolhapur,name keyword 'fort'
+place,Maharashtra,Rankala Lake,category,nature,Kolhapur,name keyword 'lake'
+destination,Maharashtra,Solapur,budget_level,medium,Solapur,low tier max daily cost 3250
+destination,Maharashtra,Solapur,cost_tiers,estimated,Solapur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Siddheshwar Temple,category,temple,Solapur,name keyword 'temple'
+place,Maharashtra,Bhuikot Fort,category,heritage,Solapur,name keyword 'fort'
+place,Maharashtra,Great Maratha Fort,category,heritage,Solapur,name keyword 'fort'
+destination,Maharashtra,Latur,budget_level,medium,Latur,low tier max daily cost 3250
+destination,Maharashtra,Latur,cost_tiers,estimated,Latur,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Ausa Fort,category,heritage,Latur,name keyword 'fort'
+place,Maharashtra,Udgir Fort,category,heritage,Latur,name keyword 'fort'
+place,Maharashtra,Kharosa Caves,category,heritage,Latur,name keyword 'caves'
+destination,Maharashtra,Amravati,budget_level,medium,Amravati,low tier max daily cost 3250
+destination,Maharashtra,Amravati,cost_tiers,estimated,Amravati,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Ambadevi Temple,category,temple,Amravati,name keyword 'temple'
+place,Maharashtra,Melghat Tiger Reserve,category,wildlife,Amravati,name keyword 'tiger reserve'
+place,Maharashtra,Chikhaldara Hill Station,category,hill_station,Amravati,name keyword 'hill station'
+destination,Maharashtra,Chhatrapati Sambhajinagar,budget_level,medium,Chhatrapati Sambhajinagar,low tier max daily cost 3250
+destination,Maharashtra,Chhatrapati Sambhajinagar,cost_tiers,estimated,Chhatrapati Sambhajinagar,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Ajanta Caves,category,heritage,Chhatrapati Sambhajinagar,name keyword 'caves'
+place,Maharashtra,Ellora Caves,category,heritage,Chhatrapati Sambhajinagar,name keyword 'caves'
+place,Maharashtra,Bibi Ka Maqbara,category,heritage,Chhatrapati Sambhajinagar,name keyword 'maqbara'
+destination,Maharashtra,Nanded,budget_level,medium,Nanded,low tier max daily cost 3250
+destination,Maharashtra,Nanded,cost_tiers,estimated,Nanded,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Sachkhand Gurudwara,category,temple,Nanded,name keyword 'gurudwara'
+place,Maharashtra,Sahastrakund Waterfall,category,nature,Nanded,name keyword 'waterfall'
+place,Maharashtra,Kaleshwar Temple,category,temple,Nanded,name keyword 'temple'
+destination,Maharashtra,Raigad,budget_level,medium,Raigad,low tier max daily cost 3250
+destination,Maharashtra,Raigad,cost_tiers,estimated,Raigad,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Raigad Fort,category,heritage,Raigad,name keyword 'fort'
+place,Maharashtra,Murud-Janjira Fort,category,heritage,Raigad,name keyword 'fort'
+place,Maharashtra,Diveagar Beach,category,beach,Raigad,name keyword 'beach'
+destination,Maharashtra,Ratnagiri,budget_level,medium,Ratnagiri,low tier max daily cost 3250
+destination,Maharashtra,Ratnagiri,cost_tiers,estimated,Ratnagiri,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Ganpatipule Temple,category,temple,Ratnagiri,name keyword 'temple'
+place,Maharashtra,Thibaw Palace,category,heritage,Ratnagiri,name keyword 'palace'
+place,Maharashtra,Ratnadurg Fort,category,heritage,Ratnagiri,name keyword 'fort'
+destination,Maharashtra,Sindhudurg,budget_level,medium,Sindhudurg,low tier max daily cost 3250
+destination,Maharashtra,Sindhudurg,cost_tiers,estimated,Sindhudurg,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Sindhudurg Fort,category,heritage,Sindhudurg,name keyword 'fort'
+place,Maharashtra,Tarkarli Beach,category,beach,Sindhudurg,name keyword 'beach'
+place,Maharashtra,Malvan Marine Sanctuary,category,wildlife,Sindhudurg,name keyword 'marine sanctuary'
+destination,Maharashtra,Satara,budget_level,medium,Satara,low tier max daily cost 3250
+destination,Maharashtra,Satara,cost_tiers,estimated,Satara,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Kaas Plateau,category,nature,Satara,name keyword 'plateau'
+place,Maharashtra,Ajinkyatara Fort,category,heritage,Satara,name keyword 'fort'
+place,Maharashtra,Thoseghar Waterfalls,category,nature,Satara,name keyword 'waterfalls'
+destination,Maharashtra,Ahilyanagar,budget_level,medium,Ahilyanagar,low tier max daily cost 3250
+destination,Maharashtra,Ahilyanagar,cost_tiers,estimated,Ahilyanagar,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Shirdi Sai Baba Temple,category,temple,Ahilyanagar,name keyword 'temple'
+place,Maharashtra,Ahmednagar Fort,category,heritage,Ahilyanagar,name keyword 'fort'
+place,Maharashtra,Wet N Joy Water Park,category,city,Ahilyanagar,name keyword 'water park'
+destination,Maharashtra,Sangli,budget_level,medium,Sangli,low tier max daily cost 3250
+destination,Maharashtra,Sangli,cost_tiers,estimated,Sangli,no cost data in the CSV: dataset-wide median of the JSON destinations
+place,Maharashtra,Ganpati Temple,category,temple,Sangli,name keyword 'temple'
+place,Maharashtra,Sangli Fort,category,heritage,Sangli,name keyword 'fort'
+place,Maharashtra,Chandoli National Park,category,wildlife,Sangli,name keyword 'national park'

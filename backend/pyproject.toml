@@ -1,0 +1,47 @@
+[project]
+name = "india-travel-explorer-backend"
+version = "0.1.0"
+description = "India Travel Explorer API with a RAG based AI trip planner"
+requires-python = ">=3.12"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+extend-exclude = "\\.venv"
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["app"]
+skip = [".venv"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["migrations/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "S", "T20", "SIM", "C4", "PL", "RUF", "ANN"]
+ignore = ["PLR2004", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S105", "S106", "ANN", "PLR2004", "PLR0913", "PLR0917"]
+"migrations/*" = ["ANN"]
+"app/api/*" = ["PLR0913", "PLR0917"]
+"app/services/*" = ["PLR0913", "PLR0917"]
+"app/repositories/*" = ["PLR0913", "PLR0917"]
+"app/seed/*" = ["PLR0913", "PLR0917", "E501", "RUF001", "RUF002"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+exclude = ["migrations/versions"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["integration: requires a running PostgreSQL database"]
+
+[tool.coverage.run]
+source = ["app"]
