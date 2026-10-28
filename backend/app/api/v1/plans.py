@@ -77,3 +77,4 @@ def delete_saved_plan(
 ) -> None:
     """Delete a saved itinerary from user's account."""
     service.delete_user_plan(db, plan_id=id, user_id=current_user.id)
+

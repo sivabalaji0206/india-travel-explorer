@@ -100,3 +100,4 @@ def test_planner_chat_valid_follow_up(client: TestClient) -> None:
     data = response.json()
     assert "reply" in data
     assert len(data["reply"]) > 10
+

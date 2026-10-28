@@ -53,3 +53,4 @@ class SavedPlanDetailResponse(BaseModel):
     plan_json: TripPlanResponse
     created_at: datetime
     updated_at: datetime
+

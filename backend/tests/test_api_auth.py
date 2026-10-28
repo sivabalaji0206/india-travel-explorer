@@ -113,3 +113,4 @@ def test_get_me_unauthorized_without_token(client: TestClient) -> None:
     assert response.status_code == 401
     body = response.json()
     assert body["error"]["code"] == "UNAUTHORIZED"
+

@@ -39,3 +39,4 @@ class UserRepository:
         db.commit()
         db.refresh(user)
         return user
+
