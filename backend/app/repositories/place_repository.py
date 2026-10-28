@@ -104,3 +104,43 @@ class PlaceRepository:
             )
         )
         return db.execute(stmt).scalar_one_or_none()
+
+    def get_rag_candidates(
+        self,
+        db: Session,
+        *,
+        state_id: int,
+        interests: list[PlaceCategory] | None = None,
+        budget_level: BudgetLevel | None = None,
+        limit: int = 30,
+    ) -> list[Place]:
+        """Fetch verified places in a state for grounding the AI trip planner."""
+        stmt = (
+            select(Place)
+            .where(Place.state_id == state_id)
+            .options(
+                joinedload(Place.destination).selectinload(Destination.cost_tiers),
+            )
+        )
+        if interests:
+            stmt = stmt.where(Place.category.in_(interests))
+        if budget_level:
+            stmt = stmt.where(Place.budget_level == budget_level)
+
+        results = list(db.execute(stmt.limit(limit)).scalars().all())
+        if len(results) < 10:
+            fallback_stmt = (
+                select(Place)
+                .where(Place.state_id == state_id)
+                .options(
+                    joinedload(Place.destination).selectinload(Destination.cost_tiers),
+                )
+                .limit(limit)
+            )
+            existing_ids = {p.id for p in results}
+            for candidate in db.execute(fallback_stmt).scalars().all():
+                if candidate.id not in existing_ids:
+                    results.append(candidate)
+                    if len(results) >= limit:
+                        break
+        return results

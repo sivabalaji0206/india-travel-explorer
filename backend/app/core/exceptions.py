@@ -57,3 +57,37 @@ class ConflictError(AppException):
             code="CONFLICT",
             details=details,
         )
+
+
+class UnauthorizedError(AppException):
+    """Raised when authentication credentials are missing, invalid, or expired."""
+
+    def __init__(
+        self,
+        message: str = "Invalid or expired authentication credentials.",
+        *,
+        details: dict[str, object] | list[object] | None = None,
+    ) -> None:
+        super().__init__(
+            message=message,
+            status_code=401,
+            code="UNAUTHORIZED",
+            details=details,
+        )
+
+
+class ForbiddenError(AppException):
+    """Raised when the authenticated user does not have permission to access the resource."""
+
+    def __init__(
+        self,
+        message: str = "You do not have permission to perform this action.",
+        *,
+        details: dict[str, object] | list[object] | None = None,
+    ) -> None:
+        super().__init__(
+            message=message,
+            status_code=403,
+            code="FORBIDDEN",
+            details=details,
+        )

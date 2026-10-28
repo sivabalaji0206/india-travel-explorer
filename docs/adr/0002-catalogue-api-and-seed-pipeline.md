@@ -32,3 +32,4 @@ We needed:
 - The database holds 34 states, 155 destinations, 465 cost tiers, 575 verified places, 245 foods, and 402 eateries.
 - State list queries compute attraction and destination counts in a single aggregated outer join query without N+1 overhead.
 - All endpoints are covered by automated unit and integration tests (49 passing tests).
+

@@ -31,6 +31,7 @@ ignore = ["PLR2004", "B008"]
 "app/services/*" = ["PLR0913", "PLR0917"]
 "app/repositories/*" = ["PLR0913", "PLR0917"]
 "app/seed/*" = ["PLR0913", "PLR0917", "E501", "RUF001", "RUF002"]
+"app/prompts/*" = ["PLR0913", "PLR0917", "E501", "S608"]
 
 [tool.mypy]
 python_version = "3.12"

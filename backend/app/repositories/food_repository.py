@@ -92,3 +92,17 @@ class FoodRepository:
             .limit(limit)
         )
         return list(db.execute(stmt).scalars().all())
+
+    def get_rag_foods(
+        self,
+        db: Session,
+        *,
+        state_id: int,
+        food_type: FoodType | None = None,
+        limit: int = 20,
+    ) -> list[Food]:
+        """Fetch candidate dishes in a state matching food preference."""
+        stmt = select(Food).where(Food.state_id == state_id).options(joinedload(Food.destination))
+        if food_type is not None:
+            stmt = stmt.where(Food.food_type == food_type)
+        return list(db.execute(stmt.limit(limit)).scalars().all())
