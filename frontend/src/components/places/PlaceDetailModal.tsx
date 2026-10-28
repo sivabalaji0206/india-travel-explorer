@@ -3,12 +3,12 @@ import {
   Alert,
   Box,
   Button,
+  CardMedia,
   Chip,
   CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Divider,
   Grid,
   IconButton,
@@ -28,6 +28,7 @@ import {
 import {
   AutoAwesome as PlannerIcon,
   Close as CloseIcon,
+  ConfirmationNumberOutlined as TicketIcon,
   Diamond as GemIcon,
   LocationOn as LocationIcon,
   PaymentsOutlined as CostIcon,
@@ -36,7 +37,7 @@ import {
   WbSunnyOutlined as SeasonIcon,
 } from '@mui/icons-material';
 import { catalogueApi } from '../../api/catalogueApi';
-import { PlaceDetail } from '../../api/types';
+import type { PlaceDetail } from '../../api/types';
 import { designTokens } from '../../theme/tokens';
 
 interface PlaceDetailModalProps {
@@ -45,6 +46,17 @@ interface PlaceDetailModalProps {
   onClose: () => void;
   onPlanTrip: (stateId: number) => void;
 }
+
+const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
+  beach: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=85',
+  temple: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85',
+  heritage: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=85',
+  wildlife: 'https://images.unsplash.com/photo-1615800098779-1be32e60cca3?auto=format&fit=crop&w=1200&q=85',
+  hill_station: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=85',
+  nature: 'https://images.unsplash.com/photo-1546587348-d12660c30c50?auto=format&fit=crop&w=1200&q=85',
+  adventure: 'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=85',
+  city: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1200&q=85',
+};
 
 export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
   placeId,
@@ -86,61 +98,117 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
 
   if (!open) return null;
 
-  const categoryColor = detail ? designTokens.colors.categories[detail.category] || theme.palette.primary.main : theme.palette.primary.main;
+  const categoryColor = detail
+    ? designTokens.colors.categories[detail.category] || theme.palette.primary.main
+    : theme.palette.primary.main;
+
+  const imageUrl = detail
+    ? detail.image_url || FALLBACK_CATEGORY_IMAGES[detail.category] || FALLBACK_CATEGORY_IMAGES.nature
+    : FALLBACK_CATEGORY_IMAGES.nature;
+
+  const isFree =
+    detail?.entry_fee === 0 ||
+    (detail?.entry_fee === null && (detail?.category === 'beach' || detail?.category === 'temple'));
+  const feeLabel = isFree ? 'Free Entry' : detail?.entry_fee ? `₹${detail.entry_fee}` : 'Open Entry';
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth scroll="paper">
-      <DialogTitle sx={{ pb: 1, pr: 6 }}>
-        {detail && (
-          <Stack spacing={1}>
-            <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
-              <Chip
-                size="small"
-                label={detail.category.replace('_', ' ').toUpperCase()}
-                sx={{
-                  backgroundColor: `${categoryColor}20`,
-                  color: categoryColor,
-                  fontWeight: 700,
-                  fontSize: '0.72rem',
-                }}
-              />
-              <Chip
-                size="small"
-                label={`${detail.budget_level.toUpperCase()} BUDGET`}
-                sx={{ fontSize: '0.7rem', fontWeight: 600 }}
-              />
-              {detail.is_hidden_gem && (
-                <Chip
-                  size="small"
-                  icon={<GemIcon sx={{ fontSize: '13px !important' }} />}
-                  label="Hidden Gem"
-                  color="secondary"
-                  sx={{ fontSize: '0.7rem', fontWeight: 700 }}
-                />
-              )}
-            </Stack>
+      {/* Top Visual Image Banner */}
+      {detail && (
+        <Box sx={{ position: 'relative', height: { xs: 200, sm: 260 }, overflow: 'hidden' }}>
+          <CardMedia
+            component="img"
+            height="260"
+            image={imageUrl}
+            alt={detail.name}
+            sx={{ objectFit: 'cover' }}
+          />
 
-            <Typography variant="h5" sx={{ fontWeight: 800 }}>
+          {/* Dark Gradient Overlay */}
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%)',
+            }}
+          />
+
+          {/* Close Icon Button on Top-Right */}
+          <IconButton
+            onClick={onClose}
+            sx={{
+              position: 'absolute',
+              right: 14,
+              top: 14,
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              color: '#fff',
+              '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
+            }}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+
+          {/* Floating Category and Hidden Gem Chips */}
+          <Stack
+            direction="row"
+            spacing={1}
+            alignItems="center"
+            sx={{ position: 'absolute', top: 16, left: 16 }}
+          >
+            <Chip
+              size="small"
+              label={detail.category.replace('_', ' ').toUpperCase()}
+              sx={{
+                backgroundColor: categoryColor,
+                color: '#fff',
+                fontWeight: 800,
+                fontSize: '0.72rem',
+              }}
+            />
+            {detail.is_hidden_gem && (
+              <Chip
+                size="small"
+                icon={<GemIcon sx={{ fontSize: '13px !important', color: '#fff !important' }} />}
+                label="Hidden Gem"
+                color="secondary"
+                sx={{ fontSize: '0.7rem', fontWeight: 800 }}
+              />
+            )}
+          </Stack>
+
+          {/* Place Title & Location Overlaid on Banner Bottom */}
+          <Box sx={{ position: 'absolute', bottom: 16, left: 20, right: 20 }}>
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 900,
+                color: '#fff',
+                textShadow: '0 2px 8px rgba(0,0,0,0.8)',
+                lineHeight: 1.2,
+                mb: 0.5,
+              }}
+            >
               {detail.name}
             </Typography>
 
-            <Stack direction="row" alignItems="center" spacing={0.5} sx={{ color: theme.palette.text.secondary }}>
-              <LocationIcon sx={{ fontSize: 18, color: theme.palette.primary.main }} />
-              <Typography variant="body2" sx={{ fontWeight: 600 }}>
+            <Stack direction="row" alignItems="center" spacing={0.6}>
+              <LocationIcon sx={{ fontSize: 18, color: '#FDBA74' }} />
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 1px 4px rgba(0,0,0,0.8)',
+                }}
+              >
                 {detail.destination_name}, {detail.state_name}
               </Typography>
             </Stack>
-          </Stack>
-        )}
-        <IconButton
-          onClick={onClose}
-          sx={{ position: 'absolute', right: 12, top: 12, color: theme.palette.text.secondary }}
-        >
-          <CloseIcon />
-        </IconButton>
-      </DialogTitle>
+          </Box>
+        </Box>
+      )}
 
-      <DialogContent dividers sx={{ p: { xs: 2, sm: 3 } }}>
+      <DialogContent sx={{ p: { xs: 2, sm: 3 } }}>
         {loading && (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
             <CircularProgress color="primary" />
@@ -159,44 +227,55 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
             <Grid container spacing={2}>
               <Grid item xs={6} sm={3}>
                 <Paper variant="outlined" sx={{ p: 1.5, textAlign: 'center', borderRadius: 2 }}>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Entry Fee
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                    {detail.entry_fee === null
-                      ? 'N/A'
-                      : detail.entry_fee === 0
-                      ? 'Free'
-                      : `₹${detail.entry_fee}`}
+                  <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                    <TicketIcon sx={{ fontSize: 16, color: isFree ? '#10B981' : theme.palette.primary.main }} />
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
+                      Entry Ticket
+                    </Typography>
+                  </Stack>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: isFree ? '#10B981' : 'inherit' }}>
+                    {feeLabel}
                   </Typography>
                 </Paper>
               </Grid>
+
               <Grid item xs={6} sm={3}>
                 <Paper variant="outlined" sx={{ p: 1.5, textAlign: 'center', borderRadius: 2 }}>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Avg Daily Cost
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
+                  <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                    <CostIcon sx={{ fontSize: 16, color: theme.palette.primary.main }} />
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
+                      Est. Visit Cost
+                    </Typography>
+                  </Stack>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
                     ₹{detail.avg_daily_cost}
                   </Typography>
                 </Paper>
               </Grid>
+
               <Grid item xs={6} sm={3}>
                 <Paper variant="outlined" sx={{ p: 1.5, textAlign: 'center', borderRadius: 2 }}>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Best Season
-                  </Typography>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 700, textTransform: 'capitalize' }}>
+                  <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                    <SeasonIcon sx={{ fontSize: 16, color: '#F59E0B' }} />
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
+                      Best Season
+                    </Typography>
+                  </Stack>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 800, textTransform: 'capitalize' }}>
                     {detail.best_season.replace('_', ' ')}
                   </Typography>
                 </Paper>
               </Grid>
+
               <Grid item xs={6} sm={3}>
                 <Paper variant="outlined" sx={{ p: 1.5, textAlign: 'center', borderRadius: 2 }}>
-                  <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                    Local Delicacies
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
+                    <FoodIcon sx={{ fontSize: 16, color: theme.palette.primary.main }} />
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
+                      Local Foods
+                    </Typography>
+                  </Stack>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
                     {detail.nearby_foods.length} items
                   </Typography>
                 </Paper>
@@ -205,7 +284,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
 
             {/* Description */}
             <Box>
-              <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 0.5 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 0.5 }}>
                 About the Attraction
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
@@ -237,7 +316,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                 <Tab
                   icon={<CostIcon sx={{ fontSize: 18 }} />}
                   iconPosition="start"
-                  label={`Destination Budget Tiers (${detail.cost_tiers.length})`}
+                  label={`Destination Cost Tiers (${detail.cost_tiers.length})`}
                 />
               </Tabs>
 
@@ -265,21 +344,21 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                           >
                             <Box>
                               <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 0.5 }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
                                   {food.name}
                                 </Typography>
                                 <Chip
                                   size="small"
                                   label={food.food_type.toUpperCase()}
                                   color={food.food_type === 'veg' ? 'success' : 'warning'}
-                                  sx={{ fontSize: '0.65rem', height: 20 }}
+                                  sx={{ fontSize: '0.65rem', height: 20, fontWeight: 700 }}
                                 />
                               </Stack>
                               <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
                                 {food.description || 'Authentic regional culinary specialty.'}
                               </Typography>
                             </Box>
-                            <Typography variant="caption" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
+                            <Typography variant="caption" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
                               Avg. Price: ₹{food.avg_price}
                             </Typography>
                           </Paper>
@@ -308,7 +387,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                               borderRadius: 2,
                             }}
                           >
-                            <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+                            <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
                               {eatery.name}
                             </Typography>
                             <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 0.5 }}>
@@ -320,7 +399,9 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                               sx={{
                                 fontSize: '0.65rem',
                                 height: 20,
-                                backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : '#F1F5F9',
+                                fontWeight: 700,
+                                backgroundColor:
+                                  theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : '#F1F5F9',
                               }}
                             />
                           </Paper>
@@ -331,9 +412,12 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                 </Stack>
               )}
 
-              {/* Tab 2: Cost Tiers */}
+              {/* Tab 2: Destination Cost Tiers */}
               {activeTab === 2 && (
                 <Box>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1.5 }}>
+                    * Overall daily accommodation, food, and local transportation estimates for staying in {detail.destination_name}.
+                  </Typography>
                   {detail.cost_tiers.length === 0 ? (
                     <Typography variant="body2" sx={{ color: 'text.secondary', py: 2 }}>
                       Cost tier estimates are being compiled for this destination.
@@ -342,18 +426,23 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                     <TableContainer component={Paper} variant="outlined" sx={{ borderRadius: 2 }}>
                       <Table size="small">
                         <TableHead>
-                          <TableRow sx={{ backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : '#F8FAFC' }}>
+                          <TableRow
+                            sx={{
+                              backgroundColor:
+                                theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : '#F8FAFC',
+                            }}
+                          >
                             <TableCell sx={{ fontWeight: 700 }}>Budget Tier</TableCell>
-                            <TableCell align="right" sx={{ fontWeight: 700 }}>Hotel / Day</TableCell>
-                            <TableCell align="right" sx={{ fontWeight: 700 }}>Food / Day</TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 700 }}>Hotel / Night</TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 700 }}>Dining / Day</TableCell>
                             <TableCell align="right" sx={{ fontWeight: 700 }}>Local Transport</TableCell>
-                            <TableCell align="right" sx={{ fontWeight: 700 }}>Daily Range</TableCell>
+                            <TableCell align="right" sx={{ fontWeight: 700 }}>Total Daily Living</TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
                           {detail.cost_tiers.map((tier) => (
                             <TableRow key={tier.id}>
-                              <TableCell sx={{ fontWeight: 700, textTransform: 'capitalize' }}>
+                              <TableCell sx={{ fontWeight: 800, textTransform: 'capitalize' }}>
                                 {tier.tier}
                               </TableCell>
                               <TableCell align="right">
@@ -365,7 +454,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                               <TableCell align="right">
                                 ₹{tier.local_transport_min} - ₹{tier.local_transport_max}
                               </TableCell>
-                              <TableCell align="right" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
+                              <TableCell align="right" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
                                 ₹{tier.total_daily_min} - ₹{tier.total_daily_max}
                               </TableCell>
                             </TableRow>
@@ -403,4 +492,3 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
     </Dialog>
   );
 };
-

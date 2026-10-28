@@ -9,7 +9,7 @@ import {
   Tabs,
   Typography,
 } from '@mui/material';
-import { State } from '../../api/types';
+import type { State } from '../../api/types';
 import { StateCard } from './StateCard';
 
 interface StateGridProps {
@@ -50,11 +50,11 @@ export const StateGrid: React.FC<StateGridProps> = ({
       <Container maxWidth="xl">
         <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" alignItems="center" sx={{ mb: 4 }}>
           <Box>
-            <Typography variant="h4" sx={{ fontWeight: 800 }}>
+            <Typography variant="h4" sx={{ fontWeight: 900 }}>
               Indian States & Union Territories
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
-              Choose a state to browse verified attractions or launch the RAG trip planner.
+            <Typography variant="body1" sx={{ color: 'text.secondary', mt: 0.5 }}>
+              Choose any of India's 34 states and territories to explore verified attractions or generate an AI itinerary.
             </Typography>
           </Box>
         </Stack>
@@ -68,7 +68,7 @@ export const StateGrid: React.FC<StateGridProps> = ({
             scrollButtons="auto"
           >
             {REGION_TABS.map((tab) => (
-              <Tab key={tab} label={tab} value={tab} sx={{ fontWeight: 600 }} />
+              <Tab key={tab} label={tab} value={tab} sx={{ fontWeight: 700 }} />
             ))}
           </Tabs>
         </Box>
@@ -94,4 +94,3 @@ export const StateGrid: React.FC<StateGridProps> = ({
     </Box>
   );
 };
-

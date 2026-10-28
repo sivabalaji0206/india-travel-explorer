@@ -8,14 +8,19 @@ import {
   Stack,
   TextField,
   Typography,
-  useTheme,
 } from '@mui/material';
 import {
   AutoAwesome as PlannerIcon,
+  Castle as FortIcon,
+  DirectionsWalk as TrekIcon,
+  Landscape as HillIcon,
+  Pets as WildlifeIcon,
+  Place as TempleIcon,
   Search as SearchIcon,
+  Waves as BeachIcon,
+  WbSunny as SunIcon,
 } from '@mui/icons-material';
-import { PlaceCategory } from '../../api/types';
-import { designTokens } from '../../theme/tokens';
+import type { PlaceCategory } from '../../api/types';
 
 interface HeroBannerProps {
   onSearch: (query: string) => void;
@@ -23,14 +28,14 @@ interface HeroBannerProps {
   onOpenPlanner: () => void;
 }
 
-const POPULAR_CATEGORIES: { label: string; value: PlaceCategory }[] = [
-  { label: 'Temples & Sacred Sites', value: 'temple' },
-  { label: 'Beaches & Coastal', value: 'beach' },
-  { label: 'Heritage & Forts', value: 'heritage' },
-  { label: 'Hill Stations', value: 'hill_station' },
-  { label: 'Nature & Waterfalls', value: 'nature' },
-  { label: 'Wildlife Sanctuaries', value: 'wildlife' },
-  { label: 'Adventure & Treks', value: 'adventure' },
+const POPULAR_CATEGORIES: { label: string; value: PlaceCategory; icon: React.ReactElement }[] = [
+  { label: 'Temples & Sacred Sites', value: 'temple', icon: <TempleIcon fontSize="small" /> },
+  { label: 'Beaches & Coastal', value: 'beach', icon: <BeachIcon fontSize="small" /> },
+  { label: 'Heritage & Forts', value: 'heritage', icon: <FortIcon fontSize="small" /> },
+  { label: 'Hill Stations', value: 'hill_station', icon: <HillIcon fontSize="small" /> },
+  { label: 'Nature & Waterfalls', value: 'nature', icon: <SunIcon fontSize="small" /> },
+  { label: 'Wildlife Sanctuaries', value: 'wildlife', icon: <WildlifeIcon fontSize="small" /> },
+  { label: 'Adventure & Treks', value: 'adventure', icon: <TrekIcon fontSize="small" /> },
 ];
 
 export const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -38,68 +43,89 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onSelectCategory,
   onOpenPlanner,
 }) => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
-        py: { xs: 6, md: 9 },
+        position: 'relative',
+        py: { xs: 8, md: 12 },
         textAlign: 'center',
-        background:
-          theme.palette.mode === 'dark'
-            ? 'radial-gradient(ellipse at top, #1E293B 0%, #0B0F19 80%)'
-            : 'radial-gradient(ellipse at top, #FFF7ED 0%, #F8FAFC 80%)',
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        color: '#fff',
+        backgroundImage: `linear-gradient(to bottom, rgba(11, 15, 25, 0.72) 0%, rgba(11, 15, 25, 0.88) 100%), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1920&q=85')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 35%',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: 'inset 0 -40px 60px -20px rgba(0,0,0,0.8)',
       }}
     >
       <Container maxWidth="md">
+        {/* Floating AI Chip */}
         <Chip
-          icon={<PlannerIcon sx={{ fontSize: '16px !important' }} />}
-          label="Grounded AI Trip Planner • RAG Grounded with PostgreSQL"
-          color="primary"
-          variant="outlined"
-          sx={{ mb: 2.5, fontWeight: 700, borderRadius: 10, px: 1 }}
+          icon={<PlannerIcon sx={{ fontSize: '16px !important', color: '#FDBA74 !important' }} />}
+          label="Grounded AI Trip Planner • 100% Real Tourism Dataset"
+          sx={{
+            mb: 3,
+            fontWeight: 800,
+            borderRadius: 10,
+            px: 1.5,
+            py: 2.2,
+            backgroundColor: 'rgba(224, 93, 56, 0.22)',
+            color: '#FDBA74',
+            border: '1px solid rgba(224, 93, 56, 0.5)',
+            backdropFilter: 'blur(8px)',
+          }}
         />
 
+        {/* Hero Title */}
         <Typography
           variant="h2"
           sx={{
-            fontWeight: 800,
-            letterSpacing: -1,
+            fontWeight: 900,
+            letterSpacing: -1.2,
             mb: 2,
-            fontSize: { xs: '2rem', md: '3.25rem' },
-            color: theme.palette.text.primary,
+            fontSize: { xs: '2.25rem', sm: '3rem', md: '3.75rem' },
+            textShadow: '0 3px 12px rgba(0,0,0,0.7)',
+            lineHeight: 1.15,
           }}
         >
-          Explore the Incredible Wonders of{' '}
-          <Box component="span" sx={{ color: theme.palette.primary.main }}>
-            India
+          Discover the Soul of{' '}
+          <Box
+            component="span"
+            sx={{
+              background: 'linear-gradient(45deg, #FF8A65 30%, #F59E0B 90%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Incredible India
           </Box>
         </Typography>
 
+        {/* Subtitle */}
         <Typography
           variant="body1"
           sx={{
-            color: theme.palette.text.secondary,
-            fontSize: { xs: '1rem', md: '1.2rem' },
+            color: 'rgba(255, 255, 255, 0.85)',
+            fontSize: { xs: '1rem', md: '1.25rem' },
             mb: 4,
             maxWidth: 680,
             mx: 'auto',
+            lineHeight: 1.6,
+            textShadow: '0 2px 6px rgba(0,0,0,0.6)',
           }}
         >
-          Browse verified attractions across all 34 states and union territories. Let our RAG-powered AI
+          Explore verified attractions across all 34 states and union territories. Let our RAG-grounded AI
           build you a realistic, day-by-day travel itinerary with verified local dishes and budget transparency.
         </Typography>
 
-        {/* Search input & Planner CTA */}
+        {/* Search Input & CTA Button */}
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           spacing={1.5}
           justifyContent="center"
-          sx={{ mb: 3.5, maxWidth: 600, mx: 'auto' }}
+          sx={{ mb: 4, maxWidth: 640, mx: 'auto' }}
         >
           <TextField
-            placeholder="Search attractions (e.g. Taj Mahal, Munnar, Hampi)..."
+            placeholder="Search attractions (e.g. Taj Mahal, Munnar, Hampi, Baga)..."
             variant="outlined"
             size="medium"
             fullWidth
@@ -107,12 +133,25 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon sx={{ color: theme.palette.text.secondary }} />
+                  <SearchIcon sx={{ color: 'rgba(255,255,255,0.7)' }} />
                 </InputAdornment>
               ),
               sx: {
                 borderRadius: 3,
-                backgroundColor: theme.palette.background.paper,
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(12px)',
+                color: '#fff',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'transparent',
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgba(255, 255, 255, 0.4)',
+                },
+                '& input::placeholder': {
+                  color: 'rgba(255, 255, 255, 0.75)',
+                  opacity: 1,
+                },
               },
             }}
           />
@@ -124,44 +163,91 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             startIcon={<PlannerIcon />}
             sx={{
               whiteSpace: 'nowrap',
-              px: 3,
+              px: 3.5,
+              py: 1.5,
               borderRadius: 3,
-              boxShadow: '0 8px 20px rgba(224, 93, 56, 0.3)',
+              fontWeight: 800,
+              fontSize: '1rem',
+              boxShadow: '0 8px 24px rgba(224, 93, 56, 0.5)',
             }}
           >
             Plan My Trip
           </Button>
         </Stack>
 
-        {/* Quick filter chips */}
+        {/* Category Pills */}
         <Stack
           direction="row"
           spacing={1}
           justifyContent="center"
           flexWrap="wrap"
           useFlexGap
-          sx={{ gap: 1 }}
+          sx={{ gap: 1, mb: 4 }}
         >
           {POPULAR_CATEGORIES.map((cat) => (
             <Chip
               key={cat.value}
+              icon={cat.icon}
               label={cat.label}
               onClick={() => onSelectCategory(cat.value)}
               sx={{
                 cursor: 'pointer',
                 borderRadius: 2,
-                backgroundColor: theme.palette.background.paper,
-                border: `1px solid ${theme.palette.divider}`,
+                px: 1,
+                backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                color: '#fff',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(8px)',
+                '& .MuiChip-icon': {
+                  color: '#fff !important',
+                },
                 '&:hover': {
-                  borderColor: designTokens.colors.categories[cat.value],
-                  color: designTokens.colors.categories[cat.value],
+                  backgroundColor: 'rgba(224, 93, 56, 0.4)',
+                  borderColor: '#E05D38',
                 },
               }}
             />
           ))}
         </Stack>
+
+        {/* Quick Stats Strip */}
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={{ xs: 2, sm: 4 }}
+          sx={{
+            pt: 2,
+            borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+            color: 'rgba(255, 255, 255, 0.8)',
+          }}
+        >
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#FDBA74' }}>
+              34
+            </Typography>
+            <Typography variant="caption">States & UTs</Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#FDBA74' }}>
+              155
+            </Typography>
+            <Typography variant="caption">Destinations</Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#FDBA74' }}>
+              575
+            </Typography>
+            <Typography variant="caption">Verified Places</Typography>
+          </Box>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#FDBA74' }}>
+              245
+            </Typography>
+            <Typography variant="caption">Local Dishes</Typography>
+          </Box>
+        </Stack>
       </Container>
     </Box>
   );
 };
-

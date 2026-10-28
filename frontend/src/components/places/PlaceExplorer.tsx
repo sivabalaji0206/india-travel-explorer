@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { Explore as ExploreIcon } from '@mui/icons-material';
-import { Place, PlaceCategory, Season, State } from '../../api/types';
+import type { Place, PlaceCategory, Season, State } from '../../api/types';
 import { PlaceCard } from './PlaceCard';
 import { PlaceFilter } from './PlaceFilter';
 
@@ -64,15 +64,15 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
   const theme = useTheme();
 
   return (
-    <Box sx={{ py: 5 }}>
+    <Box sx={{ py: 6 }}>
       <Container maxWidth="xl">
         {/* Section Heading */}
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h4" sx={{ fontWeight: 800 }}>
+          <Typography variant="h4" sx={{ fontWeight: 900 }}>
             Curated Indian Attractions
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
-            Discover temples, hill stations, forts, wildlife reserves, and offbeat hidden gems with verified entry fees.
+          <Typography variant="body1" sx={{ color: 'text.secondary', mt: 0.5 }}>
+            Discover temples, hill stations, forts, wildlife reserves, and offbeat hidden gems with verified entry tickets and photos.
           </Typography>
         </Box>
 
@@ -117,8 +117,8 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
                 theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.02)' : '#F8FAFC',
             }}
           >
-            <ExploreIcon sx={{ fontSize: 44, color: 'text.secondary', mb: 1.5 }} />
-            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+            <ExploreIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 1.5 }} />
+            <Typography variant="h6" sx={{ fontWeight: 800, mb: 1 }}>
               No Attractions Match Your Criteria
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -137,13 +137,13 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
             <Pagination
               count={totalPages}
               page={currentPage}
               onChange={(_, page) => {
                 onPageChange(page);
-                window.scrollTo({ top: 400, behavior: 'smooth' });
+                window.scrollTo({ top: 450, behavior: 'smooth' });
               }}
               color="primary"
               size="large"
@@ -155,4 +155,3 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
     </Box>
   );
 };
-
