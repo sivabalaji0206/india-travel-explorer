@@ -315,3 +315,4 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
     </Paper>
   );
 };
+

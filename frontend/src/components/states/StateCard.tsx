@@ -112,3 +112,4 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
     </Card>
   );
 };
+

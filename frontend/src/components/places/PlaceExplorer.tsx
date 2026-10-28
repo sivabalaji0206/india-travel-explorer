@@ -155,3 +155,4 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
     </Box>
   );
 };
+

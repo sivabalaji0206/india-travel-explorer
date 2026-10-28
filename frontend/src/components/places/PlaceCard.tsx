@@ -146,3 +146,4 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
     </Card>
   );
 };
+

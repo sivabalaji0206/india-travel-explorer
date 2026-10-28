@@ -84,3 +84,4 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
     },
   });
 };
+

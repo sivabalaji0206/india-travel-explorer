@@ -322,3 +322,4 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({ days, overallAdvic
     </Stack>
   );
 };
+

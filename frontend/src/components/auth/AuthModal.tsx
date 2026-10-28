@@ -137,3 +137,4 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onClose }) => {
     </Dialog>
   );
 };
+

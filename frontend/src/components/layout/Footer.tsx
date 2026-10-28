@@ -58,3 +58,4 @@ export const Footer: React.FC = () => {
     </Box>
   );
 };
+

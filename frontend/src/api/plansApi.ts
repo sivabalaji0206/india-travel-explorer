@@ -34,3 +34,4 @@ export const plansApi = {
     await apiClient.delete(`/plans/${id}`);
   },
 };
+

@@ -403,3 +403,4 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
     </Dialog>
   );
 };
+

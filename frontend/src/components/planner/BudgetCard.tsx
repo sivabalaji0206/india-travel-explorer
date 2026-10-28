@@ -176,3 +176,4 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
     </Paper>
   );
 };
+
