@@ -99,10 +99,59 @@ class FoodRepository:
         *,
         state_id: int,
         food_type: FoodType | None = None,
-        limit: int = 20,
+        limit: int = 30,
     ) -> list[Food]:
-        """Fetch candidate dishes in a state matching food preference."""
-        stmt = select(Food).where(Food.state_id == state_id).options(joinedload(Food.destination))
-        if food_type is not None:
-            stmt = stmt.where(Food.food_type == food_type)
-        return list(db.execute(stmt.limit(limit)).scalars().all())
+        """Fetch candidate dishes in a state with strict dietary safety and multi-day variety."""
+        stmt = (
+            select(Food)
+            .where(Food.state_id == state_id)
+            .options(joinedload(Food.destination))
+            .order_by(Food.id.asc())
+        )
+        all_state_foods = list(db.execute(stmt.limit(max(limit, 30))).scalars().all())
+        if not all_state_foods:
+            return []
+
+        # Mixed / No restriction: interleave Non-Veg, Veg, and Vegan for rich culinary diversity
+        if food_type is None:
+            non_veg = [f for f in all_state_foods if f.food_type == FoodType.NON_VEG]
+            veg = [f for f in all_state_foods if f.food_type in (FoodType.VEG, FoodType.VEGAN)]
+            interleaved: list[Food] = []
+            max_len = max(len(non_veg), len(veg))
+            for idx in range(max_len):
+                if idx < len(non_veg):
+                    interleaved.append(non_veg[idx])
+                if idx < len(veg):
+                    interleaved.append(veg[idx])
+            return interleaved[:limit]
+
+        # Strict Vegetarian: NEVER include Non-Veg
+        if food_type == FoodType.VEG:
+            return [
+                f for f in all_state_foods if f.food_type in (FoodType.VEG, FoodType.VEGAN)
+            ][:limit]
+
+        # Strict Vegan: Vegan first, then plant-adaptable Veg dishes (excluding obvious dairy-heavy items)
+        if food_type == FoodType.VEGAN:
+            vegan_exact = [f for f in all_state_foods if f.food_type == FoodType.VEGAN]
+            dairy_terms = (
+                "paneer", "ghee", "lassi", "malai", "rabri", "rasgulla", "peda",
+                "payasam", "kheer", "curd", "butter", "cheese", "milk", "jigarthanda",
+                "pootharekulu", "mysore pak", "sandesh", "chhena",
+            )
+            plant_friendly_veg = [
+                f for f in all_state_foods
+                if f.food_type == FoodType.VEG
+                and not any(term in f.name.lower() or term in (f.description or "").lower() for term in dairy_terms)
+            ]
+            fallback_veg = [
+                f for f in all_state_foods
+                if f.food_type == FoodType.VEG and f not in plant_friendly_veg
+            ]
+            return (vegan_exact + plant_friendly_veg + fallback_veg)[:limit]
+
+        # Non-Veg preference: Non-Veg dishes first, supplemented with iconic regional Veg dishes
+        # so predominantly vegetarian states (e.g. Gujarat, Rajasthan, Uttarakhand) never repeat 1 dish
+        non_veg_first = [f for f in all_state_foods if f.food_type == FoodType.NON_VEG]
+        veg_supplement = [f for f in all_state_foods if f.food_type != FoodType.NON_VEG]
+        return (non_veg_first + veg_supplement)[:limit]

@@ -7,6 +7,8 @@ from app.api.deps import get_optional_user
 from app.db.session import get_db
 from app.models.user import User
 from app.schemas.planner import (
+    PlannerAssistantRequest,
+    PlannerAssistantResponse,
     PlannerChatRequest,
     PlannerChatResponse,
     TripPlanRequest,
@@ -42,3 +44,13 @@ def chat_follow_up(
 ) -> PlannerChatResponse:
     """Send follow-up instructions to refine the generated itinerary or ask questions."""
     return service.chat_follow_up(db, request, user=user)
+
+
+@router.post("/converse", response_model=PlannerAssistantResponse)
+def converse(
+    request: PlannerAssistantRequest,
+    service: PlannerService = Depends(get_planner_service),
+    db: Session = Depends(get_db),
+) -> PlannerAssistantResponse:
+    """Conversational intent extraction and intelligent trip consultation."""
+    return service.converse(db, request)

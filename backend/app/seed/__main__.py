@@ -1,5 +1,6 @@
-"""Allow ``python -m app.seed``."""
+"""Allow ``python -m app.seed`` to run the web pipeline."""
 
-from app.seed.cli import main
+from app.seed.web_pipeline import main
 
-raise SystemExit(main())
+if __name__ == "__main__":
+    main()

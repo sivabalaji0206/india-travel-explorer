@@ -196,6 +196,32 @@ export interface PlannerChatResponse {
   updated_plan?: TripPlanResponse | null;
 }
 
+export interface PlannerAssistantRequest {
+  message: string;
+  chat_history?: ChatTurn[];
+  state_id?: number | null;
+  duration_days?: number | null;
+  total_budget?: number | null;
+  budget_tier?: BudgetLevel | null;
+  food_preference?: FoodType | null;
+  travel_month?: string | null;
+  interests?: PlaceCategory[];
+}
+
+export interface PlannerAssistantResponse {
+  reply: string;
+  state_id?: number | null;
+  state_name?: string | null;
+  duration_days?: number | null;
+  total_budget?: number | null;
+  budget_tier?: BudgetLevel | null;
+  food_preference?: FoodType | null;
+  travel_month?: string | null;
+  interests: PlaceCategory[];
+  is_ready_to_generate: boolean;
+  suggested_quick_replies: string[];
+}
+
 export interface User {
   id: number;
   name: string;

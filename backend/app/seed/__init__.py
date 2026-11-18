@@ -1,1 +1,1 @@
-"""Seed data import: cleans, classifies and loads the tourism dataset into PostgreSQL."""
+"""Web Data Ingestion Pipeline for India Travel Explorer."""

@@ -1,10 +1,34 @@
 """Schemas for the RAG-grounded AI Trip Planner and conversational refinement."""
 
 from decimal import Decimal
+from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.core.enums import BudgetLevel, ChatRole, FoodType, PlaceCategory
+
+
+def _coerce_food_preference(val: Any) -> FoodType | None:
+    """Normalize empty, 'mixed', 'both', or 'any' food strings cleanly to None."""
+    if val is None:
+        return None
+    if isinstance(val, FoodType):
+        return val
+    if isinstance(val, str):
+        cleaned = val.strip().lower().replace("-", "_").replace(" ", "_")
+        if cleaned in ("", "null", "none", "any", "all", "mixed", "both", "no_preference", "veg_and_non_veg"):
+            return None
+        if cleaned in ("vegetarian", "pure_veg"):
+            return FoodType.VEG
+        if cleaned in ("non_vegetarian", "nonveg", "meat", "seafood"):
+            return FoodType.NON_VEG
+        if cleaned in ("pure_vegan", "plant_based"):
+            return FoodType.VEGAN
+        try:
+            return FoodType(cleaned)
+        except ValueError:
+            return None
+    return None
 
 
 class TripPlanRequest(BaseModel):
@@ -17,12 +41,24 @@ class TripPlanRequest(BaseModel):
         default=BudgetLevel.MEDIUM, description="Travel comfort tier (low, medium, high)"
     )
     food_preference: FoodType | None = Field(
-        default=None, description="Culinary preference (veg, non_veg, vegan)"
+        default=None, description="Culinary preference (veg, non_veg, vegan, or null for mixed/all)"
     )
     travel_month: str | None = Field(default=None, description="Month of travel (e.g. November)")
     interests: list[PlaceCategory] = Field(
         default_factory=list, description="Preferred attraction categories"
     )
+
+    @field_validator("food_preference", mode="before")
+    @classmethod
+    def _validate_food_pref(cls, val: Any) -> FoodType | None:
+        return _coerce_food_preference(val)
+
+    @field_validator("interests", mode="before")
+    @classmethod
+    def _validate_interests_list(cls, val: Any) -> list[Any]:
+        if val is None or not isinstance(val, list):
+            return []
+        return val
 
 
 class ItineraryPlaceItem(BaseModel):
@@ -115,3 +151,121 @@ class PlannerChatResponse(BaseModel):
 
     reply: str
     updated_plan: TripPlanResponse | None = None
+
+
+class PlannerAssistantRequest(BaseModel):
+    """User message and ongoing conversation context for intelligent trip assistance."""
+
+    message: str = Field(min_length=1, max_length=1000)
+    chat_history: list[ChatTurn] = Field(default_factory=list)
+    state_id: int | None = None
+    duration_days: int | None = None
+    total_budget: Decimal | None = None
+    budget_tier: BudgetLevel | None = None
+    food_preference: FoodType | None = None
+    travel_month: str | None = None
+    interests: list[PlaceCategory] = Field(default_factory=list)
+
+    @field_validator("food_preference", mode="before")
+    @classmethod
+    def _validate_food_pref(cls, val: Any) -> FoodType | None:
+        return _coerce_food_preference(val)
+
+    @field_validator("interests", mode="before")
+    @classmethod
+    def _validate_interests_list(cls, val: Any) -> list[Any]:
+        if val is None or not isinstance(val, list):
+            return []
+        return val
+
+
+class PlannerAssistantResponse(BaseModel):
+    """Intelligent entity-aware assistant response with conversation state and quick replies."""
+
+    model_config = ConfigDict(frozen=True)
+
+    reply: str
+    state_id: int | None = None
+    state_name: str | None = None
+    duration_days: int | None = None
+    total_budget: Decimal | None = None
+    budget_tier: BudgetLevel | None = None
+    food_preference: FoodType | None = None
+    travel_month: str | None = None
+    interests: list[PlaceCategory] = Field(default_factory=list)
+    is_ready_to_generate: bool = False
+    suggested_quick_replies: list[str] = Field(default_factory=list)
+
+    @field_validator("state_name", "travel_month", mode="before")
+    @classmethod
+    def _empty_str_to_none(cls, val: Any) -> str | None:
+        if val is None:
+            return None
+        s = str(val).strip()
+        return None if s.lower() in ("", "null", "none") else s
+
+    @field_validator("state_id", mode="before")
+    @classmethod
+    def _coerce_state_id(cls, val: Any) -> int | None:
+        if val in (None, "", "null", "none", 0, "0"):
+            return None
+        try:
+            parsed = int(val)
+            return parsed if parsed > 0 else None
+        except (TypeError, ValueError):
+            return None
+
+    @field_validator("duration_days", mode="before")
+    @classmethod
+    def _coerce_duration(cls, val: Any) -> int | None:
+        if val in (None, "", "null", "none", 0, "0"):
+            return None
+        try:
+            parsed = int(val)
+            return max(1, min(14, parsed)) if parsed > 0 else None
+        except (TypeError, ValueError):
+            return None
+
+    @field_validator("total_budget", mode="before")
+    @classmethod
+    def _coerce_budget(cls, val: Any) -> Decimal | None:
+        if val in (None, "", "null", "none", 0, "0", 0.0):
+            return None
+        try:
+            dec = Decimal(str(val))
+            return dec if dec > 0 else None
+        except Exception:
+            return None
+
+    @field_validator("budget_tier", mode="before")
+    @classmethod
+    def _coerce_tier(cls, val: Any) -> BudgetLevel | None:
+        if val in (None, "", "null", "none"):
+            return BudgetLevel.MEDIUM
+        if isinstance(val, BudgetLevel):
+            return val
+        try:
+            return BudgetLevel(str(val).strip().lower())
+        except ValueError:
+            return BudgetLevel.MEDIUM
+
+    @field_validator("food_preference", mode="before")
+    @classmethod
+    def _coerce_food(cls, val: Any) -> FoodType | None:
+        return _coerce_food_preference(val)
+
+    @field_validator("interests", mode="before")
+    @classmethod
+    def _coerce_interests(cls, val: Any) -> list[PlaceCategory]:
+        if not val or not isinstance(val, list):
+            return []
+        valid: list[PlaceCategory] = []
+        for item in val:
+            if isinstance(item, PlaceCategory):
+                valid.append(item)
+            elif isinstance(item, str):
+                try:
+                    valid.append(PlaceCategory(item.strip().lower()))
+                except ValueError:
+                    continue
+        return valid

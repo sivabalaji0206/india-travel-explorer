@@ -48,13 +48,13 @@ interface PlaceDetailModalProps {
 }
 
 const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
-  beach: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=85',
+  beach: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85',
   temple: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85',
-  heritage: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=85',
-  wildlife: 'https://images.unsplash.com/photo-1615800098779-1be32e60cca3?auto=format&fit=crop&w=1200&q=85',
-  hill_station: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=85',
-  nature: 'https://images.unsplash.com/photo-1546587348-d12660c30c50?auto=format&fit=crop&w=1200&q=85',
-  adventure: 'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=85',
+  heritage: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=85',
+  wildlife: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=1200&q=85',
+  hill_station: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85',
+  nature: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=85',
+  adventure: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85',
   city: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=1200&q=85',
 };
 
@@ -106,10 +106,12 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
     ? detail.image_url || FALLBACK_CATEGORY_IMAGES[detail.category] || FALLBACK_CATEGORY_IMAGES.nature
     : FALLBACK_CATEGORY_IMAGES.nature;
 
-  const isFree =
-    detail?.entry_fee === 0 ||
-    (detail?.entry_fee === null && (detail?.category === 'beach' || detail?.category === 'temple'));
-  const feeLabel = isFree ? 'Free Entry' : detail?.entry_fee ? `₹${detail.entry_fee}` : 'Open Entry';
+  const feeAmount =
+    detail?.entry_fee !== null && detail?.entry_fee !== undefined ? Number(detail.entry_fee) : 0;
+  const hasTicket = !Number.isNaN(feeAmount) && feeAmount > 0;
+  const isFree = !hasTicket;
+  const feeLabel = hasTicket ? `₹${Math.round(feeAmount)} / person` : 'Free Entry';
+  const visitCostLabel = detail ? `₹${Math.round(Number(detail.avg_daily_cost || 200))}` : '₹200';
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth scroll="paper">
@@ -121,6 +123,11 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
             height="260"
             image={imageUrl}
             alt={detail.name}
+            referrerPolicy="no-referrer"
+            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = FALLBACK_CATEGORY_IMAGES[detail.category] || FALLBACK_CATEGORY_IMAGES.nature;
+            }}
             sx={{ objectFit: 'cover' }}
           />
 
@@ -230,7 +237,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                   <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.5} sx={{ mb: 0.5 }}>
                     <TicketIcon sx={{ fontSize: 16, color: isFree ? '#10B981' : theme.palette.primary.main }} />
                     <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 700 }}>
-                      Entry Ticket
+                      {hasTicket ? 'Entry Ticket' : 'Entry Access'}
                     </Typography>
                   </Stack>
                   <Typography variant="h6" sx={{ fontWeight: 800, color: isFree ? '#10B981' : 'inherit' }}>
@@ -248,7 +255,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                     </Typography>
                   </Stack>
                   <Typography variant="h6" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
-                    ₹{detail.avg_daily_cost}
+                    {visitCostLabel}
                   </Typography>
                 </Paper>
               </Grid>
@@ -359,7 +366,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                               </Typography>
                             </Box>
                             <Typography variant="caption" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
-                              Avg. Price: ₹{food.avg_price}
+                              Avg. Price: ₹{Math.round(Number(food.avg_price || 150))}
                             </Typography>
                           </Paper>
                         </Grid>
@@ -446,16 +453,16 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
                                 {tier.tier}
                               </TableCell>
                               <TableCell align="right">
-                                ₹{tier.accommodation_min} - ₹{tier.accommodation_max}
+                                ₹{Math.round(Number(tier.accommodation_min))} - ₹{Math.round(Number(tier.accommodation_max))}
                               </TableCell>
                               <TableCell align="right">
-                                ₹{tier.food_min} - ₹{tier.food_max}
+                                ₹{Math.round(Number(tier.food_min))} - ₹{Math.round(Number(tier.food_max))}
                               </TableCell>
                               <TableCell align="right">
-                                ₹{tier.local_transport_min} - ₹{tier.local_transport_max}
+                                ₹{Math.round(Number(tier.local_transport_min))} - ₹{Math.round(Number(tier.local_transport_max))}
                               </TableCell>
                               <TableCell align="right" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
-                                ₹{tier.total_daily_min} - ₹{tier.total_daily_max}
+                                ₹{Math.round(Number(tier.total_daily_min))} - ₹{Math.round(Number(tier.total_daily_max))}
                               </TableCell>
                             </TableRow>
                           ))}

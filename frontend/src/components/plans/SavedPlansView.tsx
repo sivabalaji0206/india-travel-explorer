@@ -36,12 +36,14 @@ interface SavedPlansViewProps {
   onOpenAuth: () => void;
   onOpenPlanner: (stateId?: number) => void;
   onViewPlanDetail: (plan: SavedPlanDetail) => void;
+  refreshTrigger?: number;
 }
 
 export const SavedPlansView: React.FC<SavedPlansViewProps> = ({
   onOpenAuth,
   onOpenPlanner,
   onViewPlanDetail,
+  refreshTrigger = 0,
 }) => {
   const theme = useTheme();
   const { isAuthenticated, user } = useAuth();
@@ -78,7 +80,7 @@ export const SavedPlansView: React.FC<SavedPlansViewProps> = ({
 
   useEffect(() => {
     fetchPlans();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, refreshTrigger]);
 
   const handleOpenRename = (plan: SavedPlanSummary) => {
     setRenameTarget(plan);

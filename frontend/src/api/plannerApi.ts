@@ -1,5 +1,7 @@
 import { apiClient } from './client';
 import {
+  PlannerAssistantRequest,
+  PlannerAssistantResponse,
   PlannerChatRequest,
   PlannerChatResponse,
   TripPlanRequest,
@@ -7,6 +9,11 @@ import {
 } from './types';
 
 export const plannerApi = {
+  converse: async (payload: PlannerAssistantRequest): Promise<PlannerAssistantResponse> => {
+    const response = await apiClient.post<PlannerAssistantResponse>('/planner/converse', payload);
+    return response.data;
+  },
+
   generatePlan: async (payload: TripPlanRequest): Promise<TripPlanResponse> => {
     const response = await apiClient.post<TripPlanResponse>('/planner/generate', payload);
     return response.data;
@@ -17,4 +24,5 @@ export const plannerApi = {
     return response.data;
   },
 };
+
 

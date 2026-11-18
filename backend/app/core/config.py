@@ -78,11 +78,11 @@ class Settings(BaseSettings):
     gemini_api_key: SecretStr | None = None
     llm_model: str
     llm_temperature: float = Field(default=0.3, ge=0.0, le=2.0)
-    llm_max_output_tokens: int = Field(default=2048, ge=1)
-    llm_timeout_seconds: int = Field(default=30, ge=1)
-    llm_invalid_json_retries: int = Field(default=1, ge=0)
+    llm_max_output_tokens: int = Field(default=8192, ge=1)
+    llm_timeout_seconds: int = Field(default=45, ge=1)
+    llm_invalid_json_retries: int = Field(default=2, ge=0)
     llm_daily_request_limit: int = Field(default=20, ge=1)
-    rag_max_places: int = Field(default=20, ge=1)
+    rag_max_places: int = Field(default=40, ge=1)
     chat_history_turns: int = Field(default=6, ge=0)
 
     @field_validator("jwt_secret_key")

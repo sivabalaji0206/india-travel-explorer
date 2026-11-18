@@ -92,6 +92,14 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
           height="210"
           image={currentPhoto.url}
           alt={currentPhoto.caption || state.name}
+          referrerPolicy="no-referrer"
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.onerror = null;
+            const nextPhoto = gallery[(photoIndex + 1) % gallery.length]?.url;
+            e.currentTarget.src = nextPhoto && nextPhoto !== currentPhoto.url
+              ? nextPhoto
+              : 'https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80';
+          }}
           sx={{
             objectFit: 'cover',
             animation: 'fadeIn 0.5s ease',

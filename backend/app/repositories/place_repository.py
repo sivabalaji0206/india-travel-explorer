@@ -112,35 +112,28 @@ class PlaceRepository:
         state_id: int,
         interests: list[PlaceCategory] | None = None,
         budget_level: BudgetLevel | None = None,
-        limit: int = 30,
+        limit: int = 40,
     ) -> list[Place]:
-        """Fetch verified places in a state for grounding the AI trip planner."""
-        stmt = (
+        """Fetch verified places in a state prioritized by user preferences while keeping full circuit coverage."""
+        all_stmt = (
             select(Place)
             .where(Place.state_id == state_id)
             .options(
                 joinedload(Place.destination).selectinload(Destination.cost_tiers),
             )
+            .order_by(Place.id.asc())
+            .limit(max(limit, 40))
         )
-        if interests:
-            stmt = stmt.where(Place.category.in_(interests))
-        if budget_level:
-            stmt = stmt.where(Place.budget_level == budget_level)
+        all_places = list(db.execute(all_stmt).scalars().all())
+        if not interests and not budget_level:
+            return all_places[:limit]
 
-        results = list(db.execute(stmt.limit(limit)).scalars().all())
-        if len(results) < 10:
-            fallback_stmt = (
-                select(Place)
-                .where(Place.state_id == state_id)
-                .options(
-                    joinedload(Place.destination).selectinload(Destination.cost_tiers),
-                )
-                .limit(limit)
-            )
-            existing_ids = {p.id for p in results}
-            for candidate in db.execute(fallback_stmt).scalars().all():
-                if candidate.id not in existing_ids:
-                    results.append(candidate)
-                    if len(results) >= limit:
-                        break
-        return results
+        interest_set = set(interests or [])
+
+        def _priority_score(place: Place) -> tuple[int, int]:
+            interest_match = 1 if (interest_set and place.category in interest_set) else 0
+            budget_match = 1 if (budget_level and place.budget_level == budget_level) else 0
+            return (-interest_match, -budget_match)
+
+        all_places.sort(key=_priority_score)
+        return all_places[: max(limit, len(all_places))]

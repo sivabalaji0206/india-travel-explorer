@@ -27,13 +27,13 @@ interface PlaceCardProps {
 }
 
 const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
-  beach: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80',
+  beach: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
   temple: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
-  heritage: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80',
-  wildlife: 'https://images.unsplash.com/photo-1615800098779-1be32e60cca3?auto=format&fit=crop&w=800&q=80',
-  hill_station: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
-  nature: 'https://images.unsplash.com/photo-1546587348-d12660c30c50?auto=format&fit=crop&w=800&q=80',
-  adventure: 'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=800&q=80',
+  heritage: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+  wildlife: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=800&q=80',
+  hill_station: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+  nature: 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=800&q=80',
+  adventure: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
   city: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80',
 };
 
@@ -42,8 +42,11 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
   const categoryColor = designTokens.colors.categories[place.category] || theme.palette.primary.main;
   const imageUrl = place.image_url || FALLBACK_CATEGORY_IMAGES[place.category] || FALLBACK_CATEGORY_IMAGES.nature;
 
-  const isFree = place.entry_fee === 0 || (place.entry_fee === null && (place.category === 'beach' || place.category === 'temple'));
-  const feeLabel = isFree ? 'Free Entry' : place.entry_fee ? `₹${place.entry_fee} Ticket` : 'Open Entry';
+  const feeAmount = place.entry_fee !== null && place.entry_fee !== undefined ? Number(place.entry_fee) : 0;
+  const hasTicket = !Number.isNaN(feeAmount) && feeAmount > 0;
+  const isFree = !hasTicket;
+  const feeLabel = hasTicket ? `₹${Math.round(feeAmount)} / person` : 'Free Entry';
+  const dailyExpenseLabel = `₹${Math.round(Number(place.avg_daily_cost || 200))}`;
 
   return (
     <Card
@@ -76,6 +79,11 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
           height="180"
           image={imageUrl}
           alt={place.name}
+          referrerPolicy="no-referrer"
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = FALLBACK_CATEGORY_IMAGES[place.category] || FALLBACK_CATEGORY_IMAGES.nature;
+          }}
           sx={{
             objectFit: 'cover',
             transition: 'transform 0.4s ease',
@@ -179,7 +187,7 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
         >
           <Box>
             <Typography variant="caption" sx={{ color: theme.palette.text.secondary, display: 'block' }}>
-              Entry Ticket
+              {hasTicket ? 'Official Entry Ticket' : 'Entry Access'}
             </Typography>
             <Stack direction="row" alignItems="center" spacing={0.5}>
               <TicketIcon sx={{ fontSize: 15, color: isFree ? '#10B981' : theme.palette.text.primary }} />
@@ -202,7 +210,7 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
             <Stack direction="row" alignItems="center" spacing={0.3} justifyContent="flex-end">
               <CostIcon sx={{ fontSize: 15, color: theme.palette.primary.main }} />
               <Typography variant="body2" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
-                ₹{place.avg_daily_cost}
+                {dailyExpenseLabel}
               </Typography>
             </Stack>
           </Box>

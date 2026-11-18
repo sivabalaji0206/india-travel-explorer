@@ -91,3 +91,20 @@ class ForbiddenError(AppException):
             code="FORBIDDEN",
             details=details,
         )
+
+
+class ExternalServiceError(AppException):
+    """Raised when an external upstream provider (such as Gemini AI) is unavailable."""
+
+    def __init__(
+        self,
+        message: str = "The AI Travel Concierge service is temporarily unavailable. Please try again shortly.",
+        *,
+        details: dict[str, object] | list[object] | None = None,
+    ) -> None:
+        super().__init__(
+            message=message,
+            status_code=503,
+            code="EXTERNAL_SERVICE_UNAVAILABLE",
+            details=details,
+        )

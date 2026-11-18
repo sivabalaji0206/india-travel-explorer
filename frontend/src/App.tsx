@@ -26,6 +26,8 @@ export const App: React.FC = () => {
   const [authModalOpen, setAuthModalOpen] = useState<boolean>(false);
   const [plannerModalOpen, setPlannerModalOpen] = useState<boolean>(false);
   const [plannerInitialStateId, setPlannerInitialStateId] = useState<number | null>(null);
+  const [selectedSavedPlan, setSelectedSavedPlan] = useState<SavedPlanDetail | null>(null);
+  const [plansRefreshKey, setPlansRefreshKey] = useState<number>(0);
   const [detailPlaceId, setDetailPlaceId] = useState<number | null>(null);
 
   // States Data
@@ -100,6 +102,7 @@ export const App: React.FC = () => {
 
   // Handlers
   const handleOpenPlanner = (stateId?: number) => {
+    setSelectedSavedPlan(null);
     setPlannerInitialStateId(stateId || null);
     setPlannerModalOpen(true);
   };
@@ -135,9 +138,10 @@ export const App: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handleViewPlanDetail = (_planDetail: SavedPlanDetail) => {
-    // Open planner directly with the plan's state
-    setPlannerInitialStateId(_planDetail.state_id);
+  const handleViewPlanDetail = (planDetail: SavedPlanDetail) => {
+    // Open planner directly with the saved plan loaded into the chat stream
+    setSelectedSavedPlan(planDetail);
+    setPlannerInitialStateId(planDetail.state_id);
     setPlannerModalOpen(true);
   };
 
@@ -220,6 +224,7 @@ export const App: React.FC = () => {
             onOpenAuth={() => setAuthModalOpen(true)}
             onOpenPlanner={handleOpenPlanner}
             onViewPlanDetail={handleViewPlanDetail}
+            refreshTrigger={plansRefreshKey}
           />
         )}
       </Box>
@@ -241,6 +246,8 @@ export const App: React.FC = () => {
         open={plannerModalOpen}
         onClose={() => setPlannerModalOpen(false)}
         initialStateId={plannerInitialStateId}
+        initialSavedPlan={selectedSavedPlan}
+        onPlanSaved={() => setPlansRefreshKey((prev) => prev + 1)}
         states={states}
         onOpenAuth={() => setAuthModalOpen(true)}
       />

@@ -36,3 +36,43 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(150, 150, 150, 0.5);
 }
+
+/* Print Styles for Executive Itinerary Export */
+@media print {
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .no-print,
+  .MuiDialogTitle-root,
+  .MuiBackdrop-root,
+  header,
+  nav,
+  footer,
+  form {
+    display: none !important;
+  }
+  .MuiDialog-container {
+    position: static !important;
+    display: block !important;
+  }
+  .MuiDialog-paper {
+    position: static !important;
+    max-height: none !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .MuiDialogContent-root {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .printable-itinerary-card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    page-break-inside: auto;
+  }
+}
