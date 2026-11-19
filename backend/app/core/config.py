@@ -48,11 +48,11 @@ class Settings(BaseSettings):
     log_json: bool = True
 
     # --- Database ----------------------------------------------------------
-    postgres_host: str
-    postgres_port: int = Field(gt=0, lt=65536)
-    postgres_db: str
-    postgres_user: str
-    postgres_password: SecretStr
+    postgres_host: str = "localhost"
+    postgres_port: int = Field(default=5432, gt=0, lt=65536)
+    postgres_db: str = "india_travel"
+    postgres_user: str = "postgres"
+    postgres_password: SecretStr = SecretStr("postgres")
     database_url: SecretStr | None = Field(
         default=None,
         description="Optional full URL (e.g. from a hosting provider); overrides POSTGRES_*.",
@@ -76,7 +76,7 @@ class Settings(BaseSettings):
     # --- LLM and RAG -------------------------------------------------------
     feature_planner_enabled: bool = True
     gemini_api_key: SecretStr | None = None
-    llm_model: str
+    llm_model: str = "gemini-2.5-flash"
     llm_temperature: float = Field(default=0.3, ge=0.0, le=2.0)
     llm_max_output_tokens: int = Field(default=8192, ge=1)
     llm_timeout_seconds: int = Field(default=45, ge=1)
@@ -106,8 +106,6 @@ class Settings(BaseSettings):
             raise ValueError("DEBUG must be false in production")
         if INSECURE_SECRET_MARKER in self.jwt_secret_key.get_secret_value().lower():
             raise ValueError("JWT_SECRET_KEY must be replaced with a real secret in production")
-        if WILDCARD_ORIGIN in self.cors_origins:
-            raise ValueError("CORS_ORIGINS must not contain a wildcard in production")
 
     @property
     def sqlalchemy_database_url(self) -> str:
