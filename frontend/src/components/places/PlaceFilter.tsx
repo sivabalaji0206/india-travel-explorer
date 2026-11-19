@@ -23,17 +23,16 @@ import {
   Search as SearchIcon,
 } from '@mui/icons-material';
 import { PlaceCategory, Season, State } from '../../api/types';
-import { designTokens } from '../../theme/tokens';
 
-const CATEGORIES: { label: string; value: PlaceCategory }[] = [
-  { label: 'Beach', value: 'beach' },
-  { label: 'Hill Station', value: 'hill_station' },
-  { label: 'Temple', value: 'temple' },
-  { label: 'Wildlife', value: 'wildlife' },
-  { label: 'Heritage', value: 'heritage' },
-  { label: 'Adventure', value: 'adventure' },
-  { label: 'City', value: 'city' },
-  { label: 'Nature', value: 'nature' },
+const CATEGORIES: { label: string; value: PlaceCategory; emoji: string }[] = [
+  { label: 'Beach', value: 'beach', emoji: '🏖️' },
+  { label: 'Hill Station', value: 'hill_station', emoji: '⛰️' },
+  { label: 'Temple', value: 'temple', emoji: '🛕' },
+  { label: 'Wildlife', value: 'wildlife', emoji: '🐅' },
+  { label: 'Heritage', value: 'heritage', emoji: '🏛️' },
+  { label: 'Adventure', value: 'adventure', emoji: '🧭' },
+  { label: 'City', value: 'city', emoji: '🏙️' },
+  { label: 'Nature', value: 'nature', emoji: '🌿' },
 ];
 
 const SEASONS: { label: string; value: Season }[] = [
@@ -97,27 +96,37 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
     <Paper
       elevation={0}
       sx={{
-        p: { xs: 2, md: 3 },
+        p: { xs: 2.5, md: 3 },
         mb: 4,
-        borderRadius: 3,
+        borderRadius: 3.5,
         border: `1px solid ${theme.palette.divider}`,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
       }}
     >
-      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 2.5 }}>
         <Stack direction="row" alignItems="center" spacing={1}>
-          <FilterIcon sx={{ color: theme.palette.primary.main }} />
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+          <FilterIcon sx={{ color: '#1E7D5C', fontSize: 22 }} />
+          <Typography variant="h6" sx={{ fontWeight: 800, fontSize: '1.05rem', color: '#1E293B' }}>
             Filter Attractions
           </Typography>
         </Stack>
         {hasActiveFilters && (
           <Button
             size="small"
-            startIcon={<ClearIcon />}
+            startIcon={<ClearIcon fontSize="small" />}
             onClick={onReset}
             color="inherit"
-            sx={{ textTransform: 'none', color: theme.palette.text.secondary }}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 700,
+              fontSize: '0.8rem',
+              color: '#64748B',
+              backgroundColor: '#F1F5F9',
+              borderRadius: 2,
+              px: 1.5,
+              '&:hover': { backgroundColor: '#E2E8F0', color: '#0F172A' },
+            }}
           >
             Reset Filters
           </Button>
@@ -136,9 +145,15 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon fontSize="small" sx={{ color: theme.palette.text.secondary }} />
+                  <SearchIcon fontSize="small" sx={{ color: '#94A3B8' }} />
                 </InputAdornment>
               ),
+              sx: {
+                borderRadius: 2.5,
+                backgroundColor: '#F8FAFC',
+                '& fieldset': { borderColor: '#E2E8F0' },
+                '&:hover fieldset': { borderColor: '#CBD5E1' },
+              },
             }}
           />
 
@@ -149,6 +164,11 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
               value={selectedStateId}
               label="Select State"
               onChange={(e) => onSelectState(e.target.value as number | '')}
+              sx={{
+                borderRadius: 2.5,
+                backgroundColor: '#F8FAFC',
+                '& fieldset': { borderColor: '#E2E8F0' },
+              }}
             >
               <MenuItem value="">
                 <em>All India (All States)</em>
@@ -168,6 +188,11 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
               value={selectedBudget}
               label="Budget Tier"
               onChange={(e) => onSelectBudget(e.target.value)}
+              sx={{
+                borderRadius: 2.5,
+                backgroundColor: '#F8FAFC',
+                '& fieldset': { borderColor: '#E2E8F0' },
+              }}
             >
               {BUDGET_TIERS.map((b) => (
                 <MenuItem key={b.value} value={b.value}>
@@ -184,6 +209,11 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
               value={selectedSeason}
               label="Best Season"
               onChange={(e) => onSelectSeason(e.target.value as Season | '')}
+              sx={{
+                borderRadius: 2.5,
+                backgroundColor: '#F8FAFC',
+                '& fieldset': { borderColor: '#E2E8F0' },
+              }}
             >
               <MenuItem value="">
                 <em>Any Season</em>
@@ -204,32 +234,48 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
           justifyContent="space-between"
           spacing={2}
         >
-          {/* Category Chips */}
-          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ gap: 0.75 }}>
+          {/* Category Chips with Icons */}
+          <Stack direction="row" spacing={0.8} flexWrap="wrap" useFlexGap sx={{ gap: 0.8 }}>
             <Chip
-              label="All Categories"
+              label="✨ All Categories"
               size="small"
               onClick={() => onSelectCategory('')}
-              color={selectedCategory === '' ? 'primary' : 'default'}
-              variant={selectedCategory === '' ? 'filled' : 'outlined'}
-              sx={{ fontWeight: 600 }}
+              sx={{
+                fontWeight: 700,
+                fontSize: '0.8rem',
+                py: 1.8,
+                px: 0.5,
+                borderRadius: 2,
+                backgroundColor: selectedCategory === '' ? '#1E7D5C' : '#F1F5F9',
+                color: selectedCategory === '' ? '#FFFFFF' : '#475569',
+                border: selectedCategory === '' ? 'none' : '1px solid #E2E8F0',
+                '&:hover': {
+                  backgroundColor: selectedCategory === '' ? '#176449' : '#E2E8F0',
+                },
+              }}
             />
             {CATEGORIES.map((cat) => {
               const isSelected = selectedCategory === cat.value;
-              const catColor = designTokens.colors.categories[cat.value];
               return (
                 <Chip
                   key={cat.value}
-                  label={cat.label}
+                  label={`${cat.emoji} ${cat.label}`}
                   size="small"
                   onClick={() => onSelectCategory(isSelected ? '' : cat.value)}
                   sx={{
-                    fontWeight: 600,
-                    borderColor: isSelected ? catColor : undefined,
-                    backgroundColor: isSelected ? `${catColor}20` : undefined,
-                    color: isSelected ? catColor : undefined,
+                    fontWeight: 700,
+                    fontSize: '0.8rem',
+                    py: 1.8,
+                    px: 0.5,
+                    borderRadius: 2,
+                    backgroundColor: isSelected ? '#1E7D5C' : '#F8FAFC',
+                    color: isSelected ? '#FFFFFF' : '#334155',
+                    border: isSelected ? 'none' : '1px solid #E2E8F0',
+                    boxShadow: isSelected ? '0 2px 6px rgba(30, 125, 92, 0.25)' : 'none',
+                    '&:hover': {
+                      backgroundColor: isSelected ? '#176449' : '#F1F5F9',
+                    },
                   }}
-                  variant={isSelected ? 'filled' : 'outlined'}
                 />
               );
             })}
@@ -241,13 +287,20 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
               <Switch
                 checked={hiddenGemOnly}
                 onChange={(e) => onToggleHiddenGem(e.target.checked)}
-                color="secondary"
+                sx={{
+                  '& .MuiSwitch-switchBase.Mui-checked': {
+                    color: '#0EA5E9',
+                    '& + .MuiSwitch-track': {
+                      backgroundColor: '#0EA5E9',
+                    },
+                  },
+                }}
               />
             }
             label={
-              <Stack direction="row" alignItems="center" spacing={0.5}>
-                <GemIcon sx={{ fontSize: 18, color: theme.palette.secondary.main }} />
-                <Typography variant="body2" sx={{ fontWeight: 700 }}>
+              <Stack direction="row" alignItems="center" spacing={0.6}>
+                <GemIcon sx={{ fontSize: 18, color: '#0EA5E9' }} />
+                <Typography variant="body2" sx={{ fontWeight: 700, color: '#1E293B', fontSize: '0.84rem' }}>
                   Hidden Gems Only
                 </Typography>
               </Stack>
@@ -258,4 +311,3 @@ export const PlaceFilter: React.FC<PlaceFilterProps> = ({
     </Paper>
   );
 };
-

@@ -73,6 +73,8 @@ class ItineraryPlaceItem(BaseModel):
     entry_fee: Decimal = Decimal("0")
     recommended_time: str = "Morning"
     is_hidden_gem: bool = False
+    latitude: Decimal | None = None
+    longitude: Decimal | None = None
 
 
 class ItineraryMealItem(BaseModel):

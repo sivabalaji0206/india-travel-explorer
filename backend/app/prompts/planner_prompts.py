@@ -213,8 +213,8 @@ Current Plan Title: {current_plan.trip_title} ({current_plan.total_days} days)
 {foods_text}
 
 ### INSTRUCTIONS:
-1. If the traveler asks a question (e.g. best timing, weather, packing, local etiquette), answer warmly and specifically in "reply" and set "updated_plan" to null.
-2. If the traveler requests itinerary changes (e.g. "make Day 2 more relaxed", "swap beaches for temples", "change meals to vegetarian"), return a clear explanation in "reply" AND the complete modified plan in "updated_plan" obeying zero duplicates and <= 85 km same-day proximity.
+1. If the traveler asks a pure informational question (e.g. best timing, weather, packing, local etiquette) without requesting any plan adjustment, answer warmly and specifically in "reply" and set "updated_plan" to null.
+2. If the traveler requests ANY itinerary changes or adjustments (e.g. "add mixed places for last 2 days", "swap beaches for temples", "make Day 2 more relaxed", "change meals to vegetarian", "add waterfalls", "include more heritage"), you MUST return a clear concise explanation in "reply" AND the complete modified plan in "updated_plan" (with all days and places populated). Obey zero duplicate attractions across days and <= 85 km same-day proximity. NEVER return "updated_plan": null when any addition, mix, swap, or adjustment is requested.
 3. Politely refuse non-travel/off-topic requests with "updated_plan": null.
 
 ### REQUIRED JSON SCHEMA:

@@ -9,6 +9,7 @@ import {
   Chip,
   IconButton,
   Stack,
+  Tooltip,
   Typography,
   useTheme,
 } from '@mui/material';
@@ -16,7 +17,6 @@ import {
   AutoAwesome as PlannerIcon,
   ChevronLeft as PrevIcon,
   ChevronRight as NextIcon,
-  Collections as PhotoIcon,
   Explore as ExploreIcon,
   LocationOn as LocationIcon,
   WbSunnyOutlined as SeasonIcon,
@@ -36,12 +36,12 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
   const [photoIndex, setPhotoIndex] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Auto-slide to next photo every 4.5 seconds if hovered or idle
+  // Subtle auto-advance gallery photo on hover
   useEffect(() => {
-    if (!isHovered) return;
+    if (!isHovered || gallery.length <= 1) return;
     const timer = setInterval(() => {
       setPhotoIndex((prev) => (prev + 1) % gallery.length);
-    }, 3500);
+    }, 4000);
     return () => clearInterval(timer);
   }, [isHovered, gallery.length]);
 
@@ -57,6 +57,12 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
 
   const currentPhoto = gallery[photoIndex] || gallery[0];
 
+  // Extract iconic destination hubs from gallery captions for an informative corridor tag
+  const landmarkTags = gallery
+    .slice(0, 3)
+    .map((p) => p.caption.split(',')[0].trim())
+    .filter(Boolean);
+
   return (
     <Card
       onMouseEnter={() => setIsHovered(true)}
@@ -69,60 +75,63 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 3.5,
+        backgroundColor: '#FFFFFF',
         border: `1px solid ${theme.palette.divider}`,
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.04)',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         '&:hover': {
           transform: 'translateY(-6px)',
-          boxShadow:
-            theme.palette.mode === 'dark'
-              ? '0 16px 36px rgba(0,0,0,0.65)'
-              : '0 16px 36px rgba(224, 93, 56, 0.16)',
+          boxShadow: '0 16px 32px rgba(30, 125, 92, 0.12)',
           borderColor: theme.palette.primary.main,
-          '& .carousel-controls': {
+          '& .carousel-nav': {
             opacity: 1,
+          },
+          '& .state-card-media': {
+            transform: 'scale(1.05)',
           },
         },
       }}
     >
-      {/* Interactive Photo Carousel Header (Height 210px for rich visibility) */}
-      <Box sx={{ position: 'relative', height: 210, overflow: 'hidden', bgcolor: '#000' }}>
+      {/* High-Impact Visual Header (16:10 aspect ratio) */}
+      <Box sx={{ position: 'relative', height: 215, overflow: 'hidden', bgcolor: '#0F172A' }}>
         <CardMedia
           component="img"
+          className="state-card-media"
           key={currentPhoto.url}
-          height="210"
+          height="215"
           image={currentPhoto.url}
           alt={currentPhoto.caption || state.name}
           referrerPolicy="no-referrer"
           onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
             e.currentTarget.onerror = null;
             const nextPhoto = gallery[(photoIndex + 1) % gallery.length]?.url;
-            e.currentTarget.src = nextPhoto && nextPhoto !== currentPhoto.url
-              ? nextPhoto
-              : 'https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80';
+            e.currentTarget.src =
+              nextPhoto && nextPhoto !== currentPhoto.url
+                ? nextPhoto
+                : 'https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80';
           }}
           sx={{
             objectFit: 'cover',
-            animation: 'fadeIn 0.5s ease',
+            transition: 'transform 0.45s ease',
+            animation: 'fadeIn 0.4s ease',
             '@keyframes fadeIn': {
-              '0%': { opacity: 0.6 },
+              '0%': { opacity: 0.7 },
               '100%': { opacity: 1 },
             },
           }}
         />
 
-        {/* Subtle Bottom Gradient Scrim for crisp readability */}
+        {/* Clean, Non-Obtrusive Gradient Scrim */}
         <Box
           sx={{
             position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 90,
-            background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)',
+            inset: 0,
+            background:
+              'linear-gradient(to top, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.25) 50%, rgba(0,0,0,0.15) 100%)',
           }}
         />
 
-        {/* Top Badges (Region + Photo Count) */}
+        {/* Top Frosted Region Badge & Destination Count */}
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -135,196 +144,221 @@ export const StateCard: React.FC<StateCardProps> = ({ state, onExplore, onPlanTr
               label={state.region}
               sx={{
                 fontWeight: 700,
-                fontSize: '0.68rem',
-                backdropFilter: 'blur(8px)',
-                backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                color: '#fff',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
+                fontSize: '0.7rem',
+                backdropFilter: 'blur(10px)',
+                backgroundColor: 'rgba(15, 23, 42, 0.65)',
+                color: '#FFFFFF',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
               }}
             />
           )}
 
-          {/* Photo Counter Pill: e.g. 1 / 6 photos */}
           <Chip
             size="small"
-            icon={<PhotoIcon sx={{ fontSize: '12px !important', color: '#fff !important' }} />}
-            label={`${photoIndex + 1} / ${gallery.length}`}
+            icon={<LocationIcon sx={{ fontSize: '13px !important', color: '#FFFFFF !important' }} />}
+            label={`${state.place_count} Places`}
             sx={{
               fontWeight: 800,
-              fontSize: '0.68rem',
-              backdropFilter: 'blur(8px)',
-              backgroundColor: 'rgba(0, 0, 0, 0.6)',
-              color: '#fff',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              fontSize: '0.7rem',
+              backdropFilter: 'blur(10px)',
+              backgroundColor: 'rgba(30, 125, 92, 0.85)',
+              color: '#FFFFFF',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
             }}
           />
         </Stack>
 
-        {/* Previous & Next Arrow Controls (visible on hover) */}
-        <Box
-          className="carousel-controls"
-          sx={{
-            opacity: 0,
-            transition: 'opacity 0.25s ease',
-            position: 'absolute',
-            top: '50%',
-            left: 8,
-            right: 8,
-            transform: 'translateY(-50%)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            pointerEvents: 'none',
-            zIndex: 3,
-          }}
-        >
-          <IconButton
-            size="small"
-            onClick={handlePrevPhoto}
+        {/* Subtle Carousel Arrow Navigation on Hover */}
+        {gallery.length > 1 && (
+          <Box
+            className="carousel-nav"
             sx={{
-              pointerEvents: 'auto',
-              backgroundColor: 'rgba(0,0,0,0.65)',
-              color: '#fff',
-              backdropFilter: 'blur(4px)',
-              p: 0.5,
-              '&:hover': { backgroundColor: 'rgba(0,0,0,0.85)' },
+              opacity: 0,
+              transition: 'opacity 0.25s ease',
+              position: 'absolute',
+              top: '45%',
+              left: 8,
+              right: 8,
+              transform: 'translateY(-50%)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              pointerEvents: 'none',
+              zIndex: 3,
             }}
           >
-            <PrevIcon fontSize="small" />
-          </IconButton>
-          <IconButton
-            size="small"
-            onClick={handleNextPhoto}
-            sx={{
-              pointerEvents: 'auto',
-              backgroundColor: 'rgba(0,0,0,0.65)',
-              color: '#fff',
-              backdropFilter: 'blur(4px)',
-              p: 0.5,
-              '&:hover': { backgroundColor: 'rgba(0,0,0,0.85)' },
-            }}
-          >
-            <NextIcon fontSize="small" />
-          </IconButton>
-        </Box>
-
-        {/* Bottom overlay: State Name & Photo Caption */}
-        <Box sx={{ position: 'absolute', bottom: 10, left: 14, right: 14, zIndex: 2 }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
-            <Box>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 900,
-                  color: '#fff',
-                  lineHeight: 1.15,
-                  textShadow: '0 2px 4px rgba(0,0,0,0.9)',
-                }}
-              >
-                {state.name}
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: 'rgba(255,255,255,0.85)',
-                  fontSize: '0.72rem',
-                  display: '-webkit-box',
-                  WebkitLineClamp: 1,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden',
-                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
-                }}
-              >
-                {currentPhoto.caption}
-              </Typography>
-            </Box>
-
-            <Chip
+            <IconButton
               size="small"
-              icon={<LocationIcon sx={{ fontSize: '13px !important', color: '#fff !important' }} />}
-              label={`${state.place_count}`}
+              onClick={handlePrevPhoto}
               sx={{
-                fontWeight: 800,
-                fontSize: '0.7rem',
-                backgroundColor: theme.palette.primary.main,
-                color: '#fff',
-                height: 22,
-                boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
+                pointerEvents: 'auto',
+                backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                color: '#FFFFFF',
+                backdropFilter: 'blur(6px)',
+                p: 0.5,
+                '&:hover': { backgroundColor: 'rgba(15, 23, 42, 0.95)' },
               }}
-            />
-          </Stack>
+            >
+              <PrevIcon sx={{ fontSize: 18 }} />
+            </IconButton>
+            <IconButton
+              size="small"
+              onClick={handleNextPhoto}
+              sx={{
+                pointerEvents: 'auto',
+                backgroundColor: 'rgba(15, 23, 42, 0.75)',
+                color: '#FFFFFF',
+                backdropFilter: 'blur(6px)',
+                p: 0.5,
+                '&:hover': { backgroundColor: 'rgba(15, 23, 42, 0.95)' },
+              }}
+            >
+              <NextIcon sx={{ fontSize: 18 }} />
+            </IconButton>
+          </Box>
+        )}
 
-          {/* Dots Indicator */}
-          <Stack direction="row" spacing={0.6} justifyContent="center" sx={{ mt: 1 }}>
-            {gallery.map((_, idx) => (
-              <Box
-                key={idx}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setPhotoIndex(idx);
-                }}
-                sx={{
-                  width: idx === photoIndex ? 16 : 5,
-                  height: 4,
-                  borderRadius: 2,
-                  backgroundColor: idx === photoIndex ? '#fff' : 'rgba(255,255,255,0.45)',
-                  cursor: 'pointer',
-                  transition: 'all 0.25s ease',
-                  '&:hover': { backgroundColor: '#fff' },
-                }}
-              />
-            ))}
-          </Stack>
+        {/* Bottom Overlay: State Name & Photo Caption */}
+        <Box sx={{ position: 'absolute', bottom: 12, left: 14, right: 14, zIndex: 2 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 900,
+              color: '#FFFFFF',
+              lineHeight: 1.2,
+              letterSpacing: '-0.01em',
+              textShadow: '0 2px 6px rgba(0, 0, 0, 0.7)',
+            }}
+          >
+            {state.name}
+          </Typography>
+
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'rgba(255, 255, 255, 0.85)',
+              fontSize: '0.74rem',
+              display: '-webkit-box',
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textShadow: '0 1px 3px rgba(0, 0, 0, 0.6)',
+              mt: 0.2,
+            }}
+          >
+            {currentPhoto.caption}
+          </Typography>
         </Box>
       </Box>
 
-      {/* Card Content */}
-      <CardContent sx={{ pb: 1, pt: 2 }}>
-        <Typography
-          variant="body2"
-          sx={{
-            color: theme.palette.text.secondary,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            lineHeight: 1.5,
-            minHeight: '3em',
-            mb: 1.5,
-          }}
-        >
-          {state.description || `Discover iconic heritage, nature, and cultural wonders in ${state.name}.`}
-        </Typography>
+      {/* Card Body: Highlights & Season */}
+      <CardContent sx={{ pb: 1.5, pt: 2, flexGrow: 1 }}>
+        {/* Destination Corridor Highlights (Replaces boilerplate text) */}
+        {landmarkTags.length > 0 && (
+          <Box sx={{ mb: 1.5 }}>
+            <Typography
+              variant="caption"
+              sx={{
+                color: '#64748B',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                fontSize: '0.66rem',
+                letterSpacing: '0.05em',
+                display: 'block',
+                mb: 0.6,
+              }}
+            >
+              Top Highlights
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: '#334155',
+                fontWeight: 600,
+                fontSize: '0.82rem',
+                lineHeight: 1.45,
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {landmarkTags.join(' • ')}
+            </Typography>
+          </Box>
+        )}
 
+        {/* Season Indicator Pill */}
         {state.best_time_to_visit && (
-          <Stack direction="row" alignItems="center" spacing={0.6}>
-            <SeasonIcon sx={{ fontSize: 15, color: theme.palette.primary.main }} />
-            <Typography variant="caption" sx={{ color: theme.palette.text.secondary, fontWeight: 600 }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={0.7}
+            sx={{
+              mt: 1,
+              py: 0.6,
+              px: 1,
+              borderRadius: 1.5,
+              backgroundColor: '#F8FAFC',
+              border: '1px solid #F1F5F9',
+              width: 'fit-content',
+            }}
+          >
+            <SeasonIcon sx={{ fontSize: 14, color: '#F59E0B' }} />
+            <Typography variant="caption" sx={{ color: '#475569', fontWeight: 600, fontSize: '0.74rem' }}>
               <strong>Best Season:</strong> {state.best_time_to_visit}
             </Typography>
           </Stack>
         )}
       </CardContent>
 
+      {/* Unified Action Footer */}
       <CardActions sx={{ p: 2, pt: 0, gap: 1 }}>
         <Button
           size="small"
           variant="outlined"
-          color="inherit"
           fullWidth
-          startIcon={<ExploreIcon fontSize="small" />}
+          startIcon={<ExploreIcon sx={{ fontSize: 16 }} />}
           onClick={() => onExplore(state.id)}
-          sx={{ borderRadius: 2, fontWeight: 700 }}
+          sx={{
+            borderRadius: 2,
+            fontWeight: 700,
+            fontSize: '0.8rem',
+            color: '#334155',
+            borderColor: '#E2E8F0',
+            backgroundColor: '#F8FAFC',
+            py: 0.8,
+            boxShadow: 'none',
+            textTransform: 'none',
+            '&:hover': {
+              borderColor: '#CBD5E1',
+              backgroundColor: '#F1F5F9',
+            },
+          }}
         >
-          Explore Places ({state.place_count})
+          Explore Places
         </Button>
         <Button
           size="small"
           variant="contained"
-          color="primary"
           fullWidth
-          startIcon={<PlannerIcon fontSize="small" />}
+          startIcon={<PlannerIcon sx={{ fontSize: 16 }} />}
           onClick={() => onPlanTrip(state.id)}
-          sx={{ borderRadius: 2, fontWeight: 800 }}
+          sx={{
+            borderRadius: 2,
+            fontWeight: 700,
+            fontSize: '0.8rem',
+            color: '#FFFFFF',
+            backgroundColor: '#1E7D5C',
+            py: 0.8,
+            boxShadow: '0 2px 6px rgba(30, 125, 92, 0.2)',
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: '#176449',
+              boxShadow: '0 4px 12px rgba(30, 125, 92, 0.3)',
+            },
+          }}
         >
           Plan Trip
         </Button>

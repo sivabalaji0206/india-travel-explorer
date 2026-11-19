@@ -1,49 +1,51 @@
 /**
- * Centralized Design Tokens inspired by Indian heritage and modern UI standards.
+ * Centralized Design Tokens with a clean, light, simple color palette.
+ * Inspired by fresh travel aesthetics: crisp white, soft sage/emerald green,
+ * airy slate neutrals, and gentle warm accents.
  */
 
 export const designTokens = {
   colors: {
     primary: {
-      main: '#E05D38', // Terracotta / Warm Saffron
-      light: '#F38869',
-      dark: '#B83E1B',
+      main: '#1E7D5C', // Clean, fresh travel emerald/sage green (from video inspiration)
+      light: '#2EA57B',
+      dark: '#145E44',
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#D97706', // Warm Amber / Mustard Gold
-      light: '#F59E0B',
-      dark: '#B45309',
+      main: '#0284C7', // Fresh sky blue
+      light: '#38BDF8',
+      dark: '#0369A1',
       contrastText: '#FFFFFF',
     },
     teal: {
-      main: '#0D5C46', // Deep Forest / Kerala Backwaters Teal
-      light: '#1B8E6D',
-      dark: '#073E2F',
+      main: '#0D9488',
+      light: '#14B8A6',
+      dark: '#0F766E',
     },
     light: {
-      background: '#F8FAFC',
-      paper: '#FFFFFF',
-      textPrimary: '#0F172A',
-      textSecondary: '#64748B',
-      border: '#E2E8F0',
+      background: '#F9FAFB', // Soft airy light canvas
+      paper: '#FFFFFF',      // Crisp clean white cards
+      textPrimary: '#1E293B', // Clean slate charcoal
+      textSecondary: '#64748B', // Soft muted slate
+      border: '#E5E7EB',      // Gentle light border
     },
     dark: {
-      background: '#0B0F19',
-      paper: '#151D2F',
-      textPrimary: '#F8FAFC',
-      textSecondary: '#94A3B8',
-      border: '#2A364F',
+      background: '#F9FAFB', // Unified light-first plain canvas
+      paper: '#FFFFFF',
+      textPrimary: '#1E293B',
+      textSecondary: '#64748B',
+      border: '#E5E7EB',
     },
     categories: {
       beach: '#0284C7',
-      hill_station: '#059669',
+      hill_station: '#10B981',
       temple: '#D97706',
-      wildlife: '#15803D',
-      heritage: '#9333EA',
+      wildlife: '#16A34A',
+      heritage: '#7C3AED',
       adventure: '#EA580C',
       city: '#475569',
-      nature: '#10B981',
+      nature: '#059669',
     },
   },
   typography: {
@@ -54,4 +56,3 @@ export const designTokens = {
     borderRadius: 14,
   },
 };
-

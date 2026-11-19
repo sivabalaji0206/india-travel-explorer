@@ -130,6 +130,8 @@ export interface ItineraryPlaceItem {
   entry_fee: number;
   recommended_time: string;
   is_hidden_gem: boolean;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface ItineraryMealItem {

@@ -262,7 +262,17 @@ class PlannerService:
                         prompt_tokens=prompt_tokens,
                         completion_tokens=comp_tokens,
                     )
-                return validated_chat_holder[0]
+                chat_res = validated_chat_holder[0]
+                # If traveler asked for itinerary changes but LLM returned updated_plan=None, engage local refiner
+                plan_action_words = (
+                    "add", "mix", "mixed", "change", "swap", "replace", "relax",
+                    "temple", "nature", "waterfall", "beach", "heritage", "budget",
+                    "cheaper", "circuit", "different", "remove", "less", "more", "include"
+                )
+                if chat_res.updated_plan is None and any(w in request.message.lower() for w in plan_action_words):
+                    logger.info("Upstream LLM returned text-only reply for plan modification. Engaging local refiner.")
+                    return self._local_refine_itinerary(state.name, request, places, foods)
+                return chat_res
             except (ExternalServiceError, Exception) as exc:
                 logger.warning(
                     "Upstream Gemini API unavailable during chat_follow_up (%s). "
@@ -279,11 +289,12 @@ class PlannerService:
         places: list[Place],
         foods: list[Food],
     ) -> PlannerChatResponse:
-        """Intelligent local itinerary refiner when upstream LLM is unreachable."""
+        """Intelligent local itinerary refiner with smart day targeting and category diversity."""
         msg = request.message.lower()
         plan = request.current_plan
+        total_days = len(plan.days)
 
-        # Detect hub switch or circuit change request (e.g. "switch to Tirupati", "different region", "temple circuit", "keep cost under budget")
+        # 1. Detect hub switch or full circuit change request
         known_hubs = {
             p.destination.name.lower()
             for p in places
@@ -295,14 +306,14 @@ class PlannerService:
                 requested_hub = h_name
                 break
 
-        if requested_hub or "different" in msg or "another" in msg or "circuit" in msg or "budget" in msg or "cheaper" in msg:
+        if requested_hub or "different region" in msg or "another circuit" in msg or "switch circuit" in msg or "cheaper" in msg or "lower budget" in msg:
             new_budget = plan.total_budget
             new_tier = BudgetLevel.MEDIUM
             if "budget" in msg or "cheaper" in msg or "low" in msg or "under" in msg:
                 new_budget = Decimal(str(round(float(plan.total_budget) * 0.80 / 100.0) * 100))
                 new_tier = BudgetLevel.LOW
             new_interests: list[PlaceCategory] = []
-            if "temple" in msg or "spiritual" in msg or "tirupati" in msg:
+            if "temple" in msg or "spiritual" in msg:
                 new_interests = [PlaceCategory.TEMPLE]
             elif "beach" in msg or "coast" in msg:
                 new_interests = [PlaceCategory.BEACH]
@@ -340,18 +351,52 @@ class PlannerService:
                     f"I have updated your itinerary to **{rebuilt.trip_title}** "
                     f"(Estimated Total: **₹{int(rebuilt.budget_breakdown.total_estimated_cost):,}**):\n\n"
                     f"{day_bullets}\n\n"
-                    "The interactive itinerary card below has been refreshed with the full schedule!"
+                    "The live itinerary cards and interactive route map have been refreshed!"
                 ),
                 updated_plan=rebuilt,
             )
-        day_match = re.search(r"day\s*(\d+)", msg)
-        target_day_num = int(day_match.group(1)) if day_match else (2 if len(plan.days) >= 2 else 1)
-        target_day_num = max(1, min(len(plan.days), target_day_num))
 
-        if "relax" in msg or "less" in msg or "lighter" in msg or "easy" in msg:
+        # 2. Smart Target Day Resolution
+        target_day_nums: list[int] = []
+        word_to_num = {"one": 1, "two": 2, "three": 3, "four": 4, "half": max(1, total_days // 2)}
+
+        # Check for "last N days" or "last day"
+        m_last = re.search(r"last\s+(\d+|one|two|three|four|half)?\s*days?", msg)
+        if m_last:
+            raw_n = m_last.group(1)
+            n_days = int(raw_n) if raw_n and raw_n.isdigit() else word_to_num.get(raw_n or "1", 1)
+            n_days = min(total_days, max(1, n_days))
+            target_day_nums = list(range(total_days - n_days + 1, total_days + 1))
+
+        # Check for "first N days"
+        m_first = re.search(r"first\s+(\d+|one|two|three|four)?\s*days?", msg)
+        if m_first and not target_day_nums:
+            raw_n = m_first.group(1)
+            n_days = int(raw_n) if raw_n and raw_n.isdigit() else word_to_num.get(raw_n or "1", 1)
+            n_days = min(total_days, max(1, n_days))
+            target_day_nums = list(range(1, n_days + 1))
+
+        # Check for explicit day mentions like "day 2 and day 3", "day 2, 3", "day 4"
+        explicit_days = [int(x) for x in re.findall(r"day\s*(\d+)", msg)]
+        if explicit_days and not target_day_nums:
+            valid_explicit = [x for x in explicit_days if 1 <= x <= total_days]
+            if valid_explicit:
+                target_day_nums = sorted(list(set(valid_explicit)))
+
+        # Fallback target days if none explicitly stated
+        if not target_day_nums:
+            if total_days >= 3:
+                target_day_nums = list(range(max(1, total_days - 1), total_days + 1))
+            else:
+                target_day_nums = [total_days]
+
+        target_day_num = target_day_nums[0]
+
+        # 3. Handle Relaxed Pace Request
+        if "relax" in msg or "less" in msg or "lighter" in msg or "easy" in msg or "slow" in msg:
             new_days: list[DayPlan] = []
             for d in plan.days:
-                if d.day_number == target_day_num and len(d.places) > 2:
+                if d.day_number in target_day_nums and len(d.places) > 2:
                     trimmed = d.places[:2]
                     new_days.append(
                         d.model_copy(
@@ -365,15 +410,16 @@ class PlannerService:
                 else:
                     new_days.append(d)
             updated = plan.model_copy(update={"days": new_days})
+            days_str = ", ".join(f"Day {n}" for n in target_day_nums)
             return PlannerChatResponse(
                 reply=(
-                    f"I have made **Day {target_day_num} ({plan.days[target_day_num - 1].destination_name})** "
-                    "more relaxed with fewer stops and extra leisure time!"
+                    f"I have made **{days_str}** more relaxed with fewer stops and extra leisure time!"
                 ),
                 updated_plan=updated,
             )
 
-        if "food" in msg or "dish" in msg or "veg" in msg or "street" in msg:
+        # 4. Handle Dining / Food Requests
+        if "food" in msg or "dish" in msg or "veg" in msg or "street" in msg or "cuisine" in msg:
             used_dishes = {m.dish_name.lower() for d in plan.days for m in d.meals}
             want_veg = "veg" in msg and "non" not in msg
             cand_foods = [
@@ -385,9 +431,9 @@ class PlannerService:
                 chosen = cand_foods[0]
                 new_days = []
                 for d in plan.days:
-                    if d.day_number == target_day_num:
+                    if d.day_number in target_day_nums:
                         new_meal = ItineraryMealItem(
-                            meal_type="Lunch & Street Specialty",
+                            meal_type="Lunch & Specialty",
                             dish_name=chosen.name,
                             food_type=chosen.food_type,
                             avg_price=chosen.avg_price,
@@ -396,44 +442,258 @@ class PlannerService:
                     else:
                         new_days.append(d)
                 updated = plan.model_copy(update={"days": new_days})
+                days_str = ", ".join(f"Day {n}" for n in target_day_nums)
                 return PlannerChatResponse(
                     reply=(
-                        f"Updated **Day {target_day_num}** dining to feature **{chosen.name}** "
-                        f"(₹{chosen.avg_price}), an authentic local specialty of {state_name}!"
+                        f"Updated **{days_str}** dining to feature **{chosen.name}** "
+                        f"(₹{chosen.avg_price}), an authentic regional specialty of {state_name}!"
                     ),
                     updated_plan=updated,
                 )
 
-        if "swap" in msg or "replace" in msg or "nature" in msg or "beach" in msg or "temple" in msg or "heritage" in msg:
-            scheduled_ids = {p.place_id for d in plan.days for p in d.places}
-            target_day = plan.days[target_day_num - 1]
-            unvisited = [p for p in places if p.id not in scheduled_ids]
-            if unvisited and target_day.places:
-                replacement = unvisited[0]
-                updated_places = list(target_day.places[:-1]) + [
-                    ItineraryPlaceItem(
-                        place_id=replacement.id,
-                        place_name=replacement.name,
-                        category=replacement.category,
-                        description=replacement.description or f"Explore {replacement.name}.",
-                        entry_fee=replacement.entry_fee or Decimal("0"),
-                        recommended_time="Sunset / Evening",
-                        is_hidden_gem=bool(replacement.is_hidden_gem),
+        # 5. Handle Mixed Places / Diversity / Specific Category Requests
+        is_mixed = any(w in msg for w in ("mix", "mixed", "variety", "diverse", "blend", "different", "combination", "balance"))
+        wants_temple = any(w in msg for w in ("temple", "temples", "spiritual", "pilgrimage", "shrine", "darshan"))
+        wants_nature = any(w in msg for w in ("nature", "waterfall", "waterfalls", "scenic", "canyon", "cave", "caves", "valley", "hills", "hill station"))
+        wants_heritage = any(w in msg for w in ("heritage", "fort", "forts", "palace", "monument", "historic", "museum", "ruins"))
+        wants_beach = any(w in msg for w in ("beach", "beaches", "coast", "coastal", "sea", "ocean"))
+        wants_wildlife = any(w in msg for w in ("wildlife", "safari", "sanctuary", "national park", "tiger"))
+        wants_adventure = any(w in msg for w in ("adventure", "trek", "trekking", "hike"))
+        is_change_request = is_mixed or wants_temple or wants_nature or wants_heritage or wants_beach or wants_wildlife or wants_adventure or any(
+            w in msg for w in ("add", "swap", "replace", "change", "include", "put", "update")
+        )
+
+        if is_change_request:
+            # Place IDs scheduled in untouched days
+            scheduled_ids = {
+                p.place_id
+                for d in plan.days
+                if d.day_number not in target_day_nums
+                for p in d.places
+            }
+            available_places = [p for p in places if p.id not in scheduled_ids]
+            if not available_places:
+                available_places = list(places)
+
+            # Categorize available places
+            by_category: dict[PlaceCategory, list[Place]] = {}
+            for p in available_places:
+                by_category.setdefault(p.category, []).append(p)
+
+            used_ids: set[int] = set(scheduled_ids)
+            updated_days_map: dict[int, DayPlan] = {}
+            default_slots = ("Morning", "Afternoon", "Sunset / Evening")
+
+            for d_num in target_day_nums:
+                existing_day = next((d for d in plan.days if d.day_number == d_num), None)
+                if not existing_day:
+                    continue
+
+                chosen_for_day: list[Place] = []
+
+                if is_mixed:
+                    # Pick 2-3 stops across diverse categories (e.g. Nature, Heritage, Temple, Beach)
+                    desired_order = [
+                        PlaceCategory.NATURE,
+                        PlaceCategory.HERITAGE,
+                        PlaceCategory.HILL_STATION,
+                        PlaceCategory.TEMPLE,
+                        PlaceCategory.BEACH,
+                        PlaceCategory.WILDLIFE,
+                        PlaceCategory.ADVENTURE,
+                        PlaceCategory.CITY,
+                    ]
+                    # Rotate categories so consecutive days get distinct combinations
+                    rotation_offset = (d_num - 1) * 2
+                    rotated_order = desired_order[rotation_offset % len(desired_order):] + desired_order[:rotation_offset % len(desired_order)]
+
+                    for cat in rotated_order:
+                        if len(chosen_for_day) >= 2:
+                            break
+                        cand = [p for p in by_category.get(cat, []) if p.id not in used_ids]
+                        if cand:
+                            chosen_for_day.append(cand[0])
+                            used_ids.add(cand[0].id)
+
+                elif wants_nature:
+                    cand = [
+                        p for p in available_places
+                        if p.id not in used_ids
+                        and (p.category in (PlaceCategory.NATURE, PlaceCategory.HILL_STATION) or any(w in p.name.lower() for w in ("waterfall", "falls", "cave", "canyon", "valley", "hills")))
+                    ]
+                    for p in cand[:2]:
+                        chosen_for_day.append(p)
+                        used_ids.add(p.id)
+
+                elif wants_temple:
+                    cand = [
+                        p for p in available_places
+                        if p.id not in used_ids
+                        and (p.category == PlaceCategory.TEMPLE or "temple" in p.name.lower() or "shrine" in p.name.lower())
+                    ]
+                    for p in cand[:2]:
+                        chosen_for_day.append(p)
+                        used_ids.add(p.id)
+
+                elif wants_heritage:
+                    cand = [
+                        p for p in available_places
+                        if p.id not in used_ids
+                        and (p.category == PlaceCategory.HERITAGE or any(w in p.name.lower() for w in ("fort", "palace", "monument", "caves", "stepwell")))
+                    ]
+                    for p in cand[:2]:
+                        chosen_for_day.append(p)
+                        used_ids.add(p.id)
+
+                elif wants_beach:
+                    cand = [
+                        p for p in available_places
+                        if p.id not in used_ids
+                        and (p.category == PlaceCategory.BEACH or "beach" in p.name.lower())
+                    ]
+                    for p in cand[:2]:
+                        chosen_for_day.append(p)
+                        used_ids.add(p.id)
+
+                # Fallback to unvisited candidates if not enough category matches
+                if len(chosen_for_day) < 2:
+                    remaining_pool = [p for p in available_places if p.id not in used_ids]
+                    for p in remaining_pool:
+                        if len(chosen_for_day) >= 2:
+                            break
+                        chosen_for_day.append(p)
+                        used_ids.add(p.id)
+
+                # If still empty, keep original day places
+                if not chosen_for_day:
+                    updated_days_map[d_num] = existing_day
+                    continue
+
+                # Build updated ItineraryPlaceItems with truthful GPS coordinates
+                day_place_items: list[ItineraryPlaceItem] = []
+                for p_idx, chosen_p in enumerate(chosen_for_day[:3]):
+                    fee = chosen_p.entry_fee if chosen_p.entry_fee is not None else Decimal("0")
+                    time_slot = default_slots[min(p_idx, len(default_slots) - 1)]
+                    day_place_items.append(
+                        ItineraryPlaceItem(
+                            place_id=chosen_p.id,
+                            place_name=chosen_p.name,
+                            category=chosen_p.category,
+                            description=chosen_p.description or f"Explore the renowned landmark {chosen_p.name}.",
+                            entry_fee=fee,
+                            recommended_time=time_slot,
+                            is_hidden_gem=bool(chosen_p.is_hidden_gem),
+                            latitude=chosen_p.latitude,
+                            longitude=chosen_p.longitude,
+                        )
                     )
-                ]
-                new_days = [
-                    d.model_copy(update={"places": updated_places}) if d.day_number == target_day_num else d
-                    for d in plan.days
-                ]
-                updated = plan.model_copy(update={"days": new_days})
-                return PlannerChatResponse(
-                    reply=(
-                        f"I swapped the final stop on **Day {target_day_num}** with **{replacement.name}** "
-                        f"({replacement.category.value.replace('_', ' ').title()})!"
-                    ),
-                    updated_plan=updated,
+
+                # Hub name
+                hub_label = chosen_for_day[0].destination.name if chosen_for_day[0].destination and chosen_for_day[0].destination.name else existing_day.destination_name
+                cats = sorted({p.category.value.replace("_", " ").title() for p in chosen_for_day})
+                cat_summary = " & ".join(cats)
+
+                if is_mixed:
+                    theme = f"{hub_label}: Mixed {cat_summary} Circuit"
+                elif wants_nature:
+                    theme = f"{hub_label}: Scenic Nature & Waterfalls Exploration"
+                elif wants_temple:
+                    theme = f"{hub_label}: Sacred Temples & Architectural Wonders"
+                elif wants_heritage:
+                    theme = f"{hub_label}: Historic Forts & Heritage Trails"
+                else:
+                    theme = f"{hub_label}: Curated {cat_summary} Highlights"
+
+                tips = f"Balanced itinerary covering {hub_label} ({cat_summary}) with short intra-hub commutes."
+
+                updated_days_map[d_num] = existing_day.model_copy(
+                    update={
+                        "destination_name": hub_label,
+                        "theme": theme,
+                        "places": day_place_items,
+                        "travel_tips": tips,
+                    }
                 )
 
+            # Rebuild plan days
+            new_days: list[DayPlan] = [
+                updated_days_map.get(d.day_number, d) for d in plan.days
+            ]
+
+            # Rebalance budget breakdown
+            new_total_entry = sum(p.entry_fee for d in new_days for p in d.places)
+            old_b = plan.budget_breakdown
+            new_total_cost = (
+                old_b.accommodation_estimate
+                + old_b.food_estimate
+                + new_total_entry
+                + old_b.local_transport_estimate
+            )
+            new_breakdown = old_b.model_copy(
+                update={
+                    "activities_and_entry": new_total_entry,
+                    "total_estimated_cost": new_total_cost,
+                }
+            )
+
+            # Adjust day budgets
+            final_days: list[DayPlan] = []
+            for d in new_days:
+                d_entry = sum(p.entry_fee for p in d.places)
+                d_base = (new_total_cost - new_total_entry) / max(1, len(new_days))
+                final_days.append(
+                    d.model_copy(update={"day_budget": Decimal(str(round(float(d_base) + float(d_entry))))})
+                )
+
+            updated_plan = plan.model_copy(
+                update={
+                    "days": final_days,
+                    "budget_breakdown": new_breakdown,
+                }
+            )
+
+            # Format concise, visual reply bullets
+            day_bullets = []
+            for d_num in target_day_nums:
+                d = next((x for x in final_days if x.day_number == d_num), None)
+                if d:
+                    place_names = " • ".join(
+                        f"{p.place_name} ({p.category.value.replace('_', ' ').title()})"
+                        for p in d.places
+                    )
+                    day_bullets.append(f"• **Day {d.day_number} – {d.destination_name}:** {place_names}")
+
+            bullets_text = "\n".join(day_bullets)
+            target_days_label = " & ".join(f"Day {n}" for n in target_day_nums)
+
+            if is_mixed:
+                reply_text = (
+                    f"I have refreshed your plan with a **diverse mix of natural wonders, heritage, and scenic stops** for **{target_days_label}**:\n\n"
+                    f"{bullets_text}\n\n"
+                    "The schedule, day tabs, and interactive route map on your screen have been updated!"
+                )
+            elif wants_nature:
+                reply_text = (
+                    f"I have updated **{target_days_label}** with scenic waterfalls and nature exploration:\n\n"
+                    f"{bullets_text}\n\n"
+                    "The schedule, day tabs, and interactive route map on your screen have been updated!"
+                )
+            elif wants_temple:
+                reply_text = (
+                    f"I have scheduled revered temples and sacred heritage stops for **{target_days_label}**:\n\n"
+                    f"{bullets_text}\n\n"
+                    "The schedule, day tabs, and interactive route map on your screen have been updated!"
+                )
+            else:
+                reply_text = (
+                    f"I have updated your itinerary stops for **{target_days_label}**:\n\n"
+                    f"{bullets_text}\n\n"
+                    "The schedule, day tabs, and interactive route map on your screen have been updated!"
+                )
+
+            return PlannerChatResponse(reply=reply_text, updated_plan=updated_plan)
+
+        # 6. Informational Question Fallback (pure advice)
         return PlannerChatResponse(
             reply=(
                 f"For your **{state_name}** itinerary, mornings between **7:30 AM and 10:00 AM** are ideal "

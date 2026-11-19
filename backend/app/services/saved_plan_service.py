@@ -45,11 +45,40 @@ class SavedPlanService:
             )
         return results
 
+    def _hydrate_plan_coordinates(self, db: Session, plan_dict: dict) -> dict:
+        """Ensure all places in the plan have valid geo-coordinates from the catalog."""
+        if not isinstance(plan_dict, dict) or "days" not in plan_dict:
+            return plan_dict
+
+        place_ids: list[int] = []
+        for day in plan_dict.get("days", []):
+            for p in day.get("places", []):
+                if (p.get("latitude") is None or p.get("longitude") is None) and p.get("place_id"):
+                    place_ids.append(p["place_id"])
+
+        if place_ids:
+            from app.models.place import Place
+
+            db_places = db.query(Place).filter(Place.id.in_(place_ids)).all()
+            coords_map = {dp.id: (dp.latitude, dp.longitude) for dp in db_places}
+            for day in plan_dict.get("days", []):
+                for p in day.get("places", []):
+                    pid = p.get("place_id")
+                    if pid in coords_map:
+                        lat, lng = coords_map[pid]
+                        if lat is not None and lng is not None:
+                            p["latitude"] = lat
+                            p["longitude"] = lng
+
+        return plan_dict
+
     def get_user_plan(self, db: Session, plan_id: int, user_id: int) -> SavedPlanDetailResponse:
         """Fetch a specific saved plan ensuring user ownership."""
         plan = self.saved_plan_repo.get_by_id_and_user(db, plan_id, user_id)
         if not plan:
             raise EntityNotFoundError("SavedPlan", plan_id)
+
+        plan_data = self._hydrate_plan_coordinates(db, plan.plan_json)
 
         return SavedPlanDetailResponse(
             id=plan.id,
@@ -58,7 +87,7 @@ class SavedPlanService:
             state_name=plan.state.name if plan.state else "Unknown",
             title=plan.title,
             preferences=plan.preferences,
-            plan_json=TripPlanResponse.model_validate(plan.plan_json),
+            plan_json=TripPlanResponse.model_validate(plan_data),
             created_at=plan.created_at,
             updated_at=plan.updated_at,
         )

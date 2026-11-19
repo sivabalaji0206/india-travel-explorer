@@ -7,6 +7,7 @@ import {
   SavedPlanDetail,
   Season,
   State,
+  TripPlanResponse,
 } from './api/types';
 import { AuthModal } from './components/auth/AuthModal';
 import { HeroBanner } from './components/home/HeroBanner';
@@ -17,18 +18,22 @@ import { PlaceExplorer } from './components/places/PlaceExplorer';
 import { PlannerModal } from './components/planner/PlannerModal';
 import { SavedPlansView } from './components/plans/SavedPlansView';
 import { StateGrid } from './components/states/StateGrid';
+import { ItineraryDossierView } from './components/plans/ItineraryDossierView';
 
 export const App: React.FC = () => {
   // Navigation
   const [activeSection, setActiveSection] = useState<'states' | 'places' | 'plans'>('states');
 
-  // Modals
+  // Modals & Active Views
   const [authModalOpen, setAuthModalOpen] = useState<boolean>(false);
   const [plannerModalOpen, setPlannerModalOpen] = useState<boolean>(false);
   const [plannerInitialStateId, setPlannerInitialStateId] = useState<number | null>(null);
   const [selectedSavedPlan, setSelectedSavedPlan] = useState<SavedPlanDetail | null>(null);
   const [plansRefreshKey, setPlansRefreshKey] = useState<number>(0);
   const [detailPlaceId, setDetailPlaceId] = useState<number | null>(null);
+
+  // Dedicated Active Generated Itinerary Dossier
+  const [activeGeneratedPlan, setActiveGeneratedPlan] = useState<TripPlanResponse | null>(null);
 
   // States Data
   const [states, setStates] = useState<State[]>([]);
@@ -102,12 +107,14 @@ export const App: React.FC = () => {
 
   // Handlers
   const handleOpenPlanner = (stateId?: number) => {
+    setActiveGeneratedPlan(null);
     setSelectedSavedPlan(null);
     setPlannerInitialStateId(stateId || null);
     setPlannerModalOpen(true);
   };
 
   const handleHeroSearch = (query: string) => {
+    setActiveGeneratedPlan(null);
     setSearch(query);
     setCurrentPage(1);
     if (activeSection !== 'places') {
@@ -116,12 +123,14 @@ export const App: React.FC = () => {
   };
 
   const handleHeroCategorySelect = (category: PlaceCategory) => {
+    setActiveGeneratedPlan(null);
     setSelectedCategory(category);
     setCurrentPage(1);
     setActiveSection('places');
   };
 
   const handleExploreState = (stateId: number) => {
+    setActiveGeneratedPlan(null);
     setSelectedStateId(stateId);
     setCurrentPage(1);
     setActiveSection('places');
@@ -138,11 +147,8 @@ export const App: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handleViewPlanDetail = (planDetail: SavedPlanDetail) => {
-    // Open planner directly with the saved plan loaded into the chat stream
-    setSelectedSavedPlan(planDetail);
-    setPlannerInitialStateId(planDetail.state_id);
-    setPlannerModalOpen(true);
+  const handleViewPlanDetail = (_planDetail: SavedPlanDetail) => {
+    // Handled in-place within SavedPlansView
   };
 
   return (
@@ -150,13 +156,16 @@ export const App: React.FC = () => {
       {/* Global Navigation Bar */}
       <Navbar
         activeSection={activeSection}
-        onNavigate={(section) => setActiveSection(section)}
+        onNavigate={(section) => {
+          setActiveGeneratedPlan(null);
+          setActiveSection(section);
+        }}
         onOpenAuth={() => setAuthModalOpen(true)}
         onOpenPlanner={handleOpenPlanner}
       />
 
-      {/* Hero Banner (Shown on States & Attractions tabs) */}
-      {activeSection !== 'plans' && (
+      {/* Hero Banner (Shown on States & Attractions tabs when not viewing a generated plan) */}
+      {activeSection !== 'plans' && !activeGeneratedPlan && (
         <HeroBanner
           onSearch={handleHeroSearch}
           onSelectCategory={handleHeroCategorySelect}
@@ -164,68 +173,79 @@ export const App: React.FC = () => {
         />
       )}
 
-      {/* Main Content Area based on Active Tab */}
+      {/* Main Content Area */}
       <Box sx={{ flexGrow: 1 }}>
-        {activeSection === 'states' && (
-          <StateGrid
-            states={states}
-            loading={statesLoading}
-            onExploreState={handleExploreState}
-            onPlanTripForState={(stateId) => handleOpenPlanner(stateId)}
-          />
-        )}
-
-        {activeSection === 'places' && (
-          <PlaceExplorer
-            states={states}
-            places={places}
-            loading={placesLoading}
-            totalItems={totalItems}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={(p) => setCurrentPage(p)}
-            selectedStateId={selectedStateId}
-            onSelectState={(id) => {
-              setSelectedStateId(id);
-              setCurrentPage(1);
-            }}
-            selectedCategory={selectedCategory}
-            onSelectCategory={(c) => {
-              setSelectedCategory(c);
-              setCurrentPage(1);
-            }}
-            selectedBudget={selectedBudget}
-            onSelectBudget={(b) => {
-              setSelectedBudget(b);
-              setCurrentPage(1);
-            }}
-            selectedSeason={selectedSeason}
-            onSelectSeason={(s) => {
-              setSelectedSeason(s);
-              setCurrentPage(1);
-            }}
-            search={search}
-            onSearchChange={(q) => {
-              setSearch(q);
-              setCurrentPage(1);
-            }}
-            hiddenGemOnly={hiddenGemOnly}
-            onToggleHiddenGem={(checked) => {
-              setHiddenGemOnly(checked);
-              setCurrentPage(1);
-            }}
-            onResetFilters={handleResetFilters}
-            onViewDetails={(placeId) => setDetailPlaceId(placeId)}
-          />
-        )}
-
-        {activeSection === 'plans' && (
-          <SavedPlansView
+        {activeGeneratedPlan ? (
+          <ItineraryDossierView
+            plan={activeGeneratedPlan}
+            onBack={() => setActiveGeneratedPlan(null)}
+            onPlanSaved={() => setPlansRefreshKey((prev) => prev + 1)}
             onOpenAuth={() => setAuthModalOpen(true)}
-            onOpenPlanner={handleOpenPlanner}
-            onViewPlanDetail={handleViewPlanDetail}
-            refreshTrigger={plansRefreshKey}
           />
+        ) : (
+          <>
+            {activeSection === 'states' && (
+              <StateGrid
+                states={states}
+                loading={statesLoading}
+                onExploreState={handleExploreState}
+                onPlanTripForState={(stateId) => handleOpenPlanner(stateId)}
+              />
+            )}
+
+            {activeSection === 'places' && (
+              <PlaceExplorer
+                states={states}
+                places={places}
+                loading={placesLoading}
+                totalItems={totalItems}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onPageChange={(p) => setCurrentPage(p)}
+                selectedStateId={selectedStateId}
+                onSelectState={(id) => {
+                  setSelectedStateId(id);
+                  setCurrentPage(1);
+                }}
+                selectedCategory={selectedCategory}
+                onSelectCategory={(c) => {
+                  setSelectedCategory(c);
+                  setCurrentPage(1);
+                }}
+                selectedBudget={selectedBudget}
+                onSelectBudget={(b) => {
+                  setSelectedBudget(b);
+                  setCurrentPage(1);
+                }}
+                selectedSeason={selectedSeason}
+                onSelectSeason={(s) => {
+                  setSelectedSeason(s);
+                  setCurrentPage(1);
+                }}
+                search={search}
+                onSearchChange={(q) => {
+                  setSearch(q);
+                  setCurrentPage(1);
+                }}
+                hiddenGemOnly={hiddenGemOnly}
+                onToggleHiddenGem={(checked) => {
+                  setHiddenGemOnly(checked);
+                  setCurrentPage(1);
+                }}
+                onResetFilters={handleResetFilters}
+                onViewDetails={(placeId) => setDetailPlaceId(placeId)}
+              />
+            )}
+
+            {activeSection === 'plans' && (
+              <SavedPlansView
+                onOpenAuth={() => setAuthModalOpen(true)}
+                onOpenPlanner={handleOpenPlanner}
+                onViewPlanDetail={handleViewPlanDetail}
+                refreshTrigger={plansRefreshKey}
+              />
+            )}
+          </>
         )}
       </Box>
 
@@ -248,6 +268,9 @@ export const App: React.FC = () => {
         initialStateId={plannerInitialStateId}
         initialSavedPlan={selectedSavedPlan}
         onPlanSaved={() => setPlansRefreshKey((prev) => prev + 1)}
+        onPlanGenerated={(generated) => {
+          setActiveGeneratedPlan(generated);
+        }}
         states={states}
         onOpenAuth={() => setAuthModalOpen(true)}
       />

@@ -1,14 +1,13 @@
 import { createTheme, PaletteMode, Theme } from '@mui/material';
 import { designTokens } from './tokens';
 
-export const createAppTheme = (mode: PaletteMode): Theme => {
-  const isDark = mode === 'dark';
+export const createAppTheme = (mode: PaletteMode = 'light'): Theme => {
   const colors = designTokens.colors;
-  const currentModeColors = isDark ? colors.dark : colors.light;
+  const currentModeColors = colors.light; // Clean, simple, light-first palette
 
   return createTheme({
     palette: {
-      mode,
+      mode: 'light',
       primary: colors.primary,
       secondary: colors.secondary,
       background: {
@@ -23,12 +22,12 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
     },
     typography: {
       fontFamily: designTokens.typography.fontFamily,
-      h1: { fontFamily: designTokens.typography.headingFont, fontWeight: 800 },
-      h2: { fontFamily: designTokens.typography.headingFont, fontWeight: 700 },
-      h3: { fontFamily: designTokens.typography.headingFont, fontWeight: 700 },
-      h4: { fontFamily: designTokens.typography.headingFont, fontWeight: 600 },
-      h5: { fontFamily: designTokens.typography.headingFont, fontWeight: 600 },
-      h6: { fontFamily: designTokens.typography.headingFont, fontWeight: 600 },
+      h1: { fontFamily: designTokens.typography.headingFont, fontWeight: 800, color: currentModeColors.textPrimary },
+      h2: { fontFamily: designTokens.typography.headingFont, fontWeight: 700, color: currentModeColors.textPrimary },
+      h3: { fontFamily: designTokens.typography.headingFont, fontWeight: 700, color: currentModeColors.textPrimary },
+      h4: { fontFamily: designTokens.typography.headingFont, fontWeight: 600, color: currentModeColors.textPrimary },
+      h5: { fontFamily: designTokens.typography.headingFont, fontWeight: 600, color: currentModeColors.textPrimary },
+      h6: { fontFamily: designTokens.typography.headingFont, fontWeight: 600, color: currentModeColors.textPrimary },
       button: { textTransform: 'none', fontWeight: 600 },
     },
     shape: {
@@ -38,11 +37,11 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: 12,
+            borderRadius: 10,
             padding: '8px 18px',
             boxShadow: 'none',
             '&:hover': {
-              boxShadow: '0 4px 12px rgba(224, 93, 56, 0.2)',
+              boxShadow: '0 2px 8px rgba(30, 125, 92, 0.18)',
             },
           },
         },
@@ -52,15 +51,11 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
           root: {
             borderRadius: designTokens.shape.borderRadius,
             border: `1px solid ${currentModeColors.border}`,
-            boxShadow: isDark
-              ? '0 4px 20px rgba(0, 0, 0, 0.4)'
-              : '0 4px 20px rgba(0, 0, 0, 0.04)',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
             transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             '&:hover': {
-              transform: 'translateY(-4px)',
-              boxShadow: isDark
-                ? '0 12px 30px rgba(0, 0, 0, 0.6)'
-                : '0 12px 30px rgba(0, 0, 0, 0.08)',
+              transform: 'translateY(-2px)',
+              boxShadow: '0 6px 16px rgba(0, 0, 0, 0.06)',
             },
           },
         },
@@ -76,7 +71,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
       MuiDialog: {
         styleOverrides: {
           paper: {
-            borderRadius: 16,
+            borderRadius: 18,
             backgroundImage: 'none',
           },
         },
@@ -84,4 +79,3 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
     },
   });
 };
-

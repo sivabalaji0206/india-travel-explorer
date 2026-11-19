@@ -64,8 +64,8 @@ export const PlaceExplorer: React.FC<PlaceExplorerProps> = ({
   const theme = useTheme();
 
   return (
-    <Box sx={{ py: 6 }}>
-      <Container maxWidth="xl">
+    <Box className="topographic-canvas" sx={{ py: 6, position: 'relative' }}>
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Section Heading */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="h4" sx={{ fontWeight: 900 }}>

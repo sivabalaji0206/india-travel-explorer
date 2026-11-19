@@ -14,7 +14,7 @@ import {
 import {
   ConfirmationNumberOutlined as TicketIcon,
   Diamond as GemIcon,
-  InfoOutlined as DetailIcon,
+  East as ArrowIcon,
   LocationOn as LocationIcon,
   PaymentsOutlined as CostIcon,
 } from '@mui/icons-material';
@@ -37,6 +37,17 @@ const FALLBACK_CATEGORY_IMAGES: Record<string, string> = {
   city: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80',
 };
 
+const CATEGORY_EMOJIS: Record<string, string> = {
+  beach: '🏖️',
+  temple: '🛕',
+  heritage: '🏛️',
+  wildlife: '🐅',
+  hill_station: '⛰️',
+  nature: '🌿',
+  adventure: '🧭',
+  city: '🏙️',
+};
+
 export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) => {
   const theme = useTheme();
   const categoryColor = designTokens.colors.categories[place.category] || theme.palette.primary.main;
@@ -45,8 +56,9 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
   const feeAmount = place.entry_fee !== null && place.entry_fee !== undefined ? Number(place.entry_fee) : 0;
   const hasTicket = !Number.isNaN(feeAmount) && feeAmount > 0;
   const isFree = !hasTicket;
-  const feeLabel = hasTicket ? `₹${Math.round(feeAmount)} / person` : 'Free Entry';
+  const feeLabel = hasTicket ? `₹${Math.round(feeAmount)}` : 'Free Entry';
   const dailyExpenseLabel = `₹${Math.round(Number(place.avg_daily_cost || 200))}`;
+  const categoryEmoji = CATEGORY_EMOJIS[place.category] || '📍';
 
   return (
     <Card
@@ -57,26 +69,35 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
         justifyContent: 'space-between',
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: 3,
-        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+        borderRadius: 3.5,
+        backgroundColor: '#FFFFFF',
+        border: `1px solid ${theme.palette.divider}`,
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+        transition: 'transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease',
         '&:hover': {
           transform: 'translateY(-5px)',
-          boxShadow:
-            theme.palette.mode === 'dark'
-              ? '0 12px 28px rgba(0,0,0,0.6)'
-              : '0 12px 28px rgba(224, 93, 56, 0.16)',
+          boxShadow: '0 14px 30px rgba(30, 125, 92, 0.12)',
+          borderColor: theme.palette.primary.main,
           '& .place-image': {
             transform: 'scale(1.06)',
+          },
+          '& .view-details-btn': {
+            backgroundColor: '#1E7D5C',
+            color: '#FFFFFF',
+            borderColor: '#1E7D5C',
+            '& .arrow-icon': {
+              transform: 'translateX(3px)',
+            },
           },
         },
       }}
     >
       {/* Attraction Image Header */}
-      <Box sx={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+      <Box sx={{ position: 'relative', height: 195, overflow: 'hidden', bgcolor: '#0F172A' }}>
         <CardMedia
           component="img"
           className="place-image"
-          height="180"
+          height="195"
           image={imageUrl}
           alt={place.name}
           referrerPolicy="no-referrer"
@@ -86,65 +107,76 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
           }}
           sx={{
             objectFit: 'cover',
-            transition: 'transform 0.4s ease',
+            transition: 'transform 0.45s ease',
           }}
         />
 
-        {/* Subtle Dark Gradient Scrim */}
+        {/* Clean Gradient Scrim */}
         <Box
           sx={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%)',
+            background:
+              'linear-gradient(to top, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.15) 50%, rgba(0,0,0,0.2) 100%)',
           }}
         />
 
-        {/* Floating Badges */}
+        {/* Floating Category & Gem Badges */}
         <Stack
           direction="row"
           justifyContent="space-between"
-          alignItems="flex-start"
-          sx={{ position: 'absolute', top: 10, left: 10, right: 10 }}
+          alignItems="center"
+          sx={{ position: 'absolute', top: 12, left: 12, right: 12, zIndex: 2 }}
         >
           <Chip
             size="small"
-            label={place.category.replace('_', ' ').toUpperCase()}
+            label={`${categoryEmoji} ${place.category.replace('_', ' ').toUpperCase()}`}
             sx={{
-              backgroundColor: categoryColor,
-              color: '#fff',
+              backgroundColor: 'rgba(15, 23, 42, 0.72)',
+              backdropFilter: 'blur(8px)',
+              color: '#FFFFFF',
               fontWeight: 800,
               fontSize: '0.68rem',
-              height: 22,
-              boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+              height: 24,
+              border: `1px solid rgba(255, 255, 255, 0.25)`,
+              boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
             }}
           />
 
           {place.is_hidden_gem && (
             <Chip
               size="small"
-              icon={<GemIcon sx={{ fontSize: '13px !important', color: '#fff !important' }} />}
+              icon={<GemIcon sx={{ fontSize: '13px !important', color: '#0EA5E9 !important' }} />}
               label="Hidden Gem"
-              color="secondary"
               sx={{
                 fontSize: '0.68rem',
-                height: 22,
+                height: 24,
                 fontWeight: 800,
-                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                backgroundColor: 'rgba(14, 165, 233, 0.18)',
+                backdropFilter: 'blur(8px)',
+                color: '#E0F2FE',
+                border: '1px solid rgba(14, 165, 233, 0.4)',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
               }}
             />
           )}
         </Stack>
 
-        {/* Location chip on image bottom */}
-        <Box sx={{ position: 'absolute', bottom: 10, left: 12, right: 12 }}>
+        {/* Location Pin on Image Bottom */}
+        <Box sx={{ position: 'absolute', bottom: 10, left: 12, right: 12, zIndex: 2 }}>
           <Stack direction="row" alignItems="center" spacing={0.5}>
-            <LocationIcon sx={{ fontSize: 14, color: '#fff' }} />
+            <LocationIcon sx={{ fontSize: 14, color: '#FCD34D' }} />
             <Typography
               variant="caption"
               sx={{
                 fontWeight: 700,
-                color: '#fff',
-                textShadow: '0 1px 4px rgba(0,0,0,0.8)',
+                color: '#FFFFFF',
+                fontSize: '0.74rem',
+                textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+                display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
               }}
             >
               {place.destination_name}, {place.state_name}
@@ -154,66 +186,85 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
       </Box>
 
       {/* Place Details Body */}
-      <CardContent sx={{ pb: 1, pt: 2 }}>
-        <Typography variant="h6" sx={{ fontWeight: 800, mb: 0.5, lineHeight: 1.25 }}>
+      <CardContent sx={{ pb: 1.5, pt: 2, flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 800,
+            fontSize: '1.05rem',
+            mb: 0.8,
+            lineHeight: 1.3,
+            color: '#1E293B',
+            display: '-webkit-box',
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
           {place.name}
         </Typography>
 
         <Typography
           variant="body2"
           sx={{
-            color: theme.palette.text.secondary,
+            color: '#64748B',
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             lineHeight: 1.5,
             minHeight: '3em',
+            fontSize: '0.84rem',
             mb: 1.5,
           }}
         >
           {place.description || `Verified destination attraction in ${place.state_name}.`}
         </Typography>
 
-        {/* Differentiated Rates Row */}
+        {/* Clean Streamlined Value Bar (Replaces clunky 2-column table) */}
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
           sx={{
-            pt: 1.2,
-            borderTop: `1px solid ${theme.palette.divider}`,
+            p: 1.2,
+            borderRadius: 2,
+            backgroundColor: '#F8FAFC',
+            border: '1px solid #F1F5F9',
           }}
         >
-          <Box>
-            <Typography variant="caption" sx={{ color: theme.palette.text.secondary, display: 'block' }}>
-              {hasTicket ? 'Official Entry Ticket' : 'Entry Access'}
-            </Typography>
-            <Stack direction="row" alignItems="center" spacing={0.5}>
-              <TicketIcon sx={{ fontSize: 15, color: isFree ? '#10B981' : theme.palette.text.primary }} />
+          {/* Ticket Rate */}
+          <Stack direction="row" alignItems="center" spacing={0.6}>
+            <TicketIcon sx={{ fontSize: 15, color: isFree ? '#10B981' : '#64748B' }} />
+            <Box>
+              <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.66rem', display: 'block', lineHeight: 1 }}>
+                Ticket
+              </Typography>
               <Typography
                 variant="body2"
                 sx={{
                   fontWeight: 800,
-                  color: isFree ? '#10B981' : theme.palette.text.primary,
+                  fontSize: '0.82rem',
+                  color: isFree ? '#059669' : '#1E293B',
                 }}
               >
                 {feeLabel}
               </Typography>
-            </Stack>
-          </Box>
+            </Box>
+          </Stack>
 
-          <Box sx={{ textAlign: 'right' }}>
-            <Typography variant="caption" sx={{ color: theme.palette.text.secondary, display: 'block' }}>
-              Est. Visit Expense
-            </Typography>
-            <Stack direction="row" alignItems="center" spacing={0.3} justifyContent="flex-end">
-              <CostIcon sx={{ fontSize: 15, color: theme.palette.primary.main }} />
-              <Typography variant="body2" sx={{ fontWeight: 800, color: theme.palette.primary.main }}>
-                {dailyExpenseLabel}
+          {/* Visit Cost */}
+          <Stack direction="row" alignItems="center" spacing={0.6}>
+            <CostIcon sx={{ fontSize: 15, color: '#1E7D5C' }} />
+            <Box sx={{ textAlign: 'right' }}>
+              <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.66rem', display: 'block', lineHeight: 1 }}>
+                Est. Daily
               </Typography>
-            </Stack>
-          </Box>
+              <Typography variant="body2" sx={{ fontWeight: 800, fontSize: '0.82rem', color: '#1E7D5C' }}>
+                ~{dailyExpenseLabel}
+              </Typography>
+            </Box>
+          </Stack>
         </Stack>
       </CardContent>
 
@@ -221,11 +272,21 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({ place, onViewDetails }) =>
         <Button
           size="small"
           variant="outlined"
-          color="primary"
           fullWidth
-          startIcon={<DetailIcon fontSize="small" />}
+          className="view-details-btn"
+          endIcon={<ArrowIcon className="arrow-icon" sx={{ fontSize: 16, transition: 'transform 0.2s ease' }} />}
           onClick={() => onViewDetails(place.id)}
-          sx={{ borderRadius: 2 }}
+          sx={{
+            borderRadius: 2,
+            fontWeight: 700,
+            fontSize: '0.82rem',
+            py: 0.8,
+            color: '#1E7D5C',
+            borderColor: '#CBD5E1',
+            backgroundColor: '#F8FAFC',
+            textTransform: 'none',
+            transition: 'all 0.25s ease',
+          }}
         >
           View Details & Dishes
         </Button>

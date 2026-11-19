@@ -206,15 +206,15 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             fontSize: { xs: '2.1rem', sm: '2.8rem', md: '3.3rem' },
             color: '#FFFFFF',
             lineHeight: 1.18,
-            textShadow: '0 3px 16px rgba(0, 0, 0, 0.8)',
+            textShadow: '0 2px 12px rgba(0, 0, 0, 0.7)',
           }}
         >
           Discover the Soul of{' '}
           <Box
             component="span"
             sx={{
-              color: '#FF7A45',
-              textShadow: '0 3px 18px rgba(0, 0, 0, 0.9), 0 0 28px rgba(255, 122, 69, 0.45)',
+              color: '#34D399',
+              textShadow: '0 2px 14px rgba(0, 0, 0, 0.8)',
               fontWeight: 900,
             }}
           >
@@ -226,21 +226,21 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
         <Typography
           variant="body2"
           sx={{
-            color: 'rgba(255, 255, 255, 0.92)',
+            color: 'rgba(255, 255, 255, 0.95)',
             fontWeight: 400,
             fontSize: { xs: '0.9rem', md: '1.05rem' },
             mb: 2.5,
             maxWidth: 740,
             mx: 'auto',
             lineHeight: 1.55,
-            textShadow: '0 2px 8px rgba(0,0,0,0.9)',
+            textShadow: '0 2px 8px rgba(0,0,0,0.8)',
           }}
         >
-          Explore verified attractions across all 34 states and territories. Let our intelligent AI
+          Explore verified attractions across all 36 states and territories. Let our intelligent AI
           craft your personalized, day-by-day travel plan with authentic regional dishes and real entrance costs.
         </Typography>
 
-        {/* Search Input & CTA Button */}
+        {/* Search Input & CTA Button (Clean White Card Layout) */}
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           spacing={1.2}
@@ -256,24 +256,23 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon fontSize="small" sx={{ color: 'rgba(255,255,255,0.85)' }} />
+                  <SearchIcon fontSize="small" sx={{ color: '#64748B' }} />
                 </InputAdornment>
               ),
               sx: {
                 borderRadius: 2.5,
-                backgroundColor: 'rgba(0, 0, 0, 0.45)',
-                backdropFilter: 'blur(16px)',
-                color: '#fff',
-                border: '1px solid rgba(255, 255, 255, 0.35)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+                backgroundColor: '#FFFFFF',
+                color: '#1E293B',
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
                 '& .MuiOutlinedInput-notchedOutline': {
                   borderColor: 'transparent',
                 },
                 '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(255, 255, 255, 0.6)',
+                  borderColor: '#CBD5E1',
                 },
                 '& input::placeholder': {
-                  color: 'rgba(255, 255, 255, 0.85)',
+                  color: '#94A3B8',
                   opacity: 1,
                 },
               },
@@ -281,7 +280,6 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           />
           <Button
             variant="contained"
-            color="primary"
             size="medium"
             onClick={onOpenPlanner}
             startIcon={<PlannerIcon />}
@@ -290,9 +288,14 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               px: 3.5,
               py: 1,
               borderRadius: 2.5,
-              fontWeight: 800,
+              fontWeight: 700,
               fontSize: '0.95rem',
-              boxShadow: '0 6px 20px rgba(224, 93, 56, 0.55)',
+              backgroundColor: '#1E7D5C',
+              color: '#FFFFFF',
+              boxShadow: '0 4px 12px rgba(30, 125, 92, 0.3)',
+              '&:hover': {
+                backgroundColor: '#176449',
+              },
             }}
           >
             Plan My Trip
@@ -331,8 +334,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                   fontSize: '15px !important',
                 },
                 '&:hover': {
-                  backgroundColor: 'rgba(224, 93, 56, 0.6)',
-                  borderColor: '#E05D38',
+                  backgroundColor: 'rgba(30, 125, 92, 0.75)',
+                  borderColor: '#1E7D5C',
                   transform: 'translateY(-2px)',
                 },
                 transition: 'all 0.2s ease',
@@ -341,7 +344,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           ))}
         </Stack>
 
-        {/* Live Counters (Centered at bottom of card) */}
+        {/* Live Counters (Clean mint/white counters) */}
         <Stack
           direction="row"
           justifyContent="center"
@@ -350,34 +353,34 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           sx={{
             pt: 2.2,
             borderTop: '1px solid rgba(255, 255, 255, 0.22)',
-            color: 'rgba(255, 255, 255, 0.9)',
+            color: 'rgba(255, 255, 255, 0.95)',
             maxWidth: 740,
             mx: 'auto',
           }}
         >
           <Box textAlign="center">
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#FDBA74', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#34D399', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
               {counts.states}
             </Typography>
-            <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.75rem' }}>States & UTs</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 600, fontSize: '0.75rem' }}>States & UTs</Typography>
           </Box>
           <Box textAlign="center">
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#FDBA74', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#34D399', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
               {counts.destinations}
             </Typography>
-            <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.75rem' }}>Destinations</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 600, fontSize: '0.75rem' }}>Destinations</Typography>
           </Box>
           <Box textAlign="center">
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#FDBA74', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#34D399', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
               {counts.places}
             </Typography>
-            <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.75rem' }}>Verified Places</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 600, fontSize: '0.75rem' }}>Verified Places</Typography>
           </Box>
           <Box textAlign="center">
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#FDBA74', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#34D399', lineHeight: 1.1, textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
               {counts.foods}
             </Typography>
-            <Typography variant="caption" sx={{ fontWeight: 700, fontSize: '0.75rem' }}>Local Dishes</Typography>
+            <Typography variant="caption" sx={{ fontWeight: 600, fontSize: '0.75rem' }}>Local Dishes</Typography>
           </Box>
         </Stack>
       </Container>

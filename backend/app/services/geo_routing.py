@@ -817,6 +817,8 @@ def validate_and_ground_plan(
                     entry_fee=fee,
                     recommended_time=rec_time,
                     is_hidden_gem=bool(db_p.is_hidden_gem),
+                    latitude=db_p.latitude,
+                    longitude=db_p.longitude,
                 )
             )
 
@@ -962,6 +964,8 @@ def build_offline_blueprint_plan(
                     entry_fee=fee,
                     recommended_time=time_labels[min(idx, len(time_labels) - 1)],
                     is_hidden_gem=bool(p.is_hidden_gem),
+                    latitude=p.latitude,
+                    longitude=p.longitude,
                 )
             )
 

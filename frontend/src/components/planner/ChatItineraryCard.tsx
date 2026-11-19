@@ -27,9 +27,11 @@ import {
   Refresh as RestartIcon,
   Restaurant as FoodIcon,
   ViewAgenda as OverviewIcon,
+  Map as MapIcon,
 } from '@mui/icons-material';
 import { TripPlanResponse } from '../../api/types';
 import { designTokens } from '../../theme/tokens';
+import { ItineraryMap } from '../map/ItineraryMap';
 
 interface ChatItineraryCardProps {
   plan: TripPlanResponse;
@@ -49,6 +51,7 @@ export const ChatItineraryCard: React.FC<ChatItineraryCardProps> = ({
   const theme = useTheme();
   // 0: Overview (All Days), 1..N: Individual Days
   const [activeTab, setActiveTab] = useState<number>(1);
+  const [showMap, setShowMap] = useState<boolean>(true);
 
   const formatCurrency = (val: number | string | undefined | null) => {
     if (val === undefined || val === null) return '0';
@@ -142,23 +145,60 @@ export const ChatItineraryCard: React.FC<ChatItineraryCardProps> = ({
           <Button
             size="small"
             variant={savedPlanId ? 'outlined' : 'contained'}
-            color={savedPlanId ? 'success' : 'primary'}
             startIcon={savedPlanId ? <CheckIcon /> : <SaveIcon />}
             onClick={onSavePlan}
             disabled={saving}
-            sx={{ borderRadius: 2, fontWeight: 700, px: 2 }}
+            sx={{
+              borderRadius: 2,
+              fontWeight: 700,
+              px: 2,
+              backgroundColor: savedPlanId ? undefined : '#1E7D5C',
+              color: savedPlanId ? '#15803D' : '#FFFFFF',
+              borderColor: savedPlanId ? '#86EFAC' : undefined,
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: savedPlanId ? '#F0FDF4' : '#176449',
+              },
+            }}
           >
-            {saving ? 'Saving...' : savedPlanId ? 'Saved' : 'Save Itinerary'}
+            {saving ? 'Saving...' : savedPlanId ? 'Saved in My Trips' : 'Save Itinerary'}
+          </Button>
+
+          <Button
+            size="small"
+            variant={showMap ? 'contained' : 'outlined'}
+            startIcon={<MapIcon />}
+            onClick={() => setShowMap(!showMap)}
+            title="Toggle Interactive Route Map"
+            sx={{
+              borderRadius: 2,
+              fontWeight: 700,
+              backgroundColor: showMap ? '#0F172A' : undefined,
+              color: showMap ? '#FFFFFF' : '#334155',
+              borderColor: showMap ? undefined : '#CBD5E1',
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: showMap ? '#1E293B' : '#F1F5F9',
+              },
+            }}
+          >
+            {showMap ? 'Hide Map' : 'Route Map'}
           </Button>
 
           <Button
             size="small"
             variant="outlined"
-            color="inherit"
             startIcon={<PrintIcon />}
             onClick={handlePrint}
             title="Download or Print PDF"
-            sx={{ borderRadius: 2, fontWeight: 700 }}
+            sx={{
+              borderRadius: 2,
+              fontWeight: 700,
+              color: '#334155',
+              borderColor: '#CBD5E1',
+              textTransform: 'none',
+              '&:hover': { backgroundColor: '#F1F5F9', borderColor: '#94A3B8' },
+            }}
           >
             PDF / Print
           </Button>
@@ -166,11 +206,17 @@ export const ChatItineraryCard: React.FC<ChatItineraryCardProps> = ({
           <Button
             size="small"
             variant="outlined"
-            color="inherit"
             startIcon={<RestartIcon />}
             onClick={onResetPlan}
             title="Start New Plan"
-            sx={{ borderRadius: 2, fontWeight: 700 }}
+            sx={{
+              borderRadius: 2,
+              fontWeight: 700,
+              color: '#64748B',
+              borderColor: '#E2E8F0',
+              textTransform: 'none',
+              '&:hover': { backgroundColor: '#F8FAFC', color: '#1E293B' },
+            }}
           >
             New Plan
           </Button>
@@ -334,6 +380,17 @@ export const ChatItineraryCard: React.FC<ChatItineraryCardProps> = ({
           ))}
         </Tabs>
       </Box>
+
+      {/* 4. Interactive Route Map Canvas */}
+      {showMap && (
+        <Box sx={{ mb: 3 }} className="no-print">
+          <ItineraryMap
+            days={plan.days}
+            activeDayNumber={activeTab}
+            height={360}
+          />
+        </Box>
+      )}
 
       {/* 4A. View: Overview (All Days Summary) */}
       {activeTab === 0 && (
@@ -563,20 +620,19 @@ export const ChatItineraryCard: React.FC<ChatItineraryCardProps> = ({
           {activeDay.travel_tips && (
             <Alert
               severity="info"
-              icon={<TipIcon sx={{ color: theme.palette.primary.main }} />}
+              icon={<TipIcon sx={{ color: '#1E7D5C' }} />}
               sx={{
                 borderRadius: 2.5,
-                backgroundColor:
-                  theme.palette.mode === 'dark' ? 'rgba(224, 93, 56, 0.08)' : 'rgba(224, 93, 56, 0.05)',
-                border: `1px solid ${theme.palette.primary.main}30`,
-                color: theme.palette.text.primary,
+                backgroundColor: '#F0FDF4',
+                border: '1px solid #BBF7D0',
+                color: '#1E293B',
                 py: 0.75,
               }}
             >
-              <Typography variant="caption" sx={{ fontWeight: 800, color: theme.palette.primary.main, display: 'block' }}>
+              <Typography variant="caption" sx={{ fontWeight: 800, color: '#047857', display: 'block' }}>
                 DAY TRAVEL TIP
               </Typography>
-              <Typography variant="body2" sx={{ fontSize: '0.84rem', lineHeight: 1.5 }}>
+              <Typography variant="body2" sx={{ fontSize: '0.84rem', lineHeight: 1.5, color: '#334155' }}>
                 {activeDay.travel_tips}
               </Typography>
             </Alert>

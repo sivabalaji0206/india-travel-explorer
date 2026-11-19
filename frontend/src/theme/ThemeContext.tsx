@@ -17,12 +17,7 @@ export const useAppTheme = (): ThemeContextType => useContext(ThemeContext);
 export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mode, setMode] = useState<PaletteMode>(() => {
     const saved = localStorage.getItem('theme_mode');
-    if (saved === 'light' || saved === 'dark') {
-      return saved;
-    }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    return saved === 'dark' ? 'dark' : 'light';
   });
 
   useEffect(() => {

@@ -48,6 +48,7 @@ interface PlannerModalProps {
   initialStateId?: number | null;
   initialSavedPlan?: SavedPlanDetail | null;
   onPlanSaved?: () => void;
+  onPlanGenerated?: (plan: TripPlanResponse) => void;
   states: State[];
   onOpenAuth: () => void;
 }
@@ -80,6 +81,7 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
   initialStateId,
   initialSavedPlan,
   onPlanSaved,
+  onPlanGenerated,
   states,
   onOpenAuth,
 }) => {
@@ -542,6 +544,12 @@ export const PlannerModal: React.FC<PlannerModalProps> = ({
         setPlan(generated);
         setIsGenerating(false);
         setReasoningSteps([]);
+
+        if (onPlanGenerated) {
+          onClose();
+          onPlanGenerated(generated);
+          return;
+        }
 
         // Append generated Itinerary Card directly into chat stream
         setChatMessages((prev) => [

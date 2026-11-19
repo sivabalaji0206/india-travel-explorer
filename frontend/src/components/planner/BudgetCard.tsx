@@ -39,23 +39,23 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
     {
       label: 'Accommodation',
       amount: breakdown.accommodation_estimate,
-      icon: <HotelIcon sx={{ fontSize: 18, color: '#3B82F6' }} />,
-      color: '#3B82F6',
+      icon: <HotelIcon sx={{ fontSize: 18, color: '#0284C7' }} />,
+      color: '#0284C7',
     },
     {
       label: 'Food & Dining',
       amount: breakdown.food_estimate,
-      icon: <FoodIcon sx={{ fontSize: 18, color: '#10B981' }} />,
-      color: '#10B981',
+      icon: <FoodIcon sx={{ fontSize: 18, color: '#1E7D5C' }} />,
+      color: '#1E7D5C',
     },
     {
-      label: 'Activities & Tickets',
+      label: 'Sightseeing & Tickets',
       amount: breakdown.activities_and_entry,
       icon: <ActivityIcon sx={{ fontSize: 18, color: '#F59E0B' }} />,
       color: '#F59E0B',
     },
     {
-      label: 'Local Transport',
+      label: 'Local Transit',
       amount: breakdown.local_transport_estimate,
       icon: <TransportIcon sx={{ fontSize: 18, color: '#8B5CF6' }} />,
       color: '#8B5CF6',
@@ -67,10 +67,10 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
       elevation={0}
       sx={{
         p: { xs: 2, sm: 2.5 },
-        borderRadius: 3,
-        border: `1px solid ${theme.palette.divider}`,
-        backgroundColor:
-          theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : '#FAFAFA',
+        borderRadius: 3.5,
+        border: '1px solid #E2E8F0',
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.03)',
       }}
     >
       <Stack
@@ -81,25 +81,26 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
         sx={{ mb: 2 }}
       >
         <Stack direction="row" alignItems="center" spacing={1}>
-          <SavingsIcon sx={{ color: theme.palette.primary.main }} />
-          <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
-            Itemized Trip Budget Breakdown
+          <SavingsIcon sx={{ color: '#1E7D5C', fontSize: 22 }} />
+          <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#1E293B', fontSize: '1.02rem' }}>
+            Trip Budget Breakdown
           </Typography>
         </Stack>
 
         <Stack direction="row" spacing={1} alignItems="center">
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" sx={{ color: '#64748B', fontWeight: 600 }}>
             Target: <strong>₹{targetBudget.toLocaleString()}</strong> ({totalDays} days)
           </Typography>
           <Typography
             variant="caption"
             sx={{
-              px: 1,
-              py: 0.3,
-              borderRadius: 1,
-              fontWeight: 700,
-              backgroundColor: isUnder ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-              color: isUnder ? '#10B981' : '#EF4444',
+              px: 1.2,
+              py: 0.4,
+              borderRadius: 1.5,
+              fontWeight: 800,
+              fontSize: '0.74rem',
+              backgroundColor: isUnder ? '#DCFCE7' : '#FEE2E2',
+              color: isUnder ? '#15803D' : '#DC2626',
             }}
           >
             {isUnder
@@ -116,19 +117,19 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
             <Grid item xs={12} sm={6} md={3} key={cat.label}>
               <Box
                 sx={{
-                  p: 1.5,
-                  borderRadius: 2,
-                  border: `1px solid ${theme.palette.divider}`,
-                  backgroundColor: theme.palette.background.paper,
+                  p: 1.8,
+                  borderRadius: 2.5,
+                  border: '1px solid #E2E8F0',
+                  backgroundColor: '#F8FAFC',
                 }}
               >
                 <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
                   {cat.icon}
-                  <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.secondary' }}>
+                  <Typography variant="caption" sx={{ fontWeight: 800, color: '#64748B' }}>
                     {cat.label}
                   </Typography>
                 </Stack>
-                <Typography variant="h6" sx={{ fontWeight: 800, mb: 0.5 }}>
+                <Typography variant="h6" sx={{ fontWeight: 900, mb: 0.5, color: '#1E293B' }}>
                   ₹{cat.amount.toLocaleString()}
                 </Typography>
                 <Stack direction="row" alignItems="center" spacing={1}>
@@ -139,14 +140,14 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
                       sx={{
                         height: 6,
                         borderRadius: 3,
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : '#E2E8F0',
+                        backgroundColor: '#E2E8F0',
                         '& .MuiLinearProgress-bar': {
                           backgroundColor: cat.color,
                         },
                       }}
                     />
                   </Box>
-                  <Typography variant="caption" sx={{ fontWeight: 700, color: 'text.secondary', minWidth: 28 }}>
+                  <Typography variant="caption" sx={{ fontWeight: 800, color: '#64748B', minWidth: 28 }}>
                     {pct}%
                   </Typography>
                 </Stack>
@@ -156,19 +157,20 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
         })}
       </Grid>
 
-      <Divider sx={{ my: 2 }} />
+      <Divider sx={{ my: 2, borderColor: '#E2E8F0' }} />
 
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent="space-between"
         alignItems={{ xs: 'flex-start', sm: 'center' }}
+        spacing={1}
       >
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-          * Estimates based on verified local cost tiers and attraction entrance fees.
+        <Typography variant="caption" sx={{ color: '#64748B' }}>
+          * Itemized estimates based on verified travel costs and attractions in this state.
         </Typography>
-        <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
+        <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#1E293B' }}>
           Estimated Total:{' '}
-          <Box component="span" sx={{ color: theme.palette.primary.main }}>
+          <Box component="span" sx={{ color: '#1E7D5C', fontWeight: 900 }}>
             ₹{total.toLocaleString()}
           </Box>
         </Typography>
@@ -176,4 +178,3 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({
     </Paper>
   );
 };
-
