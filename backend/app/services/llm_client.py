@@ -129,7 +129,7 @@ class LlmClient:
                 err_str = str(exc)
                 if (
                     self._raw_key.startswith("AQ.")
-                    and ("API_KEY_INVALID" in err_str or "UNAUTHENTICATED" in err_str or "401" in err_str or "400" in err_str)
+                    and any(k in err_str for k in ("API_KEY_INVALID", "UNAUTHENTICATED", "PERMISSION_DENIED", "SERVICE_DISABLED", "401", "403", "400"))
                     and not getattr(self, "_toggled_endpoint", False)
                 ):
                     self._toggled_endpoint = True
