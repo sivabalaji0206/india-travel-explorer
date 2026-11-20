@@ -91,10 +91,11 @@ class LlmClient:
                 thinking_budget=thinking_budget
             )
 
+        current_model = self.settings.llm_model or "gemini-3.8-flash"
         for attempt in range(retries + 1):
             try:
                 response = self._client.models.generate_content(
-                    model=self.settings.llm_model,
+                    model=current_model,
                     contents=current_prompt,
                     config=types.GenerateContentConfig(**config_kwargs),
                 )
@@ -127,6 +128,10 @@ class LlmClient:
                 )
             except Exception as exc:
                 err_str = str(exc)
+                if ("404" in err_str or "NOT_FOUND" in err_str) and "3.8" not in current_model:
+                    logger.info("Upgrading model from %s to gemini-3.8-flash due to API deprecation.", current_model)
+                    current_model = "gemini-3.8-flash"
+                    continue
                 if (
                     self._raw_key.startswith("AQ.")
                     and any(k in err_str for k in ("API_KEY_INVALID", "UNAUTHENTICATED", "PERMISSION_DENIED", "SERVICE_DISABLED", "401", "403", "400"))

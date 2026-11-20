@@ -76,7 +76,7 @@ class Settings(BaseSettings):
     # --- LLM and RAG -------------------------------------------------------
     feature_planner_enabled: bool = True
     gemini_api_key: SecretStr | None = None
-    llm_model: str = "gemini-2.5-flash"
+    llm_model: str = "gemini-3.8-flash"
     llm_temperature: float = Field(default=0.3, ge=0.0, le=2.0)
     llm_max_output_tokens: int = Field(default=8192, ge=1)
     llm_timeout_seconds: int = Field(default=45, ge=1)
